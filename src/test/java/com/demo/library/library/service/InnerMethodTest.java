@@ -34,7 +34,7 @@ public class InnerMethodTest {
 
     @BeforeEach
     void setUp() {
-        MockitoAnnotations.initMocks(this);
+        MockitoAnnotations.openMocks(this);
         libraryService = new LibraryService(libraryRepository,entityUpdater);
     }
 
