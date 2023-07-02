@@ -42,6 +42,7 @@ public class UserService {
         User verifiedUser = verifyById(userId);
 
         entityUpdater.update(user, verifiedUser, User.class);
+
         save(verifiedUser);
         return verifiedUser;
     }
