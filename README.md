@@ -4,11 +4,11 @@
  구현 상세 :    
  
 + 요구사항 정의 :
-![img.png](요구사항 정의.png) 
+![img_5.png](img_5.png)
 
 
 + DB Diagram :   
-  ![libray ERD.png](libray%20ERD.png)
+![img_6.png](img_6.png) 
  
 
 + 코드 범용성 향상 : 
