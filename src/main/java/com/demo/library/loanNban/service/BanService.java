@@ -52,9 +52,7 @@ public class BanService {
         if (isUserBanned(user, library)) {
             throw new BusinessLogicException(USER_BANNED_FROM_LIBRARY);
         }
-
     }
-
     private boolean isUserBanned(User user, Library library) {
         List<Ban> bans= user.getBans();
         return bans.stream()

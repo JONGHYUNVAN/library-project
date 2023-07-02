@@ -4,6 +4,7 @@ package com.demo.library.book.controller;
 import com.demo.library.book.dto.BookDto;
 import com.demo.library.book.entity.BookEntity;
 import com.demo.library.book.repository.BookJPARepository;
+import com.demo.library.book.repository.BookRepository;
 import com.demo.library.library.entity.Library;
 import com.demo.library.library.repository.LibraryRepository;
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -29,7 +30,7 @@ public class PatchTest {
     @Autowired
     private ObjectMapper objectMapper;
     @Autowired
-    private BookJPARepository bookRepository;
+    private BookRepository bookRepository;
     @Autowired
     private LibraryRepository libraryRepository;
     @BeforeEach

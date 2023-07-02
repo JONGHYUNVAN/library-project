@@ -27,7 +27,7 @@ public class PostTest {
     @Test
     void postUserTest() throws Exception {
         // Given
-        String requestBody = getRequestBody("name","nickName","010-1234-5678","MALE");
+        String requestBody = getRequestBody("name","nickName","010-1234-5677","MALE");
 
         // When
         ResultActions result = getResult(requestBody);

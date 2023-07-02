@@ -1,5 +1,10 @@
 package com.demo.library.book.controller;
 
+import com.demo.library.book.entity.BookEntity;
+import com.demo.library.book.repository.BookRepository;
+import com.demo.library.library.entity.Library;
+import com.demo.library.library.repository.LibraryRepository;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -17,6 +22,35 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 public class GetTest {
     @Autowired
     private MockMvc mockMvc;
+    @Autowired
+    private BookRepository bookRepository;
+    @Autowired
+    private LibraryRepository libraryRepository;
+    @BeforeEach
+    void  setup() {
+        Library existingLibrary = Library.builder()
+                .id(1L)
+                .name("중앙도서관")
+                .address("existingAddress")
+                .openTime("9:30")
+                .closeTime("17:30")
+
+
+                .build();
+
+        libraryRepository.save(existingLibrary);
+       BookEntity setupBook = BookEntity.builder()
+                .id(1L)
+                .title("앵무새 죽이기")
+                .publisher("Sunset Books")
+                .author("Harper Lee")
+                .status(BookEntity.Status.ON_LOAN)
+                .library(existingLibrary)
+                .build();
+
+        bookRepository.save(setupBook);
+
+    }
 
     @Test
     public void testGetBooksByKeyword() throws Exception {

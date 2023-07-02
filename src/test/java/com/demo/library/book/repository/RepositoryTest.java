@@ -18,9 +18,9 @@ import static org.mockito.ArgumentMatchers.eq;
 @ActiveProfiles("test")
 public class RepositoryTest {
     @Autowired
-    private BookJPARepository bookRepository;
+    private BookRepository bookRepository;
     @MockBean
-    private BookJPARepository mockUserRepository;
+    private BookRepository mockBookRepository;
 
 
 
@@ -29,7 +29,7 @@ public class RepositoryTest {
         // Given
         BookEntity book = new BookEntity();
         book.setId(1L);
-        Mockito.when(mockUserRepository.findById(eq(1L))).thenReturn(Optional.of(book));
+        Mockito.when(mockBookRepository.findById(eq(1L))).thenReturn(Optional.of(book));
 
         // When
         Optional<BookEntity> result = bookRepository.findById(1L);
@@ -42,7 +42,7 @@ public class RepositoryTest {
         // Given
         BookEntity book = new BookEntity();
         book.setTitle("title");
-        Mockito.when(mockUserRepository.findByTitle(eq("title"))).thenReturn(Optional.of(book));
+        Mockito.when(mockBookRepository.findByTitle(eq("title"))).thenReturn(Optional.of(book));
 
         // When
         Optional<BookEntity> result = bookRepository.findByTitle("title");

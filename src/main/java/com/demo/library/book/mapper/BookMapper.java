@@ -26,7 +26,8 @@ public class BookMapper {
         book.setLibrary(library);
         return book;
     }
-    public BookEntity patchToBook(BookDto.Patch patch) {
+    public BookEntity patchToBook(BookDto.Patch patch)
+    {
         return mapper.map(patch,BookEntity.class);
     }
     public BookDto.Response bookToResponse(BookEntity book) {

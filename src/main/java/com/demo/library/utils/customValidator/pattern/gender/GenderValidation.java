@@ -12,7 +12,7 @@ import java.lang.annotation.Target;
 @Constraint(validatedBy = GenderValidator.class)
 public @interface GenderValidation {
 
-    String message() default "gender should be MALE or FEMALE.";
+    String message() default "Gender should be MALE or FEMALE.";
     Class<?>[] groups() default {};
     Class<? extends Payload>[] payload() default {};
 

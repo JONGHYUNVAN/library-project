@@ -40,7 +40,7 @@ public class InnerMethodTest {
 
     @Test
     public void test_verifyById_validId() {
-        Long libraryId = 1L;
+        long libraryId = 1L;
         Library library = new Library();
         library.setId(libraryId);
 

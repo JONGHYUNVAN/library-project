@@ -9,7 +9,6 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.ActiveProfiles;
 
-import java.time.LocalTime;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -21,7 +20,7 @@ public class RepositoryTest {
     @Autowired
     private LibraryRepository libraryRepository;
     @MockBean
-    private LibraryRepository mockUserRepository;
+    private LibraryRepository mockLibraryRepository;
 
 
     @Test
@@ -29,7 +28,7 @@ public class RepositoryTest {
         // Given
         Library library = new Library();
         library.setId(1L);
-        Mockito.when(mockUserRepository.findById(eq(1L))).thenReturn(Optional.of(library));
+        Mockito.when(mockLibraryRepository.findById(eq(1L))).thenReturn(Optional.of(library));
 
         // When
         Optional<Library> result = libraryRepository.findById(1L);
@@ -44,7 +43,7 @@ public class RepositoryTest {
         Library library = new Library();
         library.setId(1L);
         library.setName("library");
-        Mockito.when(mockUserRepository.findByName(eq("library"))).thenReturn(Optional.of(library));
+        Mockito.when(mockLibraryRepository.findByName(eq("library"))).thenReturn(Optional.of(library));
 
         // When
         Optional<Library> result = libraryRepository.findByName("library");

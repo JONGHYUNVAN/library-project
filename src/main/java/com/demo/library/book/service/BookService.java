@@ -69,9 +69,9 @@ public class BookService {
     }
     public Page<BookEntity> getBooksByAuthor(String author, Pageable pageable) {
         PageRequest of = PageRequest.of(pageable.getPageNumber() ,
-                pageable.getPageSize(),
-                pageable.getSort()
-                        .and(Sort.by("searchCount").descending())
+                                        pageable.getPageSize(),
+                                        pageable.getSort()
+                                                .and(Sort.by("searchCount").descending())
         );
 
         return bookRepository.findAllByAuthor(author,of);
