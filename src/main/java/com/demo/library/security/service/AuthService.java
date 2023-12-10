@@ -10,24 +10,26 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
-import static com.demo.library.exception.ExceptionCode.INVALID_REFRESH_TOKEN;
-import static com.demo.library.exception.ExceptionCode.INVALID_TOKEN_REQUEST;
+import java.time.LocalDateTime;
+import java.util.Optional;
+
+import static com.demo.library.exception.ExceptionCode.*;
 
 @Service
 @RequiredArgsConstructor
 @Slf4j
 public class AuthService {
-    private final JWTTokenizer jwtTokenizer;
     private final JWTService jwtService;
     private final RefreshTokenRepository refreshTokenRepository;
     public RefreshToken isValidRequest(TokenDto.Request tokenRequest){
         if (tokenRequest == null || tokenRequest.getRefreshToken()== null) {
             throw new BusinessLogicException(INVALID_TOKEN_REQUEST);
         }
-        if (!jwtTokenizer.isValidToken(tokenRequest.getRefreshToken())) {
-            throw (new BusinessLogicException(INVALID_REFRESH_TOKEN));
-        }
-    return refreshTokenRepository.findByToken(tokenRequest.getRefreshToken()).get();
+
+        Optional<RefreshToken> optionalRefreshToken = refreshTokenRepository.findByToken(tokenRequest.getRefreshToken());
+
+        return optionalRefreshToken.orElseThrow(() ->
+                new BusinessLogicException(INVALID_REFRESH_TOKEN));
     }
 
     public TokenDto.Set refresh(RefreshToken requestToken){
@@ -36,5 +38,14 @@ public class AuthService {
         tokenSet.setRefreshToken(jwtService.refreshRefreshToken(requestToken.getToken()));
         refreshTokenRepository.delete(requestToken);
         return tokenSet;
+    }
+    public void checkIfExpired(RefreshToken refreshToken){
+        if (isExpired(refreshToken)) {
+            refreshTokenRepository.delete(refreshToken);
+            throw new BusinessLogicException(REFRESH_TOKEN_EXPIRED);
+        }
+    }
+    public boolean isExpired(RefreshToken refreshToken){
+        return refreshToken.getExpiryDateTime().isBefore(LocalDateTime.now());
     }
 }

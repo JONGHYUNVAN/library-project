@@ -39,6 +39,7 @@ public class AuthController {
     @PostMapping("/token/refresh")
     public ResponseEntity<SingleResponseDto<TokenDto.Set>> refreshAccessToken(@RequestBody TokenDto.Request tokenRequest) {
         RefreshToken requestToken = authService.isValidRequest(tokenRequest);
+        authService.checkIfExpired(requestToken);
         TokenDto.Set tokenSet =  authService.refresh(requestToken);
         return ResponseCreator.single(tokenSet);
     }

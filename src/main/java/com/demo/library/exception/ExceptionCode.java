@@ -30,7 +30,8 @@ public enum ExceptionCode {
 
     ACCESS_TOKEN_EXPIRED(404, "AccessToken Expired"),
     INVALID_TOKEN_REQUEST(404, "Invalid Token Request"),
-    INVALID_REFRESH_TOKEN(404, "Invalid RefreshToken");
+    INVALID_REFRESH_TOKEN(404, "Invalid RefreshToken"),
+    REFRESH_TOKEN_EXPIRED(404, "Refresh Token Expired");
 
 
     @Getter

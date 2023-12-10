@@ -94,12 +94,5 @@ public class JWTTokenizer {
         return key;
     }
 
-    public boolean isValidToken(String token) {
-        try {
-            Jws<Claims> claims = getClaims(token, this.secretKey);
-            return true;
-        } catch (Exception e) {
-            return false;
-        }
-    }
+
 }
