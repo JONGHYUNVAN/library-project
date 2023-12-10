@@ -7,6 +7,7 @@ public enum ExceptionCode {
     USER_ALREADY_EXISTS(409, "User already exists"),
     NOT_IMPLEMENTATION(501, "Not Implementation"),
     INVALID_USER_ID(400, "Invalid user Id"),
+    INVALID_USER_EMAIL(400, "Invalid user Email"),
     INVALID_USER_PHONE_NUMBER(400, "Invalid phone number"),
     INVALID_USER_STATUS(400, "Invalid user status"),
     LOAN_EXISTS(409,"Loan exists"),
@@ -27,7 +28,9 @@ public enum ExceptionCode {
     LIBRARY_ALREADY_EXISTS(409, "Library already exists"),
     INVALID_LIBRARY_ID(400, "Invalid library Id"),
 
-    ACCESS_TOKEN_EXPIRED(404, "AccessToken Expired");
+    ACCESS_TOKEN_EXPIRED(404, "AccessToken Expired"),
+    INVALID_TOKEN_REQUEST(404, "Invalid Token Request"),
+    INVALID_REFRESH_TOKEN(404, "Invalid RefreshToken");
 
 
     @Getter

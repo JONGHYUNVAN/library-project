@@ -27,7 +27,7 @@ public class PostTest {
     @Test
     void postUserTest() throws Exception {
         // Given
-        String requestBody = getRequestBody("name","nickName","010-1234-5677","MALE");
+        String requestBody = getRequestBody("name","safePassword","address@email.com","nickName","010-1234-5677","MALE");
 
         // When
         ResultActions result = getResult(requestBody);
@@ -43,7 +43,7 @@ public class PostTest {
     @Test
     void postUserTest_Validation_nameNotBlank() throws Exception {
         // Given
-        UserDto.Post post = getPost("", "nickName1", "010-1234-5678", "MALE");
+        UserDto.Post post = getPost("","safePassword","address@email.com", "nickName1", "010-1234-5678", "MALE");
         String requestBody = objectMapper.writeValueAsString(post);
 
         // When
@@ -57,7 +57,7 @@ public class PostTest {
     @Test
     void postUserTest_Validation_nameTooLong() throws Exception {
         // Given
-        UserDto.Post post = getPost("1234567891011121314151617181920", "nickName", "010-1234-5678", "MALE");
+        UserDto.Post post = getPost("1234567891011121314151617181920","safePassword", "address@email.com","nickName", "010-1234-5678", "MALE");
         String requestBody = objectMapper.writeValueAsString(post);
 
         // When
@@ -70,7 +70,7 @@ public class PostTest {
     @Test
     void postUserTest_Validation_nickNameNotBlank() throws Exception {
         // Given
-        UserDto.Post post = getPost("user1", "", "010-1234-5678", "MALE");
+        UserDto.Post post = getPost("user1","safePassword", "address@email.com","", "010-1234-5678", "MALE");
         String requestBody = objectMapper.writeValueAsString(post);
 
         // When
@@ -83,7 +83,7 @@ public class PostTest {
     @Test
     void postUserTest_Validation_nickNameTooLong() throws Exception {
         // Given
-        UserDto.Post post = getPost("user1", "1234567891011121314151617181920", "010-1234-5678", "MALE");
+        UserDto.Post post = getPost("user1","safePassword","address@email.com", "1234567891011121314151617181920", "010-1234-5678", "MALE");
         String requestBody = objectMapper.writeValueAsString(post);
 
         // When
@@ -96,7 +96,7 @@ public class PostTest {
     @Test
     void postUserTest_Validation_invalidPhoneNumber() throws Exception {
         // Given
-        UserDto.Post post = getPost("user1", "nickName1", "12345678", "MALE");
+        UserDto.Post post = getPost("user1","safePassword","address@email.com", "nickName1", "12345678", "MALE");
         String requestBody = objectMapper.writeValueAsString(post);
 
         // When
@@ -109,7 +109,7 @@ public class PostTest {
     @Test
     void postUserTest_Validation_invalidGender() throws Exception {
         // Given
-        UserDto.Post post = getPost("user1", "nickName1", "010-1234-5678", "Fling Spaghetti");
+        UserDto.Post post = getPost("user1","safePassword","address@email.com", "nickName1", "010-1234-5678", "Fling Spaghetti");
         String requestBody = objectMapper.writeValueAsString(post);
 
         // When
@@ -118,9 +118,11 @@ public class PostTest {
         // Then
         assertWith(result,"gender","Fling Spaghetti","Gender should be MALE or FEMALE.");
     }
-    private static UserDto.Post getPost(String name, String nickName, String phoneNumber, String gender) {
+    private static UserDto.Post getPost(String name,String password,String email, String nickName, String phoneNumber, String gender) {
         UserDto.Post post =UserDto.Post.builder()
                 .name(name)
+                .password(password)
+                .email(email)
                 .nickName(nickName)
                 .phoneNumber(phoneNumber)
                 .gender(gender)
@@ -128,8 +130,8 @@ public class PostTest {
         ;
         return post;
     }
-    private String getRequestBody(String name, String nickName, String phoneNumber, String gender) throws JsonProcessingException {
-        UserDto.Post post = getPost(name, nickName, phoneNumber, gender);
+    private String getRequestBody(String name,String password, String email,String nickName, String phoneNumber, String gender) throws JsonProcessingException {
+        UserDto.Post post = getPost(name,password,email, nickName, phoneNumber, gender);
         String requestBody = objectMapper.writeValueAsString(post);
         return requestBody;
     }

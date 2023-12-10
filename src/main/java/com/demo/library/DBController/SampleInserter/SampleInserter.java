@@ -21,7 +21,7 @@ public class SampleInserter implements CommandLineRunner {
 
     @Override
     public void run (String ... args){
-        User user = createUser(1L, "김도서", "bookKim","010-1234-5678", User.Gender.MALE, User.Status.ACTIVE);
+        User user = createUser(1L, "safePassword","dasirKim@email.com","김도서", "bookKim","010-1234-5678", User.Gender.MALE, User.Status.ACTIVE);
         userRepository.save(user);
 
       Library library = createLibrary(1L, "중앙도서관","서울시 구구구 동동동 로로로 77-7","09:30","17:30");
@@ -70,9 +70,11 @@ public class SampleInserter implements CommandLineRunner {
                 .build();
     }
 
-    public User createUser (Long id, String name, String nickName, String phoneNumber, User.Gender gender, User.Status status ){
+    public User createUser (Long id,String password, String email, String name, String nickName, String phoneNumber, User.Gender gender, User.Status status ){
         return User.builder()
                 .id(id)
+                .password(password)
+                .email(email)
                 .name(name)
                 .nickName(nickName)
                 .phoneNumber(phoneNumber)

@@ -31,6 +31,8 @@ public class PatchTest {
         User existingUser = User.builder()
                 .id(1L)
                 .name("existingName")
+                .password("safePassword")
+                .email("address@email.com")
                 .nickName("existingNickName")
                 .phoneNumber("010-1234-5678")
                 .gender(User.Gender.MALE)
@@ -146,6 +148,7 @@ public class PatchTest {
         UserDto.Patch patch = UserDto.Patch.builder()
                 .id(id)
                 .name(name)
+
                 .nickName(nickName)
                 .phoneNumber(phoneNumber)
                 .gender(gender)

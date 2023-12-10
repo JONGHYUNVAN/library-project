@@ -44,9 +44,17 @@ dependencies {
 	// 애노테이션을 사용하여 자동으로 생성
 	compileOnly 'org.projectlombok:lombok'
 	runtimeOnly 'com.h2database:h2'
-	//Lombok의 애노테이션 처리기를 활성화하기 위함
+	//Lombok 의 애노테이션 처리기를 활성화하기 위함
 	annotationProcessor 'org.projectlombok:lombok'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	//Spring Security 적용
+	implementation 'org.springframework.boot:spring-boot-starter-security'
+	testImplementation 'org.springframework.security:spring-security-test'
+	//JWT
+	implementation group: 'io.jsonwebtoken', name: 'jjwt-api', version: '0.11.5'
+	runtimeOnly group: 'io.jsonwebtoken', name: 'jjwt-impl', version: '0.11.5'
+	runtimeOnly group: 'io.jsonwebtoken', name: 'jjwt-jackson', version: '0.11.5'
+	implementation 'com.google.code.gson:gson:2.9.0'
 }
 
 //  테스트 작업에 JUnit Platform 을 사용하도록 설정

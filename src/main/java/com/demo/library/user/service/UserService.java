@@ -2,6 +2,7 @@ package com.demo.library.user.service;
 
 
 import com.demo.library.exception.BusinessLogicException;
+import com.demo.library.security.utils.AuthorityUtils;
 import com.demo.library.user.dto.UserDto;
 import com.demo.library.user.entity.User;
 import com.demo.library.user.repository.UserRepository;
@@ -9,12 +10,14 @@ import com.demo.library.utils.EntityUpdater;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.util.List;
 import java.util.Optional;
 import java.util.function.Consumer;
 
@@ -28,9 +31,17 @@ import static com.demo.library.user.entity.User.Status.ACTIVE;
 public class UserService {
     private final UserRepository repository;
     private final EntityUpdater<User> entityUpdater;
+    private final PasswordEncoder passwordEncoder;
+    private final AuthorityUtils authorityUtils;
+
+
 
     public User create(User user) {
         verifyExistUser(user);
+        String encryptedPassword = passwordEncoder.encode(user.getPassword());
+        user.setPassword(encryptedPassword);
+        List<String> roles = authorityUtils.createRoles(user.getEmail());
+        user.setRoles(roles);
         user.setStatus(ACTIVE);
         save(user);
 
@@ -93,5 +104,10 @@ public class UserService {
     public void ifLoaning (User user) {
         if(!user.getLoans().isEmpty())
             throw new BusinessLogicException(LOAN_EXISTS);
+    }
+    public User findByEmail(String email){
+        Optional<User> optionalUser = repository.findByEmail(email);
+        return optionalUser.orElseThrow(() ->
+                new BusinessLogicException(INVALID_USER_EMAIL));
     }
 }

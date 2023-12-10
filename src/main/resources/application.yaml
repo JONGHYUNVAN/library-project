@@ -1,6 +1,13 @@
 spring:
   profiles:
     active: h2
+mail:
+  address:
+    admin: admin@gmail.com
+jwt:
+  key: ${JWT_SECRET_KEY}
+  access-token-expiration-minutes: 30
+  refresh-token-expiration-minutes: 420
 ---
 spring:
   profiles:

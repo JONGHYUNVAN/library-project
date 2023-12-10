@@ -24,6 +24,10 @@ public class UserDto {
         @NotBlankValidation(fieldName = "Name")
         @SizeValidation(max=20, fieldName = "Name")
         private String name;
+        private String password;
+        @NotBlankValidation(fieldName = "Email")
+        @SizeValidation(max=20, fieldName = "Email")
+        private String email;
         @NotBlankValidation(fieldName = "NickName")
         @SizeValidation(max=20, fieldName = "NickName")
         private String nickName;
@@ -48,6 +52,7 @@ public class UserDto {
         @NotEmptyValidation(fieldName = "NickName")
         @SizeValidation(max=20, fieldName = "NickName")
         private String nickName;
+
         @PhoneNumberValidation
         private String phoneNumber;
         @GenderValidation
@@ -64,6 +69,8 @@ public class UserDto {
 
         private Long id;
         private String name;
+        private String password;
+        private String email;
         private String nickName;
         private String phoneNumber;
         private String gender;

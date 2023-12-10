@@ -1,7 +1,9 @@
 package com.demo.library.user.controller;
 
 
+import com.demo.library.library.dto.LibraryDto;
 import com.demo.library.response.ResponseCreator;
+import com.demo.library.response.dto.SingleResponseDto;
 import com.demo.library.user.dto.UserDto;
 import com.demo.library.user.entity.User;
 import com.demo.library.user.mapper.UserMapper;
@@ -28,7 +30,7 @@ public class UserController {
     private final UserMapper mapper;
 
     @PostMapping
-    public ResponseEntity postUser(@Valid @RequestBody UserDto.Post post) {
+    public ResponseEntity<Void> postUser(@Valid @RequestBody UserDto.Post post) {
         User user = mapper.postToUser(post);
         service.create(user);
 
@@ -37,7 +39,8 @@ public class UserController {
     }
 
     @PatchMapping
-    public ResponseEntity patchUser(@Valid @RequestBody UserDto.Patch patch) throws IllegalAccessException, InstantiationException {
+    public ResponseEntity<SingleResponseDto<UserDto.Response>>
+                                patchUser(@Valid @RequestBody UserDto.Patch patch) throws IllegalAccessException, InstantiationException {
        service.isValidRequest(patch.getId());
 
         User userRequest = mapper.patchToUser(patch);
@@ -48,7 +51,8 @@ public class UserController {
     }
 
     @GetMapping
-    public ResponseEntity getUser(@Valid @RequestBody UserDto.Request request) throws IllegalAccessException, InstantiationException {
+    public ResponseEntity<SingleResponseDto<UserDto.Response>>
+                                getUser(@Valid @RequestBody UserDto.Request request) throws IllegalAccessException, InstantiationException {
         User user = service.find(request);
 
         UserDto.Response responseDto = mapper.userToResponse(user);
@@ -56,7 +60,7 @@ public class UserController {
     }
 
     @DeleteMapping("/{userId}")
-    public ResponseEntity deleteUser(@Valid @PathVariable long userId) {
+    public ResponseEntity<Void> deleteUser(@Valid @PathVariable long userId) {
         service.delete(userId);
 
         return ResponseCreator.deleted();
