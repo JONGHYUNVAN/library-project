@@ -4,7 +4,6 @@ import com.demo.library.exception.BusinessLogicException;
 import com.demo.library.security.entity.RefreshToken;
 import com.demo.library.security.jwt.dto.TokenDto;
 import com.demo.library.security.jwt.jwtservice.JWTService;
-import com.demo.library.security.jwt.jwttokenizer.JWTTokenizer;
 import com.demo.library.security.repository.RefreshTokenRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -18,7 +17,7 @@ import static com.demo.library.exception.ExceptionCode.*;
 @Service
 @RequiredArgsConstructor
 @Slf4j
-public class AuthService {
+public class JWTAuthService {
     private final JWTService jwtService;
     private final RefreshTokenRepository refreshTokenRepository;
     public RefreshToken isValidRequest(TokenDto.Request tokenRequest){
@@ -29,7 +28,7 @@ public class AuthService {
         Optional<RefreshToken> optionalRefreshToken = refreshTokenRepository.findByToken(tokenRequest.getRefreshToken());
 
         return optionalRefreshToken.orElseThrow(() ->
-                new BusinessLogicException(INVALID_REFRESH_TOKEN));
+                new BusinessLogicException(REFRESH_TOKEN_NOT_FOUND));
     }
 
     public TokenDto.Set refresh(RefreshToken requestToken){

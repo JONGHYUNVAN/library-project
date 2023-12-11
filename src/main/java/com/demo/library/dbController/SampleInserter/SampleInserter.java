@@ -1,4 +1,4 @@
-package com.demo.library.DBController.SampleInserter;
+package com.demo.library.dbController.SampleInserter;
 
 import com.demo.library.book.entity.BookEntity;
 import com.demo.library.book.repository.BookJPARepository;

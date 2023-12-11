@@ -1,7 +1,9 @@
 package com.demo.library.exception;
 
 import lombok.Getter;
+import lombok.RequiredArgsConstructor;
 
+@RequiredArgsConstructor
 public enum ExceptionCode {
     USER_NOT_FOUND(404, "User not found"),
     USER_ALREADY_EXISTS(409, "User already exists"),
@@ -30,7 +32,7 @@ public enum ExceptionCode {
 
     ACCESS_TOKEN_EXPIRED(404, "AccessToken Expired"),
     INVALID_TOKEN_REQUEST(404, "Invalid Token Request"),
-    INVALID_REFRESH_TOKEN(404, "Invalid RefreshToken"),
+    REFRESH_TOKEN_NOT_FOUND(404, "RefreshToken Not Found"),
     REFRESH_TOKEN_EXPIRED(404, "Refresh Token Expired");
 
 

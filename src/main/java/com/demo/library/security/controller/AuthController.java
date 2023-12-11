@@ -5,7 +5,7 @@ import com.demo.library.response.dto.SingleResponseDto;
 import com.demo.library.security.entity.RefreshToken;
 import com.demo.library.security.jwt.dto.TokenDto;
 
-import com.demo.library.security.service.AuthService;
+import com.demo.library.security.service.JWTAuthService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequiredArgsConstructor
 @RequestMapping("/auth")
 public class AuthController {
-    private final AuthService authService;
+    private final JWTAuthService JWTAuthService;
 
     @GetMapping("/login-form")
     public String loginForm() {
@@ -38,9 +38,9 @@ public class AuthController {
 
     @PostMapping("/token/refresh")
     public ResponseEntity<SingleResponseDto<TokenDto.Set>> refreshAccessToken(@RequestBody TokenDto.Request tokenRequest) {
-        RefreshToken requestToken = authService.isValidRequest(tokenRequest);
-        authService.checkIfExpired(requestToken);
-        TokenDto.Set tokenSet =  authService.refresh(requestToken);
+        RefreshToken requestToken = JWTAuthService.isValidRequest(tokenRequest);
+        JWTAuthService.checkIfExpired(requestToken);
+        TokenDto.Set tokenSet =  JWTAuthService.refresh(requestToken);
         return ResponseCreator.single(tokenSet);
     }
 }
