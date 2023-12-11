@@ -13,6 +13,7 @@ import com.demo.library.utils.UriCreator;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -37,7 +38,7 @@ public class UserController {
         URI location = UriCreator.createUri(USER_DEFAULT_URL, user.getId());
         return ResponseCreator.created(location);
     }
-
+    @PreAuthorize("#patch.email == authentication.principal.email or hasRole('ROLE_ADMIN')")
     @PatchMapping
     public ResponseEntity<SingleResponseDto<UserDto.Response>>
                                 patchUser(@Valid @RequestBody UserDto.Patch patch) throws IllegalAccessException, InstantiationException {

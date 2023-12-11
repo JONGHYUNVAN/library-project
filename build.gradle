@@ -28,16 +28,16 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	//JPA
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-	//Java Bean Validation과 Hibernate Validator를 포함
+	//Java Bean Validation 과 Hibernate Validator 를 포함
 	//Java Bean Validation: 데이터의 유효성 검사를 위한 표준 스펙.
-	//데이터의 유효성 검사 규칙을 Annotation을 통해 쉽게 정의할 수 있음.
+	//데이터의 유효성 검사 규칙을 Annotation 을 통해 쉽게 정의할 수 있음.
 	//Hibernate Validator: Java Bean Validation 스펙의 구현체 중 하나로,
 	//Bean 객체의 유효성을 검사하는 데 사용
 	implementation("org.springframework.boot:spring-boot-starter-validation")
 	//Automatic Restart: 클래스패스에 있는 파일이 변경될 때마다 자동으로 애플리케이션을 재시작
 	//LiveReload: 브라우저에 LiveReload 플러그인이 설치되어 있으면, 애플리케이션을 재시작할 때마다 자동으로 웹 페이지를 새로고침
 	//Fast Failure: 빠른 실패 기능을 통해 특정 클래스가 여러 위치에서 발견될 경우 즉시 애플리케이션을 종료
-	//Global Settings: Spring Boot의 전역 설정을 정의할 수 있음
+	//Global Settings: Spring Boot 의 전역 설정을 정의할 수 있음
 	//Remote Debugging: 원격 디버깅을 쉽게
 	//Additional Development-time Features: H2 콘솔을 자동으로 활성화하는 등의 추가 개발 시간 기능을 제공
 	implementation 'org.springframework.boot:spring-boot-devtools'

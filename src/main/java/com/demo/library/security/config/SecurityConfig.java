@@ -57,7 +57,14 @@ public class SecurityConfig {
                 //인가
                 .and()
                 .authorizeHttpRequests(authorize -> authorize
-                        .antMatchers(HttpMethod.POST, "/*/users").permitAll()
+                        .antMatchers(HttpMethod.POST, "/users/**").permitAll()
+                        .antMatchers(HttpMethod.GET, "/users/**").hasRole("ADMIN")
+                        .antMatchers(HttpMethod.PATCH, "/users/**").hasRole("ADMIN")
+                        .antMatchers(HttpMethod.DELETE, "/users/**").hasRole("ADMIN")
+                        .antMatchers(HttpMethod.POST, "/**/**").hasRole("ADMIN")
+                        .antMatchers(HttpMethod.PATCH, "/**/**").hasRole("ADMIN")
+                        .antMatchers(HttpMethod.DELETE, "/**/**").hasRole("ADMIN")
+                        .antMatchers("/loans/**").permitAll()
                         .anyRequest().permitAll()
                 );
         return httpSecurity.build();

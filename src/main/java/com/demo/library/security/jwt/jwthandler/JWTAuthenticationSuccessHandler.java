@@ -30,11 +30,10 @@ public class JWTAuthenticationSuccessHandler implements AuthenticationSuccessHan
         LocalDateTime expiryDateTime = LocalDateTime.now().plusMinutes(jwtTokenizer.getRefreshTokenExpirationMinutes());
 
         String subject;
-        subject = user.getEmail(); // 사용자 이메일을 사용
+        subject = user.getEmail(); // 사용자 '이메일' 기준! (name 이름 아님!)
 
-        // 리프레시 토큰을 생성
         String refreshToken = jwtTokenizer.generateRefreshToken(
-                subject, // 사용자 ID 등을 주제로 사용할 수 있습니다.
+                subject,
                 refreshTokenExpiration,
                 jwtTokenizer.encodeBase64SecretKey(jwtTokenizer.getSecretKey())
         );

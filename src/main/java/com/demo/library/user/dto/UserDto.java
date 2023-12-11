@@ -49,6 +49,8 @@ public class UserDto {
         @NotEmptyValidation(fieldName = "Name")
         @SizeValidation(max=20, fieldName = "Name")
         private String name;
+        @NotEmptyValidation(fieldName = "email")
+        private String email;
         @NotEmptyValidation(fieldName = "NickName")
         @SizeValidation(max=20, fieldName = "NickName")
         private String nickName;
