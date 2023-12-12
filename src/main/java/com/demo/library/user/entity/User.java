@@ -5,7 +5,10 @@ import com.demo.library.loanNban.entity.Loan;
 import javax.persistence.*;
 import lombok.*;
 
+import java.util.ArrayList;
 import java.util.List;
+
+import static javax.persistence.FetchType.LAZY;
 
 
 @Getter
@@ -19,10 +22,18 @@ public class User {
     @Id
     @GeneratedValue(strategy =GenerationType.IDENTITY)
     private Long id;
+    @Column(nullable = false)
+    private  String password;
     @Column(nullable = false,length = 20)
     private String name;
     @Column(nullable = false,length = 20)
     private String nickName;
+    @Builder.Default
+    @ElementCollection(fetch = LAZY)
+    private List<String> roles = new ArrayList<>();
+
+    @Column(nullable = false,length = 40)
+    private String email;
     @Column(nullable = false)
     private String phoneNumber;
     @Column(nullable = false)

@@ -1,20 +1,39 @@
 spring:
+  profiles:
+    active: h2
+mail:
+  address:
+    admin: admin@gmail.com
+jwt:
+  key: ${JWT_SECRET_KEY}
+  access-token-expiration-minutes: 30
+  refresh-token-expiration-minutes: 120
+---
+spring:
+  profiles:
+    active: h2
   h2:
     console:
+      # H2 데이터베이스 콘솔을 활성화합니다. 이를 통해 웹 브라우저에서 H2 데이터베이스를 직접 접근
       enabled: true
+      # H2 데이터베이스 콘솔의 경로를 '/h2'로 설정
       path: /h2
   datasource:
+    # 데이터 소스의 URL을 설정합니다. 여기서는 메모리 내 H2 데이터베이스를 사용, 데이터베이스 이름은 'test'
     url: jdbc:h2:mem:test
   jpa:
     hibernate:
+      # Hibernate가 시작할 때 데이터베이스 스키마를 생성하도록 설정
       ddl-auto: create
+    # Hibernate가 실행하는 SQL 문을 콘솔에 표시하도록 설정
     show-sql: true
     properties:
       hibernate:
+        #  Hibernate가 실행하는 SQL 문을 보기 좋게 포맷팅하도록 설정
         format_sql: true
 server:
+  port: 8080
   servlet:
     encoding:
+      # 응답 본문의 인코딩을 강제로 설정
       force-response: true
-
-

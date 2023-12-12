@@ -1,7 +1,9 @@
 package com.demo.library.user.controller;
 
 
+import com.demo.library.library.dto.LibraryDto;
 import com.demo.library.response.ResponseCreator;
+import com.demo.library.response.dto.SingleResponseDto;
 import com.demo.library.user.dto.UserDto;
 import com.demo.library.user.entity.User;
 import com.demo.library.user.mapper.UserMapper;
@@ -11,6 +13,7 @@ import com.demo.library.utils.UriCreator;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -28,16 +31,17 @@ public class UserController {
     private final UserMapper mapper;
 
     @PostMapping
-    public ResponseEntity postUser(@Valid @RequestBody UserDto.Post post) {
+    public ResponseEntity<Void> postUser(@Valid @RequestBody UserDto.Post post) {
         User user = mapper.postToUser(post);
         service.create(user);
 
         URI location = UriCreator.createUri(USER_DEFAULT_URL, user.getId());
         return ResponseCreator.created(location);
     }
-
+    @PreAuthorize("#patch.email == authentication.principal.email or hasRole('ROLE_ADMIN')")
     @PatchMapping
-    public ResponseEntity patchUser(@Valid @RequestBody UserDto.Patch patch) throws IllegalAccessException, InstantiationException {
+    public ResponseEntity<SingleResponseDto<UserDto.Response>>
+                                patchUser(@Valid @RequestBody UserDto.Patch patch) throws IllegalAccessException, InstantiationException {
        service.isValidRequest(patch.getId());
 
         User userRequest = mapper.patchToUser(patch);
@@ -48,7 +52,8 @@ public class UserController {
     }
 
     @GetMapping
-    public ResponseEntity getUser(@Valid @RequestBody UserDto.Request request) throws IllegalAccessException, InstantiationException {
+    public ResponseEntity<SingleResponseDto<UserDto.Response>>
+                                getUser(@Valid @RequestBody UserDto.Request request) throws IllegalAccessException, InstantiationException {
         User user = service.find(request);
 
         UserDto.Response responseDto = mapper.userToResponse(user);
@@ -56,7 +61,7 @@ public class UserController {
     }
 
     @DeleteMapping("/{userId}")
-    public ResponseEntity deleteUser(@Valid @PathVariable long userId) {
+    public ResponseEntity<Void> deleteUser(@Valid @PathVariable long userId) {
         service.delete(userId);
 
         return ResponseCreator.deleted();
