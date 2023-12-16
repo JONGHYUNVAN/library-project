@@ -82,6 +82,7 @@ public class JWTTokenizer {
     public Date getTokenExpiration(int expirationMinutes) {
         Calendar calendar = Calendar.getInstance();
         calendar.add(Calendar.MINUTE, expirationMinutes);
+
         Date expiration = calendar.getTime();
 
         return expiration;

@@ -8,6 +8,7 @@ import com.demo.library.user.entity.User;
 import com.demo.library.user.repository.UserRepository;
 import com.demo.library.user.service.UserService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
@@ -18,12 +19,13 @@ import java.util.List;
 public class SampleInserter implements CommandLineRunner {
     private final BookJPARepository bookRepository;
     private final LibraryRepository libraryRepository;
-    private final UserRepository userRepository;
     private final UserService userService;
+    @Value("${mail.address.admin}")
+    private String adminMailAddress;
 
     @Override
     public void run (String ... args){
-        User user = createUser(1L, "safePassword","admin@email.com","관리자", "admin","010-1234-5678", User.Gender.MALE, User.Status.ACTIVE);
+        User user = createUser(1L, "safePassword",adminMailAddress,"관리자", "admin","010-1234-5678", User.Gender.MALE, User.Status.ACTIVE);
         userService.create(user);
 
       Library library = createLibrary(1L, "중앙도서관","서울시 구구구 동동동 로로로 77-7","09:30","17:30");

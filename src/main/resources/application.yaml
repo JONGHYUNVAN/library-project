@@ -1,9 +1,26 @@
 spring:
   profiles:
     active: h2
+  security:
+    oauth2:
+      client:
+        registration:
+          kakao:
+            client-id: ${KAKAO_CLIENT_ID}
+            client-secret: ${KAKAO_CLIENT_SECRET}
+            client-authentication-method: post
+            redirect-uri: http://localhost:8080/login/oauth2/code/kakao
+            authorization-grant-type: authorization_code  # 여기에 인증 방식을 지정
+            scope: profile,account_email
+        provider:
+          kakao:
+            authorization-uri: https://kauth.kakao.com/oauth/authorize  # 카카오 인증 엔드포인트
+            token-uri: https://kauth.kakao.com/oauth/token  # 카카오 토큰 엔드포인트
+            user-info-uri: https://kapi.kakao.com/v2/user/me  # 카카오 사용자 정보 엔드포인트
+            user-name-attribute: id  # 사용자 이름 속성
 mail:
   address:
-    admin: admin@gmail.com
+    admin: admin@email.com #실제 서비스 적용시에는 반드시 환경변수화 해야함
 jwt:
   key: ${JWT_SECRET_KEY}
   access-token-expiration-minutes: 30

@@ -2,36 +2,48 @@ package com.demo.library.security.config;
 
 import com.demo.library.security.filter.JwtAuthenticationFilter;
 import com.demo.library.security.filter.JwtVerificationFilter;
+import com.demo.library.security.filter.OAuth2AuthenticationProcessingFilter;
 import com.demo.library.security.handler.UserAccessDeniedHandler;
 import com.demo.library.security.handler.UserAuthenticationEntryPoint;
 import com.demo.library.security.jwt.jwthandler.JWTAuthenticationFailureHandler;
 import com.demo.library.security.jwt.jwthandler.JWTAuthenticationSuccessHandler;
 import com.demo.library.security.jwt.jwttokenizer.JWTTokenizer;
 import com.demo.library.security.repository.RefreshTokenRepository;
+import com.demo.library.security.service.CustomOAuth2UserService;
 import com.demo.library.security.utils.AuthorityUtils;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.config.http.SessionCreationPolicy;
 
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.web.cors.CorsConfiguration;
 
 
 @Configuration
 @EnableWebSecurity
 @RequiredArgsConstructor
-public class SecurityConfig {
+public class SecurityConfig  {
     private final JWTTokenizer jwtTokenizer;
     private final AuthorityUtils authorityUtils;
     private final RefreshTokenRepository refreshTokenRepository;
+    private final CustomOAuth2UserService customOAuth2UserService;
+    private final OAuth2AuthenticationProcessingFilter oAuth2AuthenticationProcessingFilter;
+
+
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity httpSecurity) throws Exception {
         httpSecurity
@@ -57,6 +69,7 @@ public class SecurityConfig {
                 //인가
                 .and()
                 .authorizeHttpRequests(authorize -> authorize
+                        .antMatchers("/h2/**").permitAll()
                         .antMatchers(HttpMethod.POST, "/users/**").permitAll()
                         .antMatchers(HttpMethod.GET, "/users/**").hasRole("ADMIN")
                         .antMatchers(HttpMethod.PATCH, "/users/**").hasRole("ADMIN")
@@ -66,9 +79,18 @@ public class SecurityConfig {
                         .antMatchers(HttpMethod.DELETE, "/**/**").hasRole("ADMIN")
                         .antMatchers("/loans/**").permitAll()
                         .anyRequest().permitAll()
+
                 );
+        //OAuth2 설정
+        httpSecurity
+                .oauth2Login()
+                .userInfoEndpoint()
+                .userService(customOAuth2UserService);
+        httpSecurity.addFilterBefore(oAuth2AuthenticationProcessingFilter, JwtAuthenticationFilter.class);
+
         return httpSecurity.build();
     }
+
     @Bean
     public PasswordEncoder passwordEncoder() {
         return PasswordEncoderFactories.createDelegatingPasswordEncoder();

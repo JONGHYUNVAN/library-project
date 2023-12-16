@@ -81,7 +81,6 @@ public class UserDto {
     }
     @Getter
     public static class Request {
-        private Long id;
         @PhoneNumberValidation
         private String phoneNumber;
 

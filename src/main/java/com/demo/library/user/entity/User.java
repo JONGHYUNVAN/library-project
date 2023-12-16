@@ -46,7 +46,10 @@ public class User {
     private List<Loan> loans;
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL,  fetch = FetchType.LAZY)
     private List<Ban> bans;
-
+    @Column
+    private String provider;
+    @Column
+    private String providerId;
     @Column(nullable = false, name = "user_status")
     @Enumerated(EnumType.STRING)
     private Status status;
