@@ -30,15 +30,10 @@ public class CustomOAuth2UserService extends DefaultOAuth2UserService {
         OAuth2User user = super.loadUser(userRequest);
 
         String provider = userRequest.getClientRegistration().getRegistrationId();
-        String providerId = user.getAttribute("sub");
+        Long providerId = Long.parseLong(user.getAttribute("sub"));
         String email = null;
-        if ("kakao".equals(provider)) {
-            Map<String, Object> attributes = (Map<String, Object>) user.getAttributes().get("kakao_account");
-            if (attributes != null) {
-                email = (String) attributes.get("email");
-            }
-        }
-            Optional<User> optionalUser = userRepository.findByProviderAndProviderId(provider, providerId);
+
+            Optional<User> optionalUser = userRepository.findByProviderAndProviderId(provider, providerId.toString());
             if (optionalUser.isEmpty()) {
                 // 사용자 계정이 없는 경우, 새로운 계정을 생성합니다.
                 User newUser = new User();

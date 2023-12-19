@@ -24,6 +24,7 @@ public class UserDto {
         @NotBlankValidation(fieldName = "Name")
         @SizeValidation(max=20, fieldName = "Name")
         private String name;
+        @NotBlankValidation(fieldName = "Password")
         private String password;
         @NotBlankValidation(fieldName = "Email")
         @SizeValidation(max=20, fieldName = "Email")

@@ -4,6 +4,7 @@ import com.demo.library.security.service.CustomUserDetailsService;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jws;
 import io.jsonwebtoken.Jwts;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -21,12 +22,11 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 @Component
+@RequiredArgsConstructor
 public class OAuth2AuthenticationProcessingFilter extends OncePerRequestFilter {
     private static final String BEARER_TOKEN_PREFIX = "Bearer ";
     private static final String SIGNING_KEY = "your-signing-key";
-
-    @Autowired
-    private CustomUserDetailsService userDetailsService;
+    private final CustomUserDetailsService userDetailsService;
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
@@ -53,11 +53,11 @@ public class OAuth2AuthenticationProcessingFilter extends OncePerRequestFilter {
                 Authentication auth = new UsernamePasswordAuthenticationToken(
                         userDetails, null, userDetails.getAuthorities());
 
-                // 생성한 Authentication 객체를 SecurityContext에 저장합니다.
+                // 생성한 Authentication 객체를 SecurityContext 에 저장합니다.
                 SecurityContextHolder.getContext().setAuthentication(auth);
 
             } catch (Exception e) {
-                logger.error("Not OAuth2 Login", e);
+                logger.info("Not OAuth2 Login", e);
 
             }
         }

@@ -2,6 +2,7 @@ package com.demo.library.user.service;
 
 import com.demo.library.exception.BusinessLogicException;
 import com.demo.library.loanNban.entity.Loan;
+import com.demo.library.security.utils.AuthorityUtils;
 import com.demo.library.user.entity.User;
 import com.demo.library.user.repository.UserRepository;
 import com.demo.library.utils.EntityUpdater;
@@ -11,6 +12,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.util.Collections;
 import java.util.Optional;
@@ -25,10 +27,12 @@ class InnerMethodTest {
     @Mock
     private UserRepository userRepository;
     private EntityUpdater entityUpdater;
+    private PasswordEncoder passwordEncoder;
+    private AuthorityUtils authorityUtils;
     @BeforeEach
     void setUp() {
         MockitoAnnotations.openMocks(this);
-        userService = new UserService(userRepository, entityUpdater);
+        userService = new UserService(userRepository, entityUpdater,passwordEncoder,authorityUtils);
     }
 
     @Test

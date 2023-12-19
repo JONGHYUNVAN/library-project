@@ -2,6 +2,7 @@ package com.demo.library.dbController.SampleInserter;
 
 import com.demo.library.book.entity.BookEntity;
 import com.demo.library.book.repository.BookJPARepository;
+import com.demo.library.book.service.BookService;
 import com.demo.library.library.entity.Library;
 import com.demo.library.library.repository.LibraryRepository;
 import com.demo.library.user.entity.User;
@@ -17,7 +18,7 @@ import java.util.List;
 @Component
 @RequiredArgsConstructor
 public class SampleInserter implements CommandLineRunner {
-    private final BookJPARepository bookRepository;
+    private final BookService bookService;
     private final LibraryRepository libraryRepository;
     private final UserService userService;
     @Value("${mail.address.admin}")
@@ -31,19 +32,35 @@ public class SampleInserter implements CommandLineRunner {
       Library library = createLibrary(1L, "중앙도서관","서울시 구구구 동동동 로로로 77-7","09:30","17:30");
       libraryRepository.save(library);
 
-        List<BookEntity> bookList = List.of(
-                createBook(1L, "위대한 개츠비", "우리출판사", "F. Scott Fitzgerald", library, BookEntity.Status.AVAILABLE, 0L, "https://www.imageURL.com"),
-                createBook(2L, "호밀밭의 파수꾼", "Moonlight Publishers", "J. D. Salinger", library, BookEntity.Status.AVAILABLE, 0L, "https://www.imageURL.com"),
-                createBook(3L, "앵무새 죽이기", "Sunset Books", "Harper Lee", library, BookEntity.Status.AVAILABLE, 0L, "https://www.imageURL.com"),
-                createBook(4L, "1984", "Starlight Publishing", "George Orwell", library, BookEntity.Status.AVAILABLE, 0L, "https://www.imageURL.com"),
-                createBook(5L, "오만과 편견", "아침이슬 출판사", "Jane Austen", library, BookEntity.Status.AVAILABLE, 0L, "https://www.imageURL.com"),
-                createBook(6L, "호빗", "마운틴 피크 북스", "J. R. R. 톨킨", library, BookEntity.Status.AVAILABLE, 0L, "https://www.imageURL.com"),
-                createBook(7L, "등대로", "Ocean Breeze Publishing", "Virginia Woolf", library, BookEntity.Status.AVAILABLE, 0L, "https://www.imageURL.com"),
-                createBook(8L, "모비딕", "Seaside Publishers", "Herman Melville", library, BookEntity.Status.AVAILABLE, 0L, "https://www.imageURL.com"),
-                createBook(9L, "멋진 신세계", "Horizon Books", "Aldous Huxley", library, BookEntity.Status.AVAILABLE, 0L, "https://www.imageURL.com"),
-                createBook(10L, "반지의 제왕", "Twilight Publications", "J. R. R. Tolkien", library, BookEntity.Status.AVAILABLE, 0L, "https://www.imageURL.com")
-        );
-        bookRepository.saveAll(bookList);
+        BookEntity book=  createBook(1L, "위대한 개츠비", "우리출판사", "F. Scott Fitzgerald", library, BookEntity.Status.AVAILABLE, 0L, "https://www.imageURL.com");
+        bookService.createBook(book);
+
+        BookEntity book1 = createBook(2L, "호밀밭의 파수꾼", "Moonlight Publishers", "J. D. Salinger", library, BookEntity.Status.AVAILABLE, 0L, "https://www.imageURL.com");
+        bookService.createBook(book1);
+
+        BookEntity book2 = createBook(3L, "앵무새 죽이기", "Sunset Books", "Harper Lee", library, BookEntity.Status.AVAILABLE, 0L, "https://www.imageURL.com");
+        bookService.createBook(book2);
+
+        BookEntity book3 = createBook(4L, "1984", "Starlight Publishing", "George Orwell", library, BookEntity.Status.AVAILABLE, 0L, "https://www.imageURL.com");
+        bookService.createBook(book3);
+
+        BookEntity book4 = createBook(5L, "오만과 편견", "아침이슬 출판사", "Jane Austen", library, BookEntity.Status.AVAILABLE, 0L, "https://www.imageURL.com");
+        bookService.createBook(book4);
+
+        BookEntity book5 = createBook(6L, "호빗", "마운틴 피크 북스", "J. R. R. 톨킨", library, BookEntity.Status.AVAILABLE, 0L, "https://www.imageURL.com");
+        bookService.createBook(book5);
+
+        BookEntity book6 = createBook(7L, "등대로", "Ocean Breeze Publishing", "Virginia Woolf", library, BookEntity.Status.AVAILABLE, 0L, "https://www.imageURL.com");
+        bookService.createBook(book6);
+
+        BookEntity book7 = createBook(8L, "모비딕", "Seaside Publishers", "Herman Melville", library, BookEntity.Status.AVAILABLE, 0L, "https://www.imageURL.com");
+        bookService.createBook(book7);
+
+        BookEntity book8 = createBook(9L, "멋진 신세계", "Horizon Books", "Aldous Huxley", library, BookEntity.Status.AVAILABLE, 0L, "https://www.imageURL.com");
+        bookService.createBook(book8);
+
+        BookEntity book9 = createBook(10L, "반지의 제왕", "Twilight Publications", "J. R. R. Tolkien", library, BookEntity.Status.AVAILABLE, 0L, "https://www.imageURL.com");
+        bookService.createBook(book9);
 
     }
 

@@ -56,7 +56,7 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
         this.getSuccessHandler().onAuthenticationSuccess(request, response, authResult);
     }
 
-    private String delegateAccessToken(User user) {
+    public String delegateAccessToken(User user) {
         Map<String, Object> claims = new HashMap<>();
         claims.put("username", user.getName());
         claims.put("roles", user.getRoles());

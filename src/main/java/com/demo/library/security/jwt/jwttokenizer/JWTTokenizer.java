@@ -1,5 +1,8 @@
 package com.demo.library.security.jwt.jwttokenizer;
 
+import com.demo.library.security.entity.RefreshToken;
+import com.demo.library.security.repository.RefreshTokenRepository;
+import com.demo.library.user.entity.User;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jws;
 import io.jsonwebtoken.Jwts;
@@ -7,16 +10,20 @@ import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.io.Encoders;
 import io.jsonwebtoken.security.Keys;
 import lombok.Getter;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import java.nio.charset.StandardCharsets;
 import java.security.Key;
+import java.time.LocalDateTime;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.Map;
 
 @Component
+@RequiredArgsConstructor
 public class JWTTokenizer {
     @Getter
     @Value("${jwt.key}")
@@ -29,6 +36,8 @@ public class JWTTokenizer {
     @Getter
     @Value("${jwt.refresh-token-expiration-minutes}")
     private int refreshTokenExpirationMinutes;
+
+    private final RefreshTokenRepository refreshTokenRepository;
 
     public String encodeBase64SecretKey(String secretKey) {
         return Encoders.BASE64.encode(secretKey.getBytes(StandardCharsets.UTF_8));
@@ -94,6 +103,28 @@ public class JWTTokenizer {
 
         return key;
     }
+    public String createAccessToken(User user) {
+        Map<String, Object> claims = new HashMap<>();
+        claims.put("userId", user.getId());
+        claims.put("userName", user.getName());
+        String subject = user.getEmail();
+        Date expiration = getTokenExpiration(getAccessTokenExpirationMinutes());
+        String base64EncodedSecretKey = encodeBase64SecretKey(getSecretKey());
+
+        return generateAccessToken(claims, subject, expiration, base64EncodedSecretKey);
+    }
+    public String createRefreshToken(User user) {
+        String subject = user.getEmail();
+        Date expiration = getTokenExpiration(getRefreshTokenExpirationMinutes());
+        LocalDateTime expiryDateTime = LocalDateTime.now().plusMinutes(getRefreshTokenExpirationMinutes());
+        String base64EncodedSecretKey = encodeBase64SecretKey(getSecretKey());
+        String newToken = generateRefreshToken(subject, expiration, base64EncodedSecretKey);
+
+        refreshTokenRepository.save(
+                RefreshToken.builder().user(user).token(newToken).expiryDateTime(expiryDateTime).build()
+        );
 
 
+        return newToken;
+    }
 }

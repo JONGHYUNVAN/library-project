@@ -7,11 +7,10 @@ spring:
         registration:
           kakao:
             client-id: ${KAKAO_CLIENT_ID}
-            client-secret: ${KAKAO_CLIENT_SECRET}
             client-authentication-method: post
-            redirect-uri: http://localhost:8080/login/oauth2/code/kakao
+            redirect-uri: http://localhost:8080/auth/oauth2/kakao
             authorization-grant-type: authorization_code  # 여기에 인증 방식을 지정
-            scope: profile,account_email
+            scope: profile
         provider:
           kakao:
             authorization-uri: https://kauth.kakao.com/oauth/authorize  # 카카오 인증 엔드포인트

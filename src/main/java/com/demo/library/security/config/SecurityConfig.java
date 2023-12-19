@@ -70,14 +70,14 @@ public class SecurityConfig  {
                 .and()
                 .authorizeHttpRequests(authorize -> authorize
                         .antMatchers("/h2/**").permitAll()
-                        .antMatchers(HttpMethod.POST, "/users/**").permitAll()
-                        .antMatchers(HttpMethod.GET, "/users/**").hasRole("ADMIN")
-                        .antMatchers(HttpMethod.PATCH, "/users/**").hasRole("ADMIN")
-                        .antMatchers(HttpMethod.DELETE, "/users/**").hasRole("ADMIN")
-                        .antMatchers(HttpMethod.POST, "/**/**").hasRole("ADMIN")
-                        .antMatchers(HttpMethod.PATCH, "/**/**").hasRole("ADMIN")
-                        .antMatchers(HttpMethod.DELETE, "/**/**").hasRole("ADMIN")
-                        .antMatchers("/loans/**").permitAll()
+//                        .antMatchers(HttpMethod.POST, "/users/**").permitAll()
+//                        .antMatchers(HttpMethod.GET, "/users/**").hasRole("ADMIN")
+//                        .antMatchers(HttpMethod.PATCH, "/users/**").hasRole("ADMIN")
+//                        .antMatchers(HttpMethod.DELETE, "/users/**").hasRole("ADMIN")
+//                        .antMatchers(HttpMethod.POST, "/**/**").hasRole("ADMIN")
+//                        .antMatchers(HttpMethod.PATCH, "/**/**").hasRole("ADMIN")
+//                        .antMatchers(HttpMethod.DELETE, "/**/**").hasRole("ADMIN")
+//                        .antMatchers("/loans/**").authenticated()
                         .anyRequest().permitAll()
 
                 );

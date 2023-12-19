@@ -9,7 +9,7 @@ import java.util.regex.Pattern;
 public class GenderValidator implements ConstraintValidator<GenderValidation, String> {
     @Override
     public boolean isValid(String value, ConstraintValidatorContext context) {
-        Pattern pattern = Pattern.compile("^(MALE|FEMALE)$");
+        Pattern pattern = Pattern.compile("^(MALE|FEMALE|OAUTH)$");
         Matcher matcher = pattern.matcher(value);
         return matcher.matches();
     }
