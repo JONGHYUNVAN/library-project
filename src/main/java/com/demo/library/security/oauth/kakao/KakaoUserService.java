@@ -1,18 +1,17 @@
-package com.demo.library.security.service.kakao;
+package com.demo.library.security.oauth.kakao;
 
 import com.demo.library.user.entity.User;
 import com.demo.library.user.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
 @RequiredArgsConstructor
 public class KakaoUserService {
     private final UserRepository userRepository;
-    public User create(String email, String nickName, long id){
+    public User create(String email, String nickName, String id){
         User user = User.builder()
                         .email(email)
                         .nickName(nickName)

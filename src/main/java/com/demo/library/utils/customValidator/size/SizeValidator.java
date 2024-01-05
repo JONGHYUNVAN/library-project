@@ -12,10 +12,7 @@ public class SizeValidator implements ConstraintValidator<SizeValidation, String
 
     @Override
     public boolean isValid(String value, ConstraintValidatorContext context) {
-        if (value == null) {
-            return true;
-        }
-
+        if (value == null) return true;
         return value.length() <= max;
     }
 }

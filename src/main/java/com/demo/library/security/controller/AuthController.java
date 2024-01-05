@@ -5,10 +5,13 @@ import com.demo.library.response.dto.SingleResponseDto;
 import com.demo.library.security.entity.RefreshToken;
 import com.demo.library.security.jwt.dto.TokenDto;
 
+import com.demo.library.security.oauth.google.GoogleAuthService;
+import com.demo.library.security.oauth.google.GoogleDto;
+import com.demo.library.security.oauth.google.GoogleJWTService;
 import com.demo.library.security.service.JWTAuthService;
-import com.demo.library.security.service.kakao.KaKaoDto;
-import com.demo.library.security.service.kakao.KakaoAuthService;
-import com.demo.library.security.service.kakao.KakaoJWTService;
+import com.demo.library.security.oauth.kakao.KaKaoDto;
+import com.demo.library.security.oauth.kakao.KakaoAuthService;
+import com.demo.library.security.oauth.kakao.KakaoJWTService;
 import com.demo.library.user.entity.User;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpHeaders;
@@ -25,6 +28,9 @@ public class AuthController {
     private final JWTAuthService JWTAuthService;
     private final KakaoAuthService kakaoAuthService;
     private final KakaoJWTService kakaoJWTService;
+    private final GoogleAuthService googleAuthService;
+    private final GoogleJWTService googleJWTService;
+
 
     @GetMapping("/login-form")
     public String loginForm() {
@@ -54,9 +60,20 @@ public class AuthController {
         KaKaoDto kaKaoDto = kakaoAuthService.getUserInfo(accessToken);
         User user = kakaoAuthService.authenticateUser(kaKaoDto);
         HttpHeaders headers = new HttpHeaders();
-        headers.add("Authorization", "bearer " + kakaoJWTService.generateAccessToken(user));
+        headers.add("Authorization", "Bearer " + kakaoJWTService.generateAccessToken(user));
         headers.add("Refresh",kakaoJWTService.generateRefreshToken(user));
 
         return new ResponseEntity<>("Kakao Authentication succeeded", headers, HttpStatus.OK);
+    }
+    @GetMapping("/oauth2/google")
+    public ResponseEntity<String> googleCallback(@RequestParam("code") String code) {
+        String accessToken = googleAuthService.getAccessToken(code);
+        GoogleDto googleDto = googleAuthService.getUserInfo(accessToken);
+        User user = googleAuthService.authenticateUser(googleDto);
+        HttpHeaders headers = new HttpHeaders();
+        headers.add("Authorization", "Bearer " + googleJWTService.generateAccessToken(user));
+        headers.add("Refresh",googleJWTService.generateRefreshToken(user));
+
+        return new ResponseEntity<>("Google Authentication succeeded", headers, HttpStatus.OK);
     }
 }

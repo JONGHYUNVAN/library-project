@@ -48,7 +48,7 @@ public class User {
     @Column
     private String provider;
     @Column
-    private Long providerId;
+    private String providerId;
     @Column(nullable = false, name = "user_status")
     @Enumerated(EnumType.STRING)
     private Status status;

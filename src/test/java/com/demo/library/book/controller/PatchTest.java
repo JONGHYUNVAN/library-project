@@ -25,6 +25,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @SpringBootTest
 @AutoConfigureMockMvc
+@WithMockUser(username="user", roles={"USER","ADMIN"})
 public class PatchTest {
     @Autowired
     private MockMvc mockMvc;
