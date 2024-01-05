@@ -2,6 +2,7 @@ package com.demo.library.security.config;
 
 import com.demo.library.security.filter.JwtAuthenticationFilter;
 import com.demo.library.security.filter.JwtVerificationFilter;
+
 import com.demo.library.security.handler.UserAccessDeniedHandler;
 import com.demo.library.security.handler.UserAuthenticationEntryPoint;
 import com.demo.library.security.jwt.jwthandler.JWTAuthenticationFailureHandler;
@@ -12,6 +13,7 @@ import com.demo.library.security.utils.AuthorityUtils;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+
 import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -28,10 +30,12 @@ import org.springframework.web.cors.CorsConfiguration;
 @Configuration
 @EnableWebSecurity
 @RequiredArgsConstructor
-public class SecurityConfig {
+public class SecurityConfig  {
     private final JWTTokenizer jwtTokenizer;
     private final AuthorityUtils authorityUtils;
     private final RefreshTokenRepository refreshTokenRepository;
+
+
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity httpSecurity) throws Exception {
         httpSecurity
@@ -57,6 +61,7 @@ public class SecurityConfig {
                 //인가
                 .and()
                 .authorizeHttpRequests(authorize -> authorize
+                        .antMatchers("/h2/**").permitAll()
                         .antMatchers(HttpMethod.POST, "/users/**").permitAll()
                         .antMatchers(HttpMethod.GET, "/users/**").hasRole("ADMIN")
                         .antMatchers(HttpMethod.PATCH, "/users/**").hasRole("ADMIN")
@@ -64,11 +69,14 @@ public class SecurityConfig {
                         .antMatchers(HttpMethod.POST, "/**/**").hasRole("ADMIN")
                         .antMatchers(HttpMethod.PATCH, "/**/**").hasRole("ADMIN")
                         .antMatchers(HttpMethod.DELETE, "/**/**").hasRole("ADMIN")
-                        .antMatchers("/loans/**").permitAll()
+                        .antMatchers("/loans/**").authenticated()
                         .anyRequest().permitAll()
+
                 );
+
         return httpSecurity.build();
     }
+
     @Bean
     public PasswordEncoder passwordEncoder() {
         return PasswordEncoderFactories.createDelegatingPasswordEncoder();

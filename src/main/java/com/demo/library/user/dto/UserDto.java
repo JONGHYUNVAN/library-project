@@ -24,6 +24,8 @@ public class UserDto {
         @NotBlankValidation(fieldName = "Name")
         @SizeValidation(max=20, fieldName = "Name")
         private String name;
+        @NotBlankValidation(fieldName = "Password")
+        @Size(min = 8, max = 20, message = "Password must be between 8 and 20 characters")
         private String password;
         @NotBlankValidation(fieldName = "Email")
         @SizeValidation(max=20, fieldName = "Email")
@@ -31,6 +33,7 @@ public class UserDto {
         @NotBlankValidation(fieldName = "NickName")
         @SizeValidation(max=20, fieldName = "NickName")
         private String nickName;
+        @NotBlankValidation(fieldName = "PhoneNumber")
         @PhoneNumberValidation
         private String phoneNumber;
         @NotBlank(message = "gender should be contained.")
@@ -45,20 +48,13 @@ public class UserDto {
     @NoArgsConstructor
     @AllArgsConstructor
     public static class Patch {
+        @NotNull
         private Long id;
-        @NotEmptyValidation(fieldName = "Name")
-        @SizeValidation(max=20, fieldName = "Name")
-        private String name;
-        @NotEmptyValidation(fieldName = "email")
-        private String email;
-        @NotEmptyValidation(fieldName = "NickName")
         @SizeValidation(max=20, fieldName = "NickName")
         private String nickName;
-
+        private String password;
         @PhoneNumberValidation
         private String phoneNumber;
-        @GenderValidation
-        private String gender;
 
     }
 
@@ -81,7 +77,6 @@ public class UserDto {
     }
     @Getter
     public static class Request {
-        private Long id;
         @PhoneNumberValidation
         private String phoneNumber;
 

@@ -9,6 +9,7 @@ public enum ExceptionCode {
     USER_ALREADY_EXISTS(409, "User already exists"),
     NOT_IMPLEMENTATION(501, "Not Implementation"),
     INVALID_USER_ID(400, "Invalid user Id"),
+    INVALID_PASSWORD(400,"Invalid Password"),
     INVALID_USER_EMAIL(400, "Invalid user Email"),
     INVALID_USER_PHONE_NUMBER(400, "Invalid phone number"),
     INVALID_USER_STATUS(400, "Invalid user status"),

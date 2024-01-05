@@ -22,7 +22,5 @@ public class Role {
     private Long roleId;
     private String roleName;
     private String roleDesc;
-    @OneToMany(mappedBy = "role")
-    @Builder.Default
-    private List<UserRole> userRoles = new ArrayList<>();
+
 }

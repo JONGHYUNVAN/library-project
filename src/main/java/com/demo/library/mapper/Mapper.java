@@ -17,10 +17,11 @@ public class Mapper {
         U object;
         object = getType(objectType);
 
-        Field[] dtoFields = dto.getClass().getDeclaredFields();
-        Field[] entityFields = objectType.getDeclaredFields();
+            Field[] dtoFields = dto.getClass().getDeclaredFields();
+            Field[] entityFields = objectType.getDeclaredFields();
 
-        convertDtoToEntity(dto, object, dtoFields, entityFields);
+
+            convertDtoToEntity(dto, object, dtoFields, entityFields);
 
         return object;
     }
@@ -33,7 +34,7 @@ public class Mapper {
                     Object value;
                     value = getValueFromDto(dto, dtoField);
 
-                    convertByType(object, entityField, value);
+                    if (value != null) convertByType(object, entityField, value);
                     break;
                 }
             }

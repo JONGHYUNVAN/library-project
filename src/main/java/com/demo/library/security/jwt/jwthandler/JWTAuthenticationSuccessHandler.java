@@ -37,13 +37,7 @@ public class JWTAuthenticationSuccessHandler implements AuthenticationSuccessHan
                 refreshTokenExpiration,
                 jwtTokenizer.encodeBase64SecretKey(jwtTokenizer.getSecretKey())
         );
-
-        RefreshToken token = new RefreshToken();
-        token.setUser(user);
-        token.setToken(refreshToken);
-        token.setExpiryDateTime(expiryDateTime);
-
-        refreshTokenRepository.save(token);
+        refreshTokenRepository.save(RefreshToken.builder().token(refreshToken).user(user).expiryDateTime(expiryDateTime).build());
         log.info("# Authentication succeeded");
     }
 }

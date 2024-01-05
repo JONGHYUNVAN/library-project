@@ -14,6 +14,8 @@ public class BookDto {
     @Getter
     @Setter
     @Builder
+    @NoArgsConstructor
+    @AllArgsConstructor
     public static class Post {
         @NotBlankValidation(fieldName = "Title")
         @SizeValidation(max=20,fieldName = "Title")
@@ -32,6 +34,8 @@ public class BookDto {
     @Getter
     @Setter
     @Builder
+    @NoArgsConstructor
+    @AllArgsConstructor
     public static class Patch {
         private Long id;
         @NotEmptyValidation(fieldName = "Title")

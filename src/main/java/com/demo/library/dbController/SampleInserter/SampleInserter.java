@@ -2,12 +2,14 @@ package com.demo.library.dbController.SampleInserter;
 
 import com.demo.library.book.entity.BookEntity;
 import com.demo.library.book.repository.BookJPARepository;
+import com.demo.library.book.service.BookService;
 import com.demo.library.library.entity.Library;
 import com.demo.library.library.repository.LibraryRepository;
 import com.demo.library.user.entity.User;
 import com.demo.library.user.repository.UserRepository;
 import com.demo.library.user.service.UserService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
@@ -18,12 +20,15 @@ import java.util.List;
 public class SampleInserter implements CommandLineRunner {
     private final BookJPARepository bookRepository;
     private final LibraryRepository libraryRepository;
-    private final UserRepository userRepository;
     private final UserService userService;
+    @Value("${mail.address.admin}")
+    private String adminMailAddress;
+    @Value("${password.address.admin}")
+    private String password;
 
     @Override
     public void run (String ... args){
-        User user = createUser(1L, "safePassword","admin@email.com","관리자", "admin","010-1234-5678", User.Gender.MALE, User.Status.ACTIVE);
+        User user = createUser(1L, password,adminMailAddress,"관리자", "admin","010-1234-5678", User.Gender.MALE, User.Status.ACTIVE);
         userService.create(user);
 
       Library library = createLibrary(1L, "중앙도서관","서울시 구구구 동동동 로로로 77-7","09:30","17:30");
@@ -44,8 +49,6 @@ public class SampleInserter implements CommandLineRunner {
         bookRepository.saveAll(bookList);
 
     }
-
-
 
     public BookEntity createBook(Long id, String title, String publisher, String author, Library library, BookEntity.Status status, Long searchCount, String imageURL ){
 

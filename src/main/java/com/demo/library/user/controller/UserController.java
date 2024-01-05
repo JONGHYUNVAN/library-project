@@ -38,7 +38,6 @@ public class UserController {
         URI location = UriCreator.createUri(USER_DEFAULT_URL, user.getId());
         return ResponseCreator.created(location);
     }
-    @PreAuthorize("#patch.email == authentication.principal.email or hasRole('ROLE_ADMIN')")
     @PatchMapping
     public ResponseEntity<SingleResponseDto<UserDto.Response>>
                                 patchUser(@Valid @RequestBody UserDto.Patch patch) throws IllegalAccessException, InstantiationException {

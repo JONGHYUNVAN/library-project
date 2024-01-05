@@ -51,6 +51,13 @@ public class UserService {
     public User update(User user) {
         Long userId = user.getId();
         User verifiedUser = verifyById(userId);
+        String password = user.getPassword();
+        if(password != null){
+            if(password.length()>20||password.length()<8){
+                throw new BusinessLogicException(INVALID_PASSWORD);
+            }
+            user.setPassword(passwordEncoder.encode(user.getPassword()));
+        }
 
         entityUpdater.update(user, verifiedUser, User.class);
 

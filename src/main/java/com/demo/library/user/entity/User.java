@@ -22,7 +22,6 @@ public class User {
     @Id
     @GeneratedValue(strategy =GenerationType.IDENTITY)
     private Long id;
-    @Column(nullable = false)
     private  String password;
     @Column(nullable = false,length = 20)
     private String name;
@@ -40,13 +39,16 @@ public class User {
     @Enumerated(EnumType.STRING)
     private Gender gender;
     @Getter
-    public enum Gender{MALE,FEMALE}
+    public enum Gender{MALE,FEMALE,OAUTH}
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Loan> loans;
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL,  fetch = FetchType.LAZY)
     private List<Ban> bans;
-
+    @Column
+    private String provider;
+    @Column
+    private String providerId;
     @Column(nullable = false, name = "user_status")
     @Enumerated(EnumType.STRING)
     private Status status;
