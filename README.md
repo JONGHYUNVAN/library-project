@@ -8,7 +8,8 @@
 
 
 + DB Diagram :   
-![img_6.png](img_6.png) 
++ https://dbdocs.io/billlys2/lib-project-dbdiagram
+![img_6.png](img_6.png)
  
 
 + 코드 범용성 향상 : 
