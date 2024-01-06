@@ -58,6 +58,8 @@ dependencies {
 	implementation 'com.google.code.gson:gson:2.9.0'
 	//OAuth2
 	implementation 'org.springframework.boot:spring-boot-starter-oauth2-client'
+	//mySql
+	implementation 'mysql:mysql-connector-java'
 
 }
 

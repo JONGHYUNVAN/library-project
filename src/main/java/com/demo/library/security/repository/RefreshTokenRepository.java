@@ -9,10 +9,6 @@ import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.Optional;
 
-public interface RefreshTokenRepository extends JpaRepository<RefreshToken, Long> {
-    Optional<RefreshToken> findByToken(String token);
-    void deleteByToken(String token);
-    void deleteAllByExpiryDateTimeBefore(Date now);
+public interface RefreshTokenRepository extends RefreshTokenJPARepository {
 
-    void deleteByUser(User user);
 }

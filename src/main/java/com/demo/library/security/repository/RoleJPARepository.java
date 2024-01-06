@@ -1,9 +1,8 @@
 package com.demo.library.security.repository;
 
-
 import com.demo.library.security.entity.Role;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface RoleRepository extends RoleJPARepository{
-
+public interface RoleJPARepository extends JpaRepository<Role,Long> {
+    Role findByRoleName(String roleName);
 }

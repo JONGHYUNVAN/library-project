@@ -63,6 +63,7 @@ public class SecurityConfig  {
                 .authorizeHttpRequests(authorize -> authorize
                         .antMatchers("/h2/**").permitAll()
                         .antMatchers(HttpMethod.POST, "/users/**").permitAll()
+                        .antMatchers(HttpMethod.POST, "/auth/refresh").permitAll()
                         .antMatchers(HttpMethod.GET, "/users/**").hasRole("ADMIN")
                         .antMatchers(HttpMethod.PATCH, "/users/**").hasRole("ADMIN")
                         .antMatchers(HttpMethod.DELETE, "/users/**").hasRole("ADMIN")
