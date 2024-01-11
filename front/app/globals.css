@@ -1,0 +1,207 @@
+body {
+  margin: 0;
+  padding: 0;
+  background-color: rgb(255, 255, 236);
+  cursor: url('../public/mouse.png') 1 1, auto;
+}
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  text-align: center;
+}
+.title {
+  font-size: 8vw;
+  text-align: center;
+  color: papayawhip;
+  margin-top: 150px;
+  margin-bottom: 20px;
+  font-family: 'Long Cang', cursive;
+  position: relative;
+
+}
+.smallTitle {
+  font-size: 5vw;
+  text-align: center;
+  color: whitesmoke;
+  margin-top: -100px;
+  margin-bottom: -150px;
+  font-family: 'Nanum Pen Script', cursive;
+  position: relative;
+
+}
+.title-sub {
+  font-size: 1.8vw;
+  color: lightgoldenrodyellow;
+  position: absolute;
+  font-family:Arial,cursive;
+  right: 25.0vw;
+  top: 9.0vw;
+}
+
+.background-video {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
+}
+.background-image {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -2;
+}
+
+.book {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+}
+.book-image {
+  width: 15vw;
+  height: 20vw;
+}
+.book-image-big {
+  margin-left: 11vw;
+  margin-right: 5vw;
+  width: 30vw;
+  height: 40vw;
+  float: left;
+}
+.book-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+}
+.book-title {
+  font-family: 'Nanum Pen Script', serif;
+  color: gold;
+  margin-bottom: 10vw;
+  font-size: 2vw;
+  text-align: center;
+}
+.navbar {
+  border-radius: 8px;
+  padding: 20px;
+  background-image: url("../public/nav.jpg");
+  background-size: cover;
+  background-position: center;
+  font-family: 'Nanum Pen Script', cursive;
+  box-shadow: 10px 2px 4px sienna;
+  width: 97vw;
+  height: 10vw;
+}
+.navbar a{
+  margin-right: 10px;
+  text-decoration: none;
+  font-family: 'Nanum Pen Script', cursive;
+  font-size: 2vw;
+  color: goldenrod;
+}
+.mainPage .navbar {
+  display: none;
+}
+.title-button {
+  background: linear-gradient(to bottom right, gold,darkgoldenrod);
+  color: white;
+  padding: 10px 33px;
+  border: none;
+  border-radius: 7px;
+  margin-right: 10px;
+  margin-bottom: 0.5vw;
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: 5.5vw;
+  height: 1.7vw;
+  font-size: 1vw;
+}
+.searchInfo{
+  width: 90vw;
+  height: 40vw;
+  display: block;
+  justify-content: flex-end;
+  margin-top:4vw;
+  margin-left:3vw;
+  margin-right :5vw;
+  font-size: 2vw;
+  background: linear-gradient(to bottom right, white ,gold);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
+  text-shadow: 2px 2px 2px goldenrod;
+}
+.author-button {
+  background: linear-gradient(to bottom right, gold, darkgoldenrod);
+  color: white;
+  padding: 10px 26px;
+  border: none;
+  border-radius: 7px;
+  margin-right: 10px;
+  margin-bottom: 0.5vw;
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: 5.5vw;
+  height: 1.7vw;
+  font-size: 1vw;
+}
+
+.publisher-button {
+  background: linear-gradient(to bottom right, gold, darkgoldenrod);
+  color: white;
+  padding: 10px 18px;
+  border: none;
+  border-radius: 7px;
+  margin-right: 10px;
+  margin-bottom: 0.5vw;
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: 5.5vw;
+  height: 1.7vw;
+  font-size: 1vw;
+}
+.searchImage {
+  width: 6vw;
+  height: 6vw;
+  border-radius: 50%;
+}
+.clicked {
+  box-shadow: 0 0 10px darkgoldenrod, 0 0 20px goldenrod, 0 0 30px gold, 0 0 40px palegoldenrod;
+}
+
+@keyframes glow {
+  0% {
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.7);
+  }
+  50% {
+    box-shadow: 0 0 20px 10px rgba(255, 255, 255, 0.7);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.7);
+  }
+}
+.searchResult{
+  margin-left: 11vw;
+  width: 80vw;
+  height: 10vw;
+  overflow-y: auto;
+  max-height: 300px;
+  padding: 10px;
+  background-color: #f5f5f5;
+  border: 1px solid #ccc;
+  border-radius: 2%;
+  background-image: url("../public/paper.jpg");
+}
+.searchResultText{
+  font-family: 'Nanum Pen Script', cursive;
+  font-size: 3vw;
+}
+.hidden {
+  display: none;
+}
