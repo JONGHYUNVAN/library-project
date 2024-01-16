@@ -5,140 +5,38 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6319650e-5274-49c9-942d-720d9acc6140" name="변경" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitattributes" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library 프로젝트 요구사항 정의서.xlsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradlew" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradlew.bat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img_1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img_10.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img_2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img_3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img_4.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img_5.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img_6.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img_7.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img_8.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img_9.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libray ERD.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/settings.gradle" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/library/LibraryApplication.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/library/advice/GlobalExceptionAdvice.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/library/book/controller/BookController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/library/book/dto/BookDto.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/library/book/entity/BookEntity.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/library/book/mapper/BookMapper.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/library/book/repository/BookJPARepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/library/book/repository/BookRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/library/book/service/BookService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/library/dbController/SampleInserter/SampleInserter.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/library/dbController/refreshtokencleaner/ExpiredRefreshTokenCleaner.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/library/exception/BusinessLogicException.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/library/exception/ExceptionCode.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/library/library/controller/LibraryController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/library/library/dto/LibraryDto.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/library/library/entity/Library.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/library/library/mapper/LibraryMapper.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/library/library/repository/LibraryJPARepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/library/library/repository/LibraryRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/library/library/service/LibraryService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/library/loanNban/controller/LoanController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/library/loanNban/dto/LoanDto.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/library/loanNban/entity/Ban.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/library/loanNban/entity/Loan.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/library/loanNban/mapper/BanMapper.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/library/loanNban/mapper/LoanMapper.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/library/loanNban/repository/BanJPARepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/library/loanNban/repository/BanRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/library/loanNban/repository/LoanJPARepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/library/loanNban/repository/LoanRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/library/loanNban/service/BanService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/library/loanNban/service/LoanService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/library/mapper/Mapper.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/library/response/DtoSerializer.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/library/response/ErrorResponse.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/library/response/PageInfo.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/library/response/ResponseCreator.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/library/response/dto/ListResponseDto.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/library/response/dto/MultiResponseDto.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/library/response/dto/SingleResponseDto.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/library/security/config/RestTemplateConfig.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/library/security/config/SecurityConfig.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/library/security/config/WebConfig.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/library/security/controller/AuthController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/library/security/dto/LoginDto.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/library/security/entity/RefreshToken.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/library/security/filter/JwtAuthenticationFilter.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/library/security/filter/JwtVerificationFilter.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/library/security/filter/OAuth2AuthenticationProcessingFilter.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/library/security/handler/CustomLogoutHandler.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/library/security/handler/UserAccessDeniedHandler.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/library/security/handler/UserAuthenticationEntryPoint.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/library/security/jwt/dto/TokenDto.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/library/security/jwt/jwthandler/JWTAuthenticationFailureHandler.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/library/security/jwt/jwthandler/JWTAuthenticationSuccessHandler.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/library/security/jwt/jwtservice/JWTService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/library/security/jwt/jwttokenizer/JWTTokenizer.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/library/security/oauth/google/GoogleAuthService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/library/security/oauth/google/GoogleDto.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/library/security/oauth/google/GoogleJWTService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/library/security/oauth/google/GoogleProperties.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/library/security/oauth/google/GoogleUserService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/library/security/oauth/kakao/KaKaoDto.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/library/security/oauth/kakao/KakaoAuthService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/library/security/oauth/kakao/KakaoJWTService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/library/security/oauth/kakao/KakaoProperties.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/library/security/oauth/kakao/KakaoUserService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/library/security/repository/RefreshTokenJPARepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/library/security/repository/RefreshTokenRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/library/security/service/CustomUserDetailsService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/library/security/service/JWTAuthService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/library/security/utils/AuthorityUtils.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/library/security/utils/ErrorResponder.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/library/timeEntity/Auditable.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/library/user/controller/UserController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/library/user/dto/UserDto.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/library/user/entity/User.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/library/user/mapper/UserMapper.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/library/user/repository/UserJPARepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/library/user/repository/UserRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/library/user/service/UserService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/library/utils/EntityUpdater.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/library/utils/UriCreator.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/library/utils/customValidator/notBlank/NotBlankValidation.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/library/utils/customValidator/notBlank/NotBlankValidator.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/library/utils/customValidator/pattern/gender/GenderValidation.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/library/utils/customValidator/pattern/gender/GenderValidator.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/library/utils/customValidator/pattern/notEmpty/NotEmptyValidation.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/library/utils/customValidator/pattern/notEmpty/NotEmptyValidator.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/library/utils/customValidator/phoneNumberValidation/PhoneNumberValidation.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/library/utils/customValidator/phoneNumberValidation/PhoneNumberValidator.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/library/utils/customValidator/size/SizeValidation.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/library/utils/customValidator/size/SizeValidator.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/library/utils/timeConverter/LocalDateTimeConverter.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application-h2.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application-mysql.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/demo/library/DemoApplicationTests.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/demo/library/JUnitTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/demo/library/book/controller/GetTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/demo/library/book/controller/PatchTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/demo/library/book/controller/PostTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/demo/library/book/repository/RepositoryTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/demo/library/library/controller/PatchTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/demo/library/library/controller/PostTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/demo/library/library/repository/RepositoryTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/demo/library/library/service/InnerMethodTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/demo/library/user/controller/PatchTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/demo/library/user/controller/PostTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/demo/library/user/repository/RepositoryTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/demo/library/user/service/InnerMethodTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/요구사항 정의.png" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/front/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/front/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/front/app/log-in/page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/front/app/ranking/page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/front/app/search/page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/front/app/sign-in/page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/front/public/background.mp4" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/front/public/backgroundList.mp4" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/front/public/backgroundLogIn.mp4" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/front/public/backgroundSearch.mp4" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/front/public/backgroundSignIn.mp4" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/front/public/key.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/front/public/mouse.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/front/public/nav.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/front/public/paper.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/front/public/search.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/front/public/signInPaper.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/front/public/signInPaper.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/src/main/java/com/demo/library/security/controller/AuthController.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/java/com/demo/library/security/controller/AuthController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/src/main/java/com/demo/library/security/filter/JwtAuthenticationFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/java/com/demo/library/security/filter/JwtAuthenticationFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/src/main/java/com/demo/library/security/jwt/jwttokenizer/JWTTokenizer.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/java/com/demo/library/security/jwt/jwttokenizer/JWTTokenizer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/src/main/java/com/demo/library/security/service/JWTAuthService.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/java/com/demo/library/security/service/JWTAuthService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/src/main/java/com/demo/library/user/dto/UserDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/java/com/demo/library/user/dto/UserDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/src/main/java/com/demo/library/utils/customValidator/phoneNumberValidation/PhoneNumberValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/java/com/demo/library/utils/customValidator/phoneNumberValidation/PhoneNumberValidator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/app/globals.css" beforeDir="false" afterPath="$PROJECT_DIR$/front/app/globals.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/app/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/front/app/layout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/app/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/front/app/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/front/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/front/package.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -150,8 +48,27 @@
       <ProjectState />
     </projectState>
   </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <projects_view>
+          <tree_state>
+            <expand />
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="TypeScript JSX File" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/front" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -161,14 +78,29 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/owner/Desktop/library project&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;C:\\Users\\owner\\Desktop\\library project\\front\\node_modules\\typescript\\lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\owner\Desktop\library project\front\public" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\owner\Desktop\library project\front\public" />
+    </key>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="애플리케이션 수준" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="디폴트 작업">
@@ -178,6 +110,14 @@
       <option name="presentableId" value="Default" />
       <updated>1704780067917</updated>
       <workItem from="1704780070850" duration="66000" />
+      <workItem from="1704981306957" duration="92000" />
+      <workItem from="1704992093127" duration="604000" />
+      <workItem from="1705021813268" duration="54385000" />
+      <workItem from="1705145856076" duration="13361000" />
+      <workItem from="1705198931297" duration="2762000" />
+      <workItem from="1705243308133" duration="607000" />
+      <workItem from="1705247830537" duration="1212000" />
+      <workItem from="1705369860564" duration="3000" />
     </task>
     <servers />
   </component>

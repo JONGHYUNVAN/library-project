@@ -14,6 +14,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletResponse;
 import java.nio.charset.StandardCharsets;
 import java.security.Key;
 import java.time.LocalDateTime;
@@ -126,5 +128,10 @@ public class JWTTokenizer {
 
 
         return newToken;
+    }
+    public void setAsCookie(String refreshToken, HttpServletResponse response) {
+        Cookie cookie = new Cookie("refreshToken", refreshToken);
+        cookie.setHttpOnly(true);
+        response.addCookie(cookie);
     }
 }

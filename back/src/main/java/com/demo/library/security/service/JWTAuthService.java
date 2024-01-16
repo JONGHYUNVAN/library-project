@@ -9,7 +9,9 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+import javax.servlet.http.Cookie;
 import java.time.LocalDateTime;
+import java.util.Arrays;
 import java.util.Optional;
 
 import static com.demo.library.exception.ExceptionCode.*;
@@ -20,12 +22,14 @@ import static com.demo.library.exception.ExceptionCode.*;
 public class JWTAuthService {
     private final JWTService jwtService;
     private final RefreshTokenRepository refreshTokenRepository;
-    public RefreshToken isValidRequest(TokenDto.Request tokenRequest){
-        if (tokenRequest == null || tokenRequest.getRefreshToken()== null) {
-            throw new BusinessLogicException(INVALID_TOKEN_REQUEST);
-        }
+    public RefreshToken isValidRequest(Cookie[] cookies){
+        String refreshToken = Arrays.stream(cookies)
+                .filter(cookie -> cookie.getName().equals("refreshToken"))
+                .map(Cookie::getValue)
+                .findFirst()
+                .orElseThrow(() -> new BusinessLogicException(INVALID_TOKEN_REQUEST));
 
-        Optional<RefreshToken> optionalRefreshToken = refreshTokenRepository.findByToken(tokenRequest.getRefreshToken());
+        Optional<RefreshToken> optionalRefreshToken = refreshTokenRepository.findByToken(refreshToken);
 
         return optionalRefreshToken.orElseThrow(() ->
                 new BusinessLogicException(REFRESH_TOKEN_NOT_FOUND));

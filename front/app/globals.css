@@ -4,6 +4,7 @@ body {
   background-color: rgb(255, 255, 236);
   cursor: url('../public/mouse.png') 1 1, auto;
 }
+
 .container {
   max-width: 800px;
   margin: 0 auto;
@@ -21,10 +22,10 @@ body {
 
 }
 .smallTitle {
-  font-size: 5vw;
+  font-size: clamp(50px, 10vw, 150px);
   text-align: center;
   color: whitesmoke;
-  margin-top: -100px;
+  margin-top: -7vh;
   margin-bottom: -150px;
   font-family: 'Nanum Pen Script', cursive;
   position: relative;
@@ -90,23 +91,44 @@ body {
 .navbar {
   border-radius: 8px;
   padding: 20px;
-  background-image: url("../public/nav.jpg");
-  background-size: cover;
+  background-image: url("../public/nav.png");
+  background-size: contain;
   background-position: center;
   font-family: 'Nanum Pen Script', cursive;
   box-shadow: 10px 2px 4px sienna;
-  width: 97vw;
-  height: 10vw;
+  width: 99vw;
+  height: 10vh;
+  max-height: 300px;
 }
 .navbar a{
   margin-right: 10px;
   text-decoration: none;
   font-family: 'Nanum Pen Script', cursive;
-  font-size: 2vw;
+  font-size: 2vh;
   color: goldenrod;
 }
-.mainPage .navbar {
-  display: none;
+.navbar-left-side-button {
+  float: left;
+  font-size: clamp(20px, 2vw, 65px);
+  display: flex;
+  justify-content: left;
+  margin-left: 1vw;
+  margin-right: 1vw;
+  background: linear-gradient(to bottom right, palegoldenrod, gold);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.navbar-right-side-button{
+  float: left;
+  font-size: clamp(20px, 2vw, 65px);
+  display: flex;
+  justify-content: right;
+  margin-left: 1vw;
+  margin-right: 3vw;
+  font-family: Pacifico, cursive;
+  background: linear-gradient(to bottom right, palegoldenrod, gold);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 .title-button {
   background: linear-gradient(to bottom right, gold,darkgoldenrod);
@@ -120,6 +142,8 @@ body {
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   width: 5.5vw;
   height: 1.7vw;
+  min-width: 100px;
+  min-height: 30px;
   font-size: 1vw;
 }
 .searchInfo{
@@ -149,6 +173,8 @@ body {
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   width: 5.5vw;
   height: 1.7vw;
+  min-width: 100px;
+  min-height: 30px;
   font-size: 1vw;
 }
 
@@ -164,6 +190,8 @@ body {
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   width: 5.5vw;
   height: 1.7vw;
+  min-width: 100px;
+  min-height: 30px;
   font-size: 1vw;
 }
 .searchImage {
@@ -204,4 +232,123 @@ body {
 }
 .hidden {
   display: none;
+}
+.signInText{
+  font-family: Pacifico, cursive;
+  height: 4vw;
+  max-height: 200px;
+  font-size: clamp(20px, 2vw, 65px);
+  margin-left: 20px;
+  margin-bottom: 1vw;
+  margin-top: 2vh;
+}
+.signInInput {
+  width: 35vw;
+  max-width: 800px;
+  height: 2vw;
+  font-size: clamp(20px, 2vw, 65px);
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid black;
+  outline: none;
+  margin-left: 20px;
+  margin-top: 1vh;
+  margin-bottom: 1.2vw;
+  font-family: Pacifico, cursive;
+  line-height: 1.5;
+  padding: 10px 0;
+}
+.signInInput::placeholder {
+  font-family: 'Nanum Pen Script', cursive;
+}
+.emailInputBox{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-left: -41px;
+  margin-top: -20px;
+  width: 300px;
+  height: 30px;
+  background: transparent;
+  border: none;
+  font-family: 'Josefin Slab', serif;
+  background: linear-gradient(to bottom right, palegoldenrod ,darkgoldenrod);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 26px;
+  font-weight: 600;
+  text-align: center;
+  z-index: 2;
+}
+.emailInputBox:focus {
+  outline: none;
+}
+
+.passwordInputBox{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-left: -43px;
+  margin-top: 80px;
+  width: 300px;
+  height: 25px;
+  background: transparent;
+  border: none;
+  font-family: 'Josefin Slab', serif;
+  color: transparent;
+  text-align: center;
+  font-size: 30px;
+  z-index: 2;
+}
+.passwordInputBox:focus {
+  outline: none;
+}
+.passwordOutputBox{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-left: -41px;
+  margin-top: 81px;
+  width: 300px;
+  height: 30px;
+  background: transparent;
+  border: none;
+  font-family: 'Josefin Slab', serif;
+  background: linear-gradient(to bottom right, palegoldenrod ,darkgoldenrod);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 30px;
+  text-align: center;
+  pointer-events: none;
+  letter-spacing: 4px;
+
+
+}
+.box-form{
+  position: absolute;
+  width: 670px;
+  height: 380px;
+  z-index: 1;
+  pointer-events: auto;
+
+}
+.login-form {
+  transform: scale(0.6);
+  top: 50%;
+  left: 50%;
+  background: radial-gradient(circle, rgba(255,255,255,0.5), rgba(255,255,255,0));
+}
+.login-button{
+  transform: scale(0.5);
+  border-radius: 100%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-left: 180px;
+  margin-top: 130px;
+  z-index: 2;
+}
+.clicked {
+  box-shadow: 0 0 10px darkgoldenrod, 0 0 20px goldenrod, 0 0 30px gold, 0 0 40px palegoldenrod;
+  background: linear-gradient(to bottom right,darkgoldenrod,palegoldenrod);
 }

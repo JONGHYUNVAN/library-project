@@ -108,7 +108,7 @@ export default function Search() {
                     </div>
                 </div>
                 <div className="search" style={{float:'left',marginRight: '30px',marginTop: '42px'}}>
-                    <input type="text" placeholder={message} style={{ width: '40vw', height: '2.5vw',fontSize: '2vw' }} onChange={handleInputChange} />
+                    <input type="text" placeholder={message} style={{ width: '35vw', height: '2.5vw',fontSize: '2vw' }} onChange={handleInputChange} />
                 </div>
             </div>
             <img src="/search.gif" alt="image"
@@ -135,7 +135,7 @@ export default function Search() {
                         </div>
                     </div>
                 ) : (
-                    <div className="emptyMessage">책을 선택해주세요.</div>
+                    <div></div>
                 )}
             </div>
         </div>

@@ -5,6 +5,7 @@ import com.demo.library.response.dto.SingleResponseDto;
 import com.demo.library.security.entity.RefreshToken;
 import com.demo.library.security.jwt.dto.TokenDto;
 
+import com.demo.library.security.jwt.jwttokenizer.JWTTokenizer;
 import com.demo.library.security.oauth.google.GoogleAuthService;
 import com.demo.library.security.oauth.google.GoogleDto;
 import com.demo.library.security.oauth.google.GoogleJWTService;
@@ -20,12 +21,17 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 
 @Controller
 @RequiredArgsConstructor
 @RequestMapping("/auth")
 public class AuthController {
     private final JWTAuthService JWTAuthService;
+    private final JWTTokenizer jwtTokenizer;
     private final KakaoAuthService kakaoAuthService;
     private final KakaoJWTService kakaoJWTService;
     private final GoogleAuthService googleAuthService;
@@ -48,31 +54,40 @@ public class AuthController {
     }
 
     @PostMapping("/token/refresh")
-    public ResponseEntity<SingleResponseDto<TokenDto.Set>> refreshAccessToken(@RequestBody TokenDto.Request tokenRequest) {
-        RefreshToken requestToken = JWTAuthService.isValidRequest(tokenRequest);
+    public  ResponseEntity<String> refreshAccessToken(HttpServletRequest request, HttpServletResponse response) {
+        Cookie[] cookies = request.getCookies();
+        RefreshToken requestToken = JWTAuthService.isValidRequest(cookies);
         JWTAuthService.checkIfExpired(requestToken);
         TokenDto.Set tokenSet =  JWTAuthService.refresh(requestToken);
-        return ResponseCreator.single(tokenSet);
+
+        jwtTokenizer.setAsCookie(tokenSet.getRefreshToken(),response);
+
+        response.setHeader("Authorization", "Bearer " + tokenSet.getAccessToken());
+
+        return new ResponseEntity<>("Token has been refreshed.", HttpStatus.OK);
     }
     @GetMapping("/oauth2/kakao")
-    public ResponseEntity<String> kakaoCallback(@RequestParam("code") String code) {
+    public ResponseEntity<String> kakaoCallback(@RequestParam("code") String code, HttpServletResponse response) {
         String accessToken = kakaoAuthService.getAccessToken(code);
         KaKaoDto kaKaoDto = kakaoAuthService.getUserInfo(accessToken);
         User user = kakaoAuthService.authenticateUser(kaKaoDto);
         HttpHeaders headers = new HttpHeaders();
         headers.add("Authorization", "Bearer " + kakaoJWTService.generateAccessToken(user));
-        headers.add("Refresh",kakaoJWTService.generateRefreshToken(user));
+
+        jwtTokenizer.setAsCookie(kakaoJWTService.generateRefreshToken(user),response);
 
         return new ResponseEntity<>("Kakao Authentication succeeded", headers, HttpStatus.OK);
     }
+
     @GetMapping("/oauth2/google")
-    public ResponseEntity<String> googleCallback(@RequestParam("code") String code) {
+    public ResponseEntity<String> googleCallback(@RequestParam("code") String code, HttpServletResponse response) {
         String accessToken = googleAuthService.getAccessToken(code);
         GoogleDto googleDto = googleAuthService.getUserInfo(accessToken);
         User user = googleAuthService.authenticateUser(googleDto);
         HttpHeaders headers = new HttpHeaders();
         headers.add("Authorization", "Bearer " + googleJWTService.generateAccessToken(user));
-        headers.add("Refresh",googleJWTService.generateRefreshToken(user));
+
+        jwtTokenizer.setAsCookie(googleJWTService.generateRefreshToken(user),response);
 
         return new ResponseEntity<>("Google Authentication succeeded", headers, HttpStatus.OK);
     }
