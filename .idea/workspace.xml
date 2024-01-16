@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="6319650e-5274-49c9-942d-720d9acc6140" name="변경" comment="">
+      <change afterPath="$PROJECT_DIR$/front/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/front/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/front/app/log-in/page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/front/app/ranking/page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/front/app/search/page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/front/app/sign-in/page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/front/public/background.mp4" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/front/public/backgroundList.mp4" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/front/public/backgroundLogIn.mp4" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/front/public/backgroundSearch.mp4" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/front/public/backgroundSignIn.mp4" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/front/public/key.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/front/public/mouse.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/front/public/nav.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/front/public/paper.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/front/public/search.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/front/public/signInPaper.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/front/public/signInPaper.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/src/main/java/com/demo/library/security/controller/AuthController.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/java/com/demo/library/security/controller/AuthController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/src/main/java/com/demo/library/security/filter/JwtAuthenticationFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/java/com/demo/library/security/filter/JwtAuthenticationFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/src/main/java/com/demo/library/security/jwt/jwttokenizer/JWTTokenizer.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/java/com/demo/library/security/jwt/jwttokenizer/JWTTokenizer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/src/main/java/com/demo/library/security/service/JWTAuthService.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/java/com/demo/library/security/service/JWTAuthService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/src/main/java/com/demo/library/user/dto/UserDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/java/com/demo/library/user/dto/UserDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/src/main/java/com/demo/library/utils/customValidator/phoneNumberValidation/PhoneNumberValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/java/com/demo/library/utils/customValidator/phoneNumberValidation/PhoneNumberValidator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/app/globals.css" beforeDir="false" afterPath="$PROJECT_DIR$/front/app/globals.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/app/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/front/app/layout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/app/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/front/app/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/front/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/front/package.json" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <projects_view>
+          <tree_state>
+            <expand />
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="TypeScript JSX File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/front" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2ahoExkhhe88EziFijt3tFtJncz" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/owner/Desktop/library project&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;C:\\Users\\owner\\Desktop\\library project\\front\\node_modules\\typescript\\lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\owner\Desktop\library project\front\public" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\owner\Desktop\library project\front\public" />
+    </key>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="애플리케이션 수준" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="디폴트 작업">
+      <changelist id="6319650e-5274-49c9-942d-720d9acc6140" name="변경" comment="" />
+      <created>1704780067917</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1704780067917</updated>
+      <workItem from="1704780070850" duration="66000" />
+      <workItem from="1704981306957" duration="92000" />
+      <workItem from="1704992093127" duration="604000" />
+      <workItem from="1705021813268" duration="54385000" />
+      <workItem from="1705145856076" duration="13361000" />
+      <workItem from="1705198931297" duration="2762000" />
+      <workItem from="1705243308133" duration="607000" />
+      <workItem from="1705247830537" duration="1212000" />
+      <workItem from="1705369860564" duration="3000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>
