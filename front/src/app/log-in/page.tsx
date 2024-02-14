@@ -112,7 +112,20 @@ export default function Search() {
             />
             <h2 className="passwordOutputBox">{'$'.repeat(passwordLength)}</h2>
             <link href="https://fonts.googleapis.com/css2?family=Josefin+Slab:ital,wght@1,400;1,500;1,700&display=swap" rel="stylesheet"/>
-
+            <div style={{
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                justifyContent: 'center',
+                marginTop: '-250px'
+            }}>
+                <a href="https://kakao.com" target="_blank" rel="noopener noreferrer" style={{zIndex:2}}>
+                    <img src="/kakaoLogin.png" alt="image" style={{ width: '300px', height: '45px', marginBottom: '20px', zIndex: 1  }}/>
+                </a>
+                <a href="https://google.com" target="_blank" rel="noopener noreferrer"style={{zIndex:2}}>
+                    <img src="/googleLogin.png" alt="image" style={{ width: '300px', height: '45px', zIndex: 1 }}/>
+                </a>
+            </div>
         </div>
 
 

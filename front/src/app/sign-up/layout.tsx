@@ -80,10 +80,10 @@ export default function Layout({
                 ) : (
                     <>
                         <div className="navbar-button-holder">
-                            <Link href={{ pathname: '/sign-in' }}
+                            <Link href={{ pathname: '/sign-up' }}
                                   className="navbar-right-side-button"
                                   style={{fontFamily:'Pacifico, cursive'}}>
-                                sign in
+                                sign up
                             </Link>
                         </div>
                         <div className="navbar-button-holder">

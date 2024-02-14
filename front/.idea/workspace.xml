@@ -4,7 +4,26 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0f975771-0adf-4ea3-ad44-985559725495" name="변경" comment="" />
+    <list default="true" id="0f975771-0adf-4ea3-ad44-985559725495" name="변경" comment="">
+      <change afterPath="$PROJECT_DIR$/src/app/auth/[...nextauth]/route.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/public/googleLogin.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/public/kakaoLogin.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../back/src/main/java/com/demo/library/dbController/SampleInserter/SampleInserter.java" beforeDir="false" afterPath="$PROJECT_DIR$/../back/src/main/java/com/demo/library/dbController/SampleInserter/SampleInserter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/globals.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/globals.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/log-in/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/log-in/layout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/log-in/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/log-in/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/ranking/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/ranking/layout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/redux/layout.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/search/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/search/layout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/search/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/search/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/sign-in/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/sign-up/layout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/sign-in/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/sign-up/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/tsconfig.json" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -14,8 +33,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="JavaScript File" />
-        <option value="TypeScript File" />
         <option value="TypeScript JSX File" />
+        <option value="TypeScript File" />
       </list>
     </option>
   </component>
@@ -31,6 +50,9 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
   <component name="ProjectId" id="2bJUd4FmTVg81GKLdq8vK4YJzmJ" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -41,23 +63,24 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/Users/owner/Desktop/library project",
+    "last_opened_file_path": "C:/Users/owner/Desktop/library project/back",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "ts.external.directory.path": "C:\\Users\\owner\\Desktop\\library project\\front\\src\\node_modules\\typescript\\lib",
+    "settings.editor.selected.configurable": "IntelliLang.Configuration",
+    "ts.external.directory.path": "C:\\Program Files\\JetBrains\\IntelliJ IDEA 2022.3.2\\plugins\\javascript-impl\\jsLanguageServicesImpl\\external",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\owner\Desktop\library project\front\src\public" />
       <recent name="C:\Users\owner\Desktop\library project\front\src\app" />
       <recent name="C:\Users\owner\Desktop\library project\front\src\app\sign-in" />
       <recent name="C:\Users\owner\Desktop\library project\front\src\app\search" />
       <recent name="C:\Users\owner\Desktop\library project\front\src\app\redux" />
-      <recent name="C:\Users\owner\Desktop\library project\front\src\app\ranking" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\owner\Desktop\library project\front\src\app\log-in" />
@@ -107,6 +130,9 @@
       <workItem from="1707870445839" duration="2359000" />
       <workItem from="1707876110883" duration="6183000" />
       <workItem from="1707890017340" duration="324000" />
+      <workItem from="1707900170849" duration="972000" />
+      <workItem from="1707901627472" duration="979000" />
+      <workItem from="1707902633416" duration="9068000" />
     </task>
     <servers />
   </component>

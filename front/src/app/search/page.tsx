@@ -28,7 +28,7 @@ export default function Search() {
     useEffect(() => {
         async function fetchData() {
             if(id) {
-                const response = await axios.get(`http://localhost:8080/books/${id}`);
+                const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/books/${id}`);
                 setSelectedBook(response.data.data);
                 setMessage(response.data.data.title);
             }
@@ -59,7 +59,7 @@ export default function Search() {
     const handleButtonClick = async () => {
 
         try {
-            const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/${url}/${input}`)
+            const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/books/${url}/${input}`)
             const dataArray = response.data.data;
             const books = dataArray.map((item: { id: string; title: string; imageURL: string, publisher: string, author : string, status : string, libraryName : string}) => ({
                 id: item.id,

@@ -4,7 +4,7 @@ import React, {useState} from "react";
 import { z } from 'zod';
 import { useRouter } from 'next/navigation';
 
-export default function Search() {
+export default function SignUp() {
     const router = useRouter();
     const labels = ['name', 'nickName', 'email', 'phoneNumber', 'password', 'gender'];
     const [name, setName] = useState("");
