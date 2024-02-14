@@ -25,6 +25,11 @@ import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+
+import static org.springframework.security.config.Customizer.withDefaults;
 
 
 @Configuration
@@ -34,6 +39,7 @@ public class SecurityConfig  {
     private final JWTTokenizer jwtTokenizer;
     private final AuthorityUtils authorityUtils;
     private final RefreshTokenRepository refreshTokenRepository;
+
 
 
     @Bean
@@ -47,7 +53,10 @@ public class SecurityConfig  {
                 .formLogin().disable()// 폼 기반 로그인 비활성화
                 .httpBasic().disable()//  HTTP Basic 인증을 비활성화
                 // cors 설정 커스텀화
-                .cors(cors -> cors.configurationSource(request -> new CorsConfiguration().applyPermitDefaultValues()))
+               // .cors(cors -> cors.configurationSource(request -> new CorsConfiguration().applyPermitDefaultValues()))
+               // cors 디폴트 설정
+                .cors(withDefaults());
+        httpSecurity
                 // 세션 생성 정책을 Stateless 로 설정
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 // 인증 실패시 사용할 핸들러
@@ -76,6 +85,20 @@ public class SecurityConfig  {
                 );
 
         return httpSecurity.build();
+    }
+    @Configuration
+    @EnableWebMvc
+    public class WebConfig implements WebMvcConfigurer {
+        @Override
+        public void addCorsMappings(CorsRegistry registry) {
+            registry.addMapping("/**")
+                    .allowedOrigins("http://localhost:3000")
+                    .allowedMethods("GET", "POST","PATCH","DELETE","OPTIONS") // 허용할 HTTP method
+                    .exposedHeaders("*") //header 노출
+                    .allowedHeaders("*") // 요청 헤더 중 서버에서 허용하는 헤더
+                    .allowCredentials(true) // 쿠키 인증 요청 허용
+                    .maxAge(3000); // 원하는 시간만큼 pre-flight 리퀘스트를 캐싱
+        }
     }
 
     @Bean

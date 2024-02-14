@@ -132,6 +132,9 @@ public class JWTTokenizer {
     public void setAsCookie(String refreshToken, HttpServletResponse response) {
         Cookie cookie = new Cookie("refreshToken", refreshToken);
         cookie.setHttpOnly(true);
+//        cookie.setSecure(true);
+//        cookie.setPath("/auth/");
+//        cookie.setMaxAge(60 * 60 * 24);
         response.addCookie(cookie);
     }
 }
