@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="0f975771-0adf-4ea3-ad44-985559725495" name="변경" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+        <option value="TypeScript File" />
+        <option value="TypeScript JSX File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$/.." value="file" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+    <option name="RESET_MODE" value="HARD" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2bJUd4FmTVg81GKLdq8vK4YJzmJ" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "C:/Users/owner/Desktop/library project",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "ts.external.directory.path": "C:\\Users\\owner\\Desktop\\library project\\front\\src\\node_modules\\typescript\\lib",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\owner\Desktop\library project\front\src\app" />
+      <recent name="C:\Users\owner\Desktop\library project\front\src\app\sign-in" />
+      <recent name="C:\Users\owner\Desktop\library project\front\src\app\search" />
+      <recent name="C:\Users\owner\Desktop\library project\front\src\app\redux" />
+      <recent name="C:\Users\owner\Desktop\library project\front\src\app\ranking" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\owner\Desktop\library project\front\src\app\log-in" />
+      <recent name="C:\Users\owner\Desktop\library project\front" />
+      <recent name="C:\Users\owner\Desktop\library project\front\server" />
+      <recent name="C:\Users\owner\Desktop\library project\front\server\app" />
+      <recent name="C:\Users\owner\Desktop\library project\front\server\app\pages" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="build" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="build" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="npm.build" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="애플리케이션 수준" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="디폴트 작업">
+      <changelist id="0f975771-0adf-4ea3-ad44-985559725495" name="변경" comment="" />
+      <created>1705932758730</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1705932758730</updated>
+      <workItem from="1705932759821" duration="1242000" />
+      <workItem from="1705978565546" duration="1198000" />
+      <workItem from="1706422570176" duration="930000" />
+      <workItem from="1706531903223" duration="614000" />
+      <workItem from="1706837059993" duration="3218000" />
+      <workItem from="1706932098092" duration="4531000" />
+      <workItem from="1707103974365" duration="706000" />
+      <workItem from="1707272346423" duration="9133000" />
+      <workItem from="1707538591221" duration="25757000" />
+      <workItem from="1707700213208" duration="769000" />
+      <workItem from="1707727634877" duration="19862000" />
+      <workItem from="1707781685975" duration="16621000" />
+      <workItem from="1707870445839" duration="2359000" />
+      <workItem from="1707876110883" duration="6183000" />
+      <workItem from="1707890017340" duration="324000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>
