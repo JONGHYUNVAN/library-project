@@ -67,6 +67,31 @@ export default function Search() {
             alert(`Failed to log in. ${err.message}`);
         }
     };
+    const handleKakaoClick = () => {
+        const newWindow = window.open(`https://kauth.kakao.com/oauth/authorize?client_id=${process.env.NEXT_PUBLIC_KAKAO_CLIENT_ID}&redirect_uri=${process.env.NEXT_PUBLIC_KAKAO_REDIRECT_URL}&response_type=code`, 'newWindow', 'width=600,height=400');
+
+        const checkInterval = setInterval(() => {
+            if (newWindow && newWindow.closed) {
+                if (localStorage.getItem('accessToken')) {
+                    dispatch(logIn());
+                }
+                clearInterval(checkInterval);
+            }
+        }, 1000);
+    };
+    const handleGoogleClick = () => {
+        const newWindow = window.open(`https://accounts.google.com/o/oauth2/v2/auth?client_id=${process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID}&redirect_uri=${process.env.NEXT_PUBLIC_GOOGLE_REDIRECT_URL}&response_type=code&scope=email%20profile%20openid&access_type=offline`, 'newWindow', 'width=600,height=400');
+
+        const checkInterval = setInterval(() => {
+            if (newWindow && newWindow.closed) {
+                if (localStorage.getItem('accessToken')) {
+                    dispatch(logIn());
+                }
+                clearInterval(checkInterval);
+            }
+        }, 1000);
+    };
+
     return (
         <div>
             <video className="background-video" autoPlay muted loop>
@@ -119,12 +144,12 @@ export default function Search() {
                 justifyContent: 'center',
                 marginTop: '-250px'
             }}>
-                <a href="https://kakao.com" target="_blank" rel="noopener noreferrer" style={{zIndex:2}}>
-                    <img src="/kakaoLogin.png" alt="image" style={{ width: '300px', height: '45px', marginBottom: '20px', zIndex: 1  }}/>
-                </a>
-                <a href="https://google.com" target="_blank" rel="noopener noreferrer"style={{zIndex:2}}>
+                <button onClick={handleKakaoClick} style={{ border: 'none', background: 'transparent',zIndex: 1 }}>
+                    <img src="/kakaoLogin.png" alt="Kakao Login" style={{ width: '300px', height: '45px' ,zIndex: 10}} />
+                </button>
+                <button onClick={handleGoogleClick} style={{ border: 'none', background: 'transparent',zIndex: 1 }}>
                     <img src="/googleLogin.png" alt="image" style={{ width: '300px', height: '45px', zIndex: 1 }}/>
-                </a>
+                </button>
             </div>
         </div>
 

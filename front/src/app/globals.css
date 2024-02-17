@@ -124,7 +124,7 @@ body {
   margin-right: 8px;
   float: left;
   justify-content: center;
-  font-size: clamp(20px, 2vw, 50px);
+  font-size: clamp(20px, 2vh, 50px);
   display: flex;
   background: linear-gradient(to bottom right, palegoldenrod, gold);
   -webkit-background-clip: text;
