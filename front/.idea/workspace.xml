@@ -5,15 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0f975771-0adf-4ea3-ad44-985559725495" name="변경" comment="">
-      <change afterPath="$PROJECT_DIR$/src/app/google/page.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/kakao/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../back/src/main/java/com/demo/library/security/config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/../back/src/main/java/com/demo/library/security/config/SecurityConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../back/src/main/java/com/demo/library/security/controller/AuthController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../back/src/main/java/com/demo/library/security/controller/AuthController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/api/google/route.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/api/kakao/route.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/auth/[...nextauth]/route.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/globals.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/globals.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/log-in/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/log-in/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/google/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/google/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/kakao/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/kakao/page.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,8 +20,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="JavaScript File" />
-        <option value="TypeScript File" />
         <option value="TypeScript JSX File" />
+        <option value="TypeScript File" />
       </list>
     </option>
   </component>
@@ -54,7 +50,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/Users/owner/Desktop/library project/front",
+    "last_opened_file_path": "C:/Users/owner/Desktop/library project/back",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -67,18 +63,18 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\owner\Desktop\library project\front\src\app\api\google" />
       <recent name="C:\Users\owner\Desktop\library project\front\src\app\redux" />
       <recent name="C:\Users\owner\Desktop\library project\front\src\public" />
       <recent name="C:\Users\owner\Desktop\library project\front\src\app" />
       <recent name="C:\Users\owner\Desktop\library project\front\src\app\sign-in" />
-      <recent name="C:\Users\owner\Desktop\library project\front\src\app\search" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\owner\Desktop\library project\front\src\app\api\kakao" />
       <recent name="C:\Users\owner\Desktop\library project\front\src\app" />
       <recent name="C:\Users\owner\Desktop\library project\front\src\api\kakao" />
       <recent name="C:\Users\owner\Desktop\library project\front\src\app\log-in" />
       <recent name="C:\Users\owner\Desktop\library project\front" />
-      <recent name="C:\Users\owner\Desktop\library project\front\server" />
     </key>
   </component>
   <component name="RunManager">
@@ -125,6 +121,9 @@
       <workItem from="1707901627472" duration="979000" />
       <workItem from="1707902633416" duration="15695000" />
       <workItem from="1708054797107" duration="43884000" />
+      <workItem from="1708215396305" duration="13844000" />
+      <workItem from="1708306228297" duration="624000" />
+      <workItem from="1708312967599" duration="15000" />
     </task>
     <servers />
   </component>
