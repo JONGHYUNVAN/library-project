@@ -82,7 +82,7 @@ public class AuthController {
 
         return new ResponseEntity<>("Token has been refreshed.", HttpStatus.OK);
     }
-    @GetMapping("/oauth2/kakao")
+    @GetMapping("/oauth2/kakao/code")
     public ResponseEntity<String> kakaoCallback(@RequestParam("code") String code, HttpServletResponse response) {
         String accessToken = kakaoAuthService.getAccessToken(code);
         KaKaoDto kaKaoDto = kakaoAuthService.getUserInfo(accessToken);
@@ -95,9 +95,31 @@ public class AuthController {
         return new ResponseEntity<>("Kakao Authentication succeeded", headers, HttpStatus.OK);
     }
 
-    @GetMapping("/oauth2/google")
+    @GetMapping("/oauth2/kakao/token")
+    public ResponseEntity<String> kakaoGetInfo(@RequestHeader("Authorization") String accessToken, HttpServletResponse response) {
+        KaKaoDto kaKaoDto = kakaoAuthService.getUserInfo(accessToken);
+        User user = kakaoAuthService.authenticateUser(kaKaoDto);
+        HttpHeaders headers = new HttpHeaders();
+        headers.add("Authorization", "Bearer " + kakaoJWTService.generateAccessToken(user));
+
+        jwtTokenizer.setAsCookie(kakaoJWTService.generateRefreshToken(user),response);
+
+        return new ResponseEntity<>("Kakao Authentication succeeded", headers, HttpStatus.OK);
+    }
+    @GetMapping("/oauth2/google/code")
     public ResponseEntity<String> googleCallback(@RequestParam("code") String code, HttpServletResponse response) {
         String accessToken = googleAuthService.getAccessToken(code);
+        GoogleDto googleDto = googleAuthService.getUserInfo(accessToken);
+        User user = googleAuthService.authenticateUser(googleDto);
+        HttpHeaders headers = new HttpHeaders();
+        headers.add("Authorization", "Bearer " + googleJWTService.generateAccessToken(user));
+
+        jwtTokenizer.setAsCookie(googleJWTService.generateRefreshToken(user),response);
+
+        return new ResponseEntity<>("Google Authentication succeeded", headers, HttpStatus.OK);
+    }
+    @GetMapping("/oauth2/google/token")
+    public ResponseEntity<String> googleGetInfo(@RequestHeader("Authorization") String accessToken, HttpServletResponse response) {
         GoogleDto googleDto = googleAuthService.getUserInfo(accessToken);
         User user = googleAuthService.authenticateUser(googleDto);
         HttpHeaders headers = new HttpHeaders();
