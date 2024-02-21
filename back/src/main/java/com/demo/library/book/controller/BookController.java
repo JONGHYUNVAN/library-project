@@ -9,6 +9,8 @@ import com.demo.library.book.service.BookService;
 import com.demo.library.response.ResponseCreator;
 import com.demo.library.response.dto.ListResponseDto;
 import com.demo.library.response.dto.SingleResponseDto;
+import com.demo.library.security.jwt.jwtservice.JWTService;
+import com.demo.library.user.service.UserService;
 import com.demo.library.utils.UriCreator;
 
 
@@ -17,13 +19,19 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import java.net.URI;
+import java.security.Principal;
 import java.util.List;
+import java.util.Optional;
 
 
 @RestController
@@ -34,6 +42,8 @@ public class BookController {
     private final static String BOOKS_DEFAULT_URL = "/books";
     private final BookService service;
     private final BookMapper mapper;
+    private final UserService userService;
+    private final JWTService jwtService;
 
     @PostMapping
     public ResponseEntity<Void> create(@Valid @RequestBody BookDto.Post postDto) {
@@ -69,10 +79,13 @@ public class BookController {
 
     @GetMapping("/{book-id}")
     public ResponseEntity<SingleResponseDto<BookDto.Response>>
-                                    get(@PathVariable("book-id") Long Id) {
+                                    get(@PathVariable("book-id") Long Id, HttpServletRequest request) {
 
         BookEntity book = service.getBook(Id);
         BookDto.Response responseDto = mapper.bookToResponse(book);
+
+        Optional.ofNullable(request.getHeader("Authorization"))
+                .ifPresent(token -> userService.updateUserGenre(jwtService.getEmail(token), book.getGenre()));
 
         return ResponseCreator.single(responseDto);
     }

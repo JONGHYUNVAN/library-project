@@ -2,6 +2,10 @@ package com.demo.library.user.service;
 
 
 import com.demo.library.exception.BusinessLogicException;
+import com.demo.library.genre.entity.Genre;
+import com.demo.library.genre.entity.UserGenre;
+import com.demo.library.genre.repository.UserGenreRepository;
+import com.demo.library.security.jwt.jwtservice.JWTService;
 import com.demo.library.security.utils.AuthorityUtils;
 import com.demo.library.user.dto.UserDto;
 import com.demo.library.user.entity.User;
@@ -33,6 +37,8 @@ public class UserService {
     private final EntityUpdater<User> entityUpdater;
     private final PasswordEncoder passwordEncoder;
     private final AuthorityUtils authorityUtils;
+    private final UserGenreRepository userGenreRepository;
+
 
 
 
@@ -116,5 +122,14 @@ public class UserService {
         Optional<User> optionalUser = repository.findByEmail(email);
         return optionalUser.orElseThrow(() ->
                 new BusinessLogicException(INVALID_USER_EMAIL));
+    }
+
+    public void updateUserGenre(String email, Genre genre) {
+        User user = findByEmail(email);
+        UserGenre userGenre = userGenreRepository.findAllByUserAndGenre(user, genre)
+                .orElseGet(() -> userGenreRepository.save(new UserGenre(user, genre, 0L, 0L)));
+
+        userGenre.setSearched(userGenre.getSearched() + 1L);
+        userGenreRepository.save(userGenre);
     }
 }

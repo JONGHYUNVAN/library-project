@@ -68,16 +68,25 @@ export default function Layout({
 
             <div style={{ display: 'flex', justifyContent: 'flex-end', background:'transparent', maxHeight: '50px', marginTop: '0.5vh' }}>
                 {loggedIn === "In" ? (
-                    <div className="navbar-button-holder">
-                        <button onClick={() => {
-                            handleLogout();
-                            dispatch(logOut());
-                        }}
-                                className="navbar-right-side-button"
-                                style={{fontFamily:'Pacifico, cursive', border: 'none'}}>
-                            Logout
-                        </button>
-                    </div>
+                    <>
+                        <div className="navbar-button-holder">
+                            <Link href={{ pathname: '/my' }}
+                                  className="navbar-right-side-button"
+                                  style={{fontFamily:'Pacifico, cursive'}}>
+                                My
+                            </Link>
+                        </div>
+                        <div className="navbar-button-holder">
+                            <button onClick={() => {
+                                handleLogout();
+                                dispatch(logOut());
+                            }}
+                                    className="navbar-right-side-button"
+                                    style={{fontFamily:'Pacifico, cursive', border: 'none'}}>
+                                Logout
+                            </button>
+                        </div>
+                    </>
                 ) : (
                     <>
                         <div className="navbar-button-holder">

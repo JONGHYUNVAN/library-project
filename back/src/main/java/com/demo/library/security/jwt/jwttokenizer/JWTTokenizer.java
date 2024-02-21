@@ -3,9 +3,7 @@ package com.demo.library.security.jwt.jwttokenizer;
 import com.demo.library.security.entity.RefreshToken;
 import com.demo.library.security.repository.RefreshTokenRepository;
 import com.demo.library.user.entity.User;
-import io.jsonwebtoken.Claims;
-import io.jsonwebtoken.Jws;
-import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.*;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.io.Encoders;
 import io.jsonwebtoken.security.Keys;
@@ -97,6 +95,10 @@ public class JWTTokenizer {
         Date expiration = calendar.getTime();
 
         return expiration;
+    }
+    public String getSubjectFromPayload(String payload){
+        Jwt<Header, Claims> headerClaimsJwt = Jwts.parserBuilder().build().parseClaimsJwt(payload);
+        return headerClaimsJwt.getBody().getSubject();
     }
 
     private Key getKeyFromBase64EncodedKey(String base64EncodedSecretKey) {

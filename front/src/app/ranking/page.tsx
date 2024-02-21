@@ -23,14 +23,10 @@ export default function List() {
         axios.get(`${process.env.NEXT_PUBLIC_API_URL}/books/`)
             .then((response) => {
                 const dataArray = response.data.data;
-                const books = dataArray.map((item: { id: string; title: string; imageURL: string, publisher: string, author : string, status : string, libraryName : string}) => ({
+                const books = dataArray.map((item: { id: string; title: string; imageURL: string}) => ({
                     id: item.id,
                     title: item.title,
                     imageURL: item.imageURL,
-                    publisher:  item.publisher,
-                    author: item.author,
-                    status: item.status,
-                    libraryName: item.libraryName
                 }));
                 setBooks(books);
             })
@@ -117,8 +113,8 @@ export default function List() {
 
     return (
         <div>
-            <div className="smallTitle">
-                <h4>Ranked In TOP 10</h4>
+            <div className="container" style={{marginTop: '10vh', marginBottom: '5vh'}}>
+                <div className="smallTitle">Ranked In TOP 10</div>
             </div>
 
             <div className="book-container">

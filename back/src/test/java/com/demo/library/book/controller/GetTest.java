@@ -27,31 +27,7 @@ public class GetTest {
     private BookRepository bookRepository;
     @Autowired
     private LibraryRepository libraryRepository;
-    @BeforeEach
-    void  setup() {
-        Library existingLibrary = Library.builder()
-                .id(1L)
-                .name("중앙도서관")
-                .address("existingAddress")
-                .openTime("9:30")
-                .closeTime("17:30")
 
-
-                .build();
-
-        libraryRepository.save(existingLibrary);
-       BookEntity setupBook = BookEntity.builder()
-                .id(1L)
-                .title("앵무새 죽이기")
-                .publisher("Sunset Books")
-                .author("Harper Lee")
-                .status(BookEntity.Status.ON_LOAN)
-                .library(existingLibrary)
-                .build();
-
-        bookRepository.save(setupBook);
-
-    }
 
     @Test
     public void testGetBooksByKeyword() throws Exception {

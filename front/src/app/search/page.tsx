@@ -11,7 +11,6 @@ export default function Search() {
     const [input, setInput] = useState("");
     const [selectedBook, setSelectedBook] = useState<Book | null>(null);
     const params = useSearchParams();
-    // @ts-ignore
     const id = params.get('id');
     const [message, setMessage] = useState("Type here");
 
@@ -23,6 +22,7 @@ export default function Search() {
         author : string;
         status : string;
         libraryName : string;
+        genreName : string;
     }
     const [books, setBooks] = useState<Book[]>([]);
     useEffect(() => {
@@ -56,19 +56,24 @@ export default function Search() {
     const handleMouseUp = () => {
         setIsClicked(false);
     };
+    const handleFormSubmit = (event: React.FormEvent) => {
+        event.preventDefault();
+        handleButtonClick();
+    };
     const handleButtonClick = async () => {
 
         try {
             const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/books/${url}/${input}`)
             const dataArray = response.data.data;
-            const books = dataArray.map((item: { id: string; title: string; imageURL: string, publisher: string, author : string, status : string, libraryName : string}) => ({
+            const books = dataArray.map((item: { id: string; title: string; imageURL: string, publisher: string, author : string, status : string, libraryName : string, genreName : string}) => ({
                 id: item.id,
                 title: item.title,
                 imageURL: item.imageURL,
                 publisher:  item.publisher,
                 author: item.author,
                 status: item.status,
-                libraryName: item.libraryName
+                libraryName: item.libraryName,
+                genreName: item.genreName
             }));
             setBooks(books);
         }
@@ -123,10 +128,13 @@ export default function Search() {
                 </div>
                 <div className="search"
                      style={{float:'left',marginRight: '30px',marginTop: '42px'}}>
-                    <input type="text"
-                           placeholder={message}
-                           style={{ width: '35vw', height: '2.5vw',fontSize: '2vw' }}
-                           onChange={handleInputChange} />
+                    <form onSubmit={handleFormSubmit}>
+                        <input type="text"
+                               placeholder={message}
+                               style={{ width: '35vw', height: '2.5vw',fontSize: '2vw' }}
+                               onChange={handleInputChange} />
+                    </form>
+
                 </div>
             </div>
             <img src="/search.gif" alt="image"
@@ -146,6 +154,7 @@ export default function Search() {
                         <img src={selectedBook.imageURL} alt={selectedBook.title} className="book-image-big"/>
                         <div className="searchInfo">
                             <h2 >{selectedBook.title }</h2>
+                            <p>장르: {selectedBook.genreName}</p>
                             <p>저자: {selectedBook.author}</p>
                             <p>출판사: {selectedBook.publisher}</p>
                             <p>상태: {selectedBook.status}</p>

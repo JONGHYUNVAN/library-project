@@ -22,7 +22,7 @@ body {
 
 }
 .smallTitle {
-  font-size: clamp(50px, 10vw, 150px);
+  font-size: clamp(50px, 10vw, 100px);
   text-align: center;
   color: whitesmoke;
   margin-top: -7vh;
@@ -68,6 +68,8 @@ body {
 .book-image {
   width: 15vw;
   height: 20vw;
+  max-width: 300px;
+  max-height: 400px;
 }
 .book-image-big {
   margin-left: 11vw;
