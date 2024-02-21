@@ -128,15 +128,14 @@ public class JWTTokenizer {
                 RefreshToken.builder().user(user).token(newToken).expiryDateTime(expiryDateTime).build()
         );
 
-
         return newToken;
     }
     public void setAsCookie(String refreshToken, HttpServletResponse response) {
         Cookie cookie = new Cookie("refreshToken", refreshToken);
         cookie.setHttpOnly(true);
-//        cookie.setSecure(true);
-//        cookie.setPath("/auth/");
-//        cookie.setMaxAge(60 * 60 * 24);
+        cookie.setSecure(true);
+        cookie.setPath("/");
+        cookie.setMaxAge(60 * 60 * 24);
         response.addCookie(cookie);
     }
 }
