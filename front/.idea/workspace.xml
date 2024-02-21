@@ -5,31 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0f975771-0adf-4ea3-ad44-985559725495" name="변경" comment="">
-      <change afterPath="$PROJECT_DIR$/../back/src/main/java/com/demo/library/genre/entity/Genre.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../back/src/main/java/com/demo/library/genre/entity/UserGenre.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../back/src/main/java/com/demo/library/genre/repository/GenreJPARepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../back/src/main/java/com/demo/library/genre/repository/GenreRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../back/src/main/java/com/demo/library/genre/repository/UserGenreJPARepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../back/src/main/java/com/demo/library/genre/repository/UserGenreRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../back/src/test/java/com/demo/library/jwt/JwtTokenizerTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../back/src/main/java/com/demo/library/book/controller/BookController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../back/src/main/java/com/demo/library/book/controller/BookController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../back/src/main/java/com/demo/library/book/dto/BookDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/../back/src/main/java/com/demo/library/book/dto/BookDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../back/src/main/java/com/demo/library/book/entity/BookEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../back/src/main/java/com/demo/library/book/entity/BookEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../back/src/main/java/com/demo/library/book/mapper/BookMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/../back/src/main/java/com/demo/library/book/mapper/BookMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../back/src/main/java/com/demo/library/dbController/SampleInserter/SampleInserter.java" beforeDir="false" afterPath="$PROJECT_DIR$/../back/src/main/java/com/demo/library/dbController/SampleInserter/SampleInserter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../back/src/main/java/com/demo/library/security/jwt/jwtservice/JWTService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../back/src/main/java/com/demo/library/security/jwt/jwtservice/JWTService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../back/src/main/java/com/demo/library/security/jwt/jwttokenizer/JWTTokenizer.java" beforeDir="false" afterPath="$PROJECT_DIR$/../back/src/main/java/com/demo/library/security/jwt/jwttokenizer/JWTTokenizer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../back/src/main/java/com/demo/library/user/entity/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/../back/src/main/java/com/demo/library/user/entity/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../back/src/main/java/com/demo/library/user/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../back/src/main/java/com/demo/library/user/service/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../back/src/test/java/com/demo/library/book/controller/GetTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../back/src/test/java/com/demo/library/book/controller/GetTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../back/src/main/java/com/demo/library/security/filter/JwtVerificationFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/../back/src/main/java/com/demo/library/security/filter/JwtVerificationFilter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/globals.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/globals.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/log-in/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/log-in/layout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/ranking/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/ranking/layout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/ranking/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/ranking/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/search/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/search/layout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/search/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/search/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/sign-up/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/sign-up/layout.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

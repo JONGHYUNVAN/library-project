@@ -21,7 +21,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.context.SecurityContext;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -79,13 +80,14 @@ public class BookController {
 
     @GetMapping("/{book-id}")
     public ResponseEntity<SingleResponseDto<BookDto.Response>>
-                                    get(@PathVariable("book-id") Long Id, HttpServletRequest request) {
+                                    get(@PathVariable("book-id") Long Id) {
 
         BookEntity book = service.getBook(Id);
         BookDto.Response responseDto = mapper.bookToResponse(book);
 
-        Optional.ofNullable(request.getHeader("Authorization"))
-                .ifPresent(token -> userService.updateUserGenre(jwtService.getEmail(token), book.getGenre()));
+        Optional.ofNullable(SecurityContextHolder.getContext().getAuthentication())
+                .map(Authentication::getName)
+                .ifPresent(email -> userService.updateUserGenre(email, book.getGenre()));
 
         return ResponseCreator.single(responseDto);
     }
