@@ -422,3 +422,18 @@ body {
   box-shadow: 0 0 10px darkgoldenrod, 0 0 20px goldenrod, 0 0 30px gold, 0 0 40px palegoldenrod;
   background: linear-gradient(to bottom right,darkgoldenrod,palegoldenrod);
 }
+.myInfo{
+  width: 90vw;
+  height: 80vh;
+  display: block;
+  justify-content: flex-end;
+  margin-top:4vw;
+  margin-left:30px;
+  margin-right :30px;
+  font-size: 2vw;
+  border-radius: 8px;
+  padding: 20px;
+  background-color: rgba(120, 90, 30, 0.2);
+  box-shadow: 0px 0px 8px rgba(100, 70, 20, 1);
+  text-shadow: 2px 2px 2px goldenrod;
+}

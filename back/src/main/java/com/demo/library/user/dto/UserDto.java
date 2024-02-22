@@ -2,6 +2,7 @@ package com.demo.library.user.dto;
 
 
 
+import com.demo.library.genre.entity.UserGenre;
 import com.demo.library.loanNban.dto.LoanDto;
 import com.demo.library.utils.customValidator.notBlank.NotBlankValidation;
 import com.demo.library.utils.customValidator.pattern.gender.GenderValidation;
@@ -74,6 +75,36 @@ public class UserDto {
         private String phoneNumber;
         private String gender;
         private List<LoanDto.Response> loans;
+
+    }
+
+
+    @Getter
+    @Setter
+    @Builder
+    @NoArgsConstructor
+    @AllArgsConstructor
+    public static class My{
+
+        private Long id;
+        private String name;
+        private String email;
+        private String nickName;
+        private String phoneNumber;
+        private String gender;
+        private List<LoanDto.Response> loans;
+        private List<MyUserGenre> genres;
+
+    }
+    @Getter
+    @Setter
+    @Builder
+    @NoArgsConstructor
+    @AllArgsConstructor
+    public static class MyUserGenre{
+        private String name;
+        private Long searched;
+        private Long loaned;
 
     }
     @Getter

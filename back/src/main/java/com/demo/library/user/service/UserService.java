@@ -75,6 +75,11 @@ public class UserService {
         Optional<User> optionalUser = repository.findByPhoneNumber(request.getPhoneNumber());
         return optionalUser.orElseThrow(() -> new BusinessLogicException(USER_NOT_FOUND));
     }
+    public User findByEmail(String email){
+        Optional<User> optionalUser = repository.findByEmail(email);
+        return optionalUser.orElseThrow(() ->
+                new BusinessLogicException(INVALID_USER_EMAIL));
+    }
 
     public void delete(Long Id) {
         User verifiedUser = verifyById(Id);
@@ -117,11 +122,6 @@ public class UserService {
     public void ifLoaning (User user) {
         if(!user.getLoans().isEmpty())
             throw new BusinessLogicException(LOAN_EXISTS);
-    }
-    public User findByEmail(String email){
-        Optional<User> optionalUser = repository.findByEmail(email);
-        return optionalUser.orElseThrow(() ->
-                new BusinessLogicException(INVALID_USER_EMAIL));
     }
 
     public void updateUserGenre(String email, Genre genre) {

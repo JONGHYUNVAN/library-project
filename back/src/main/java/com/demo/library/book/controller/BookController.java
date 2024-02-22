@@ -1,39 +1,27 @@
 package com.demo.library.book.controller;
 
-
 import com.demo.library.book.dto.BookDto;
-
 import com.demo.library.book.entity.BookEntity;
 import com.demo.library.book.mapper.BookMapper;
 import com.demo.library.book.service.BookService;
 import com.demo.library.response.ResponseCreator;
 import com.demo.library.response.dto.ListResponseDto;
 import com.demo.library.response.dto.SingleResponseDto;
-import com.demo.library.security.jwt.jwtservice.JWTService;
+import com.demo.library.security.service.JWTAuthService;
 import com.demo.library.user.service.UserService;
 import com.demo.library.utils.UriCreator;
-
-
 import lombok.RequiredArgsConstructor;
-
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-
-
-import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import java.net.URI;
-import java.security.Principal;
 import java.util.List;
 import java.util.Optional;
-
 
 @RestController
 @RequestMapping("/books")
@@ -44,7 +32,7 @@ public class BookController {
     private final BookService service;
     private final BookMapper mapper;
     private final UserService userService;
-    private final JWTService jwtService;
+    private final JWTAuthService jwtAuthService;
 
     @PostMapping
     public ResponseEntity<Void> create(@Valid @RequestBody BookDto.Post postDto) {
@@ -55,7 +43,6 @@ public class BookController {
         URI location = UriCreator.createUri(BOOKS_DEFAULT_URL, book.getId());
         return ResponseCreator.created(location);
     }
-
     @PatchMapping
     public ResponseEntity<SingleResponseDto<BookDto.Response>>
                                 update(@Valid @RequestBody BookDto.Patch patchDto) {
@@ -77,7 +64,6 @@ public class BookController {
         List<BookDto.Image> responseDto = mapper.booksToImages(bookList);
         return ResponseCreator.list(responseDto);
     }
-
     @GetMapping("/{book-id}")
     public ResponseEntity<SingleResponseDto<BookDto.Response>>
                                     get(@PathVariable("book-id") Long Id) {
@@ -85,13 +71,11 @@ public class BookController {
         BookEntity book = service.getBook(Id);
         BookDto.Response responseDto = mapper.bookToResponse(book);
 
-        Optional.ofNullable(SecurityContextHolder.getContext().getAuthentication())
-                .map(Authentication::getName)
+        Optional.ofNullable(jwtAuthService.getEmail())
                 .ifPresent(email -> userService.updateUserGenre(email, book.getGenre()));
 
         return ResponseCreator.single(responseDto);
     }
-
     @GetMapping("/keyword/{keyword}")
     public ResponseEntity<ListResponseDto<BookDto.Response>>
                             getByKeyword(@PathVariable("keyword") String keyword, Pageable pageable) {
@@ -102,7 +86,6 @@ public class BookController {
         List<BookDto.Response> responseDto = mapper.booksToResponses(bookList);
         return ResponseCreator.list(responseDto);
     }
-
     @GetMapping("/author/{author}")
     public ResponseEntity<ListResponseDto<BookDto.Response>>
                                  getByAuthor(@PathVariable("author") String author, Pageable pageable) {
@@ -123,8 +106,6 @@ public class BookController {
         List<BookDto.Response> responseDto = mapper.booksToResponses(bookList);
         return ResponseCreator.list(responseDto);
     }
-
-
     @GetMapping("/logs/{id}")
     public ResponseEntity<ListResponseDto<String>> getBookLogs(@PathVariable("id") Long id) {
         BookEntity book = service.getBook(id);
@@ -132,7 +113,6 @@ public class BookController {
 
         return ResponseCreator.list(logs);
     }
-
     @DeleteMapping("/{book-id}")
     public ResponseEntity<Void> delete(@PathVariable("book-id") Long Id) {
 

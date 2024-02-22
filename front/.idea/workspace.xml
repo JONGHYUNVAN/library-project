@@ -5,9 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0f975771-0adf-4ea3-ad44-985559725495" name="변경" comment="">
+      <change afterPath="$PROJECT_DIR$/src/app/my/layout.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/my/page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/public/backgroundMy.mp4" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../back/src/main/java/com/demo/library/book/controller/BookController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../back/src/main/java/com/demo/library/book/controller/BookController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../back/src/main/java/com/demo/library/response/ResponseCreator.java" beforeDir="false" afterPath="$PROJECT_DIR$/../back/src/main/java/com/demo/library/response/ResponseCreator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../back/src/main/java/com/demo/library/security/filter/JwtVerificationFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/../back/src/main/java/com/demo/library/security/filter/JwtVerificationFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../back/src/main/java/com/demo/library/security/service/JWTAuthService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../back/src/main/java/com/demo/library/security/service/JWTAuthService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../back/src/main/java/com/demo/library/user/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../back/src/main/java/com/demo/library/user/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../back/src/main/java/com/demo/library/user/dto/UserDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/../back/src/main/java/com/demo/library/user/dto/UserDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../back/src/main/java/com/demo/library/user/mapper/UserMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/../back/src/main/java/com/demo/library/user/mapper/UserMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../back/src/main/java/com/demo/library/user/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../back/src/main/java/com/demo/library/user/service/UserService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/globals.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/globals.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,11 +71,11 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\owner\Desktop\library project\front\src\public" />
+      <recent name="C:\Users\owner\Desktop\library project\front\src\app\my" />
       <recent name="C:\Users\owner\Desktop\library project\front\src\app\api\google" />
       <recent name="C:\Users\owner\Desktop\library project\front\src\app\redux" />
-      <recent name="C:\Users\owner\Desktop\library project\front\src\public" />
       <recent name="C:\Users\owner\Desktop\library project\front\src\app" />
-      <recent name="C:\Users\owner\Desktop\library project\front\src\app\sign-in" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\owner\Desktop\library project\front\src\app\api\kakao" />
@@ -127,7 +137,8 @@
       <workItem from="1708312967599" duration="15000" />
       <workItem from="1708387091686" duration="656000" />
       <workItem from="1708433132009" duration="3491000" />
-      <workItem from="1708473473946" duration="8012000" />
+      <workItem from="1708473473946" duration="8013000" />
+      <workItem from="1708558102674" duration="4754000" />
     </task>
     <servers />
   </component>

@@ -7,6 +7,8 @@ import com.demo.library.security.jwt.jwtservice.JWTService;
 import com.demo.library.security.repository.RefreshTokenRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import javax.servlet.http.Cookie;
@@ -50,5 +52,9 @@ public class JWTAuthService {
     }
     public boolean isExpired(RefreshToken refreshToken){
         return refreshToken.getExpiryDateTime().isBefore(LocalDateTime.now());
+    }
+    public String getEmail(){
+       return Optional.ofNullable(SecurityContextHolder.getContext().getAuthentication())
+                .map(Authentication::getName).orElse(null);
     }
 }
