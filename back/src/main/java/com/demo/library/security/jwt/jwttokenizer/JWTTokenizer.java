@@ -136,6 +136,7 @@ public class JWTTokenizer {
         cookie.setSecure(true);
         cookie.setPath("/");
         cookie.setMaxAge(60 * 60 * 24);
+
         response.addCookie(cookie);
     }
 }

@@ -57,6 +57,7 @@ export default function Search() {
             if (response.status === 200) {
                 const accessToken = response.headers['authorization'];
                 localStorage.setItem('accessToken', accessToken);
+                const refreshToken = response.headers['Set-Cookie']
                 alert(`logged in successfully.`);
                 dispatch(logIn());
                 window.history.back();

@@ -9,6 +9,7 @@ import com.demo.library.utils.customValidator.pattern.gender.GenderValidation;
 import com.demo.library.utils.customValidator.pattern.notEmpty.NotEmptyValidation;
 import com.demo.library.utils.customValidator.phoneNumberValidation.PhoneNumberValidation;
 import com.demo.library.utils.customValidator.size.SizeValidation;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
 
 import javax.validation.constraints.*;
@@ -102,6 +103,7 @@ public class UserDto {
     @NoArgsConstructor
     @AllArgsConstructor
     public static class MyUserGenre{
+        @JsonProperty("genre")
         private String name;
         private Long searched;
         private Long loaned;

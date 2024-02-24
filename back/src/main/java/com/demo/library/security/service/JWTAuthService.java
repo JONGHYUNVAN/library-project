@@ -55,6 +55,8 @@ public class JWTAuthService {
     }
     public String getEmail(){
        return Optional.ofNullable(SecurityContextHolder.getContext().getAuthentication())
-                .map(Authentication::getName).orElse(null);
+                .map(Authentication::getName)
+               .filter(auth -> !auth.equals("anonymousUser"))
+               .orElse(null);
     }
 }

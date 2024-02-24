@@ -5,7 +5,9 @@ import com.demo.library.book.repository.BookJPARepository;
 import com.demo.library.book.repository.BookRepository;
 import com.demo.library.book.service.BookService;
 import com.demo.library.genre.entity.Genre;
+import com.demo.library.genre.entity.UserGenre;
 import com.demo.library.genre.repository.GenreRepository;
+import com.demo.library.genre.repository.UserGenreRepository;
 import com.demo.library.library.entity.Library;
 import com.demo.library.library.repository.LibraryRepository;
 import com.demo.library.user.entity.User;
@@ -15,6 +17,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
+import java.util.Random;
+
 
 import java.util.*;
 
@@ -26,6 +30,7 @@ public class SampleInserter implements CommandLineRunner {
     private final UserService userService;
     private final UserRepository userRepository;
     private final GenreRepository genreRepository;
+    private final UserGenreRepository userGenreRepository;
     @Value("${mail.address.admin}")
     private String adminMailAddress;
     @Value("${password.address.admin}")
@@ -100,6 +105,14 @@ public class SampleInserter implements CommandLineRunner {
                     });
 
             genreRepository.saveAll(genreList);
+            List<UserGenre> userGenres = List.of(
+                    createUserGenre(1L,user,literatureArt),
+                    createUserGenre(2L,user,scienceTechnology),
+                    createUserGenre(3L,user,societyPolitics),
+                    createUserGenre(4L,user,economyBusiness),
+                    createUserGenre(5L,user,selfImprovementLife)
+            );
+            userGenreRepository.saveAll(userGenres);
         }
 
     }
@@ -148,6 +161,17 @@ public class SampleInserter implements CommandLineRunner {
         return Genre.builder()
                 .id(id)
                 .name(name)
+                .build();
+    }
+    public UserGenre createUserGenre(Long id,User user, Genre genre){
+        Random rand = new Random();
+        return UserGenre.builder()
+                .id(id)
+                .user(user)
+                .genre(genre)
+                .searched(rand.nextLong(30) + 1)
+                .loaned(rand.nextLong(30) + 1)
+
                 .build();
     }
 

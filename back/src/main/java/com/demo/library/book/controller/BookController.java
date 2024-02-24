@@ -14,8 +14,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
@@ -72,18 +70,17 @@ public class BookController {
         BookDto.Response responseDto = mapper.bookToResponse(book);
 
         Optional.ofNullable(jwtAuthService.getEmail())
-                .ifPresent(email -> userService.updateUserGenre(email, book.getGenre()));
+                .ifPresent(email -> userService.updateUserGenreSearch(email, book.getGenre()));
 
         return ResponseCreator.single(responseDto);
     }
     @GetMapping("/keyword/{keyword}")
-    public ResponseEntity<ListResponseDto<BookDto.Response>>
+    public ResponseEntity<ListResponseDto<BookDto.Image>>
                             getByKeyword(@PathVariable("keyword") String keyword, Pageable pageable) {
-
         Page<BookEntity> bookPage = service.getBooksByKeyword(keyword,pageable);
         List<BookEntity> bookList = bookPage.getContent();
 
-        List<BookDto.Response> responseDto = mapper.booksToResponses(bookList);
+        List<BookDto.Image> responseDto = mapper.booksToImages(bookList);
         return ResponseCreator.list(responseDto);
     }
     @GetMapping("/author/{author}")

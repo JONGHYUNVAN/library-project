@@ -5,7 +5,6 @@ import com.demo.library.exception.BusinessLogicException;
 import com.demo.library.genre.entity.Genre;
 import com.demo.library.genre.entity.UserGenre;
 import com.demo.library.genre.repository.UserGenreRepository;
-import com.demo.library.security.jwt.jwtservice.JWTService;
 import com.demo.library.security.utils.AuthorityUtils;
 import com.demo.library.user.dto.UserDto;
 import com.demo.library.user.entity.User;
@@ -18,12 +17,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 
-import java.lang.reflect.Field;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
 import java.util.List;
 import java.util.Optional;
-import java.util.function.Consumer;
 
 import static com.demo.library.exception.ExceptionCode.*;
 import static com.demo.library.user.entity.User.Status.ACTIVE;
@@ -124,12 +119,20 @@ public class UserService {
             throw new BusinessLogicException(LOAN_EXISTS);
     }
 
-    public void updateUserGenre(String email, Genre genre) {
+    public void updateUserGenreSearch(String email, Genre genre) {
         User user = findByEmail(email);
         UserGenre userGenre = userGenreRepository.findAllByUserAndGenre(user, genre)
                 .orElseGet(() -> userGenreRepository.save(new UserGenre(user, genre, 0L, 0L)));
 
         userGenre.setSearched(userGenre.getSearched() + 1L);
+        userGenreRepository.save(userGenre);
+    }
+
+    public void updateUserGenreLoan(User user, Genre genre) {
+        UserGenre userGenre = userGenreRepository.findAllByUserAndGenre(user, genre)
+                .orElseGet(() -> userGenreRepository.save(new UserGenre(user, genre, 0L, 0L)));
+
+        userGenre.setLoaned(userGenre.getLoaned() + 1L);
         userGenreRepository.save(userGenre);
     }
 }

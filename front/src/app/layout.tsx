@@ -1,4 +1,3 @@
-'use client'
 import { Providers } from "@/redux/provider";
 import './globals.css'
 import React from 'react';

@@ -18,9 +18,8 @@ public class LoanMapper {
     public final LoanRepository repository;
     private final UserService userService;
     private final BookService bookService;
-    public Loan postToLoan(LoanDto.Post post) {
+    public Loan postToLoan(LoanDto.Post post,User user) {
 
-        User user = userService.verifyById(post.getUserId());
         BookEntity book = bookService.verifyById(post.getBookId());
 
         return  Loan.builder()

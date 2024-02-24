@@ -39,5 +39,4 @@ export default function GoogleLogin() {
                 console.error('토큰 요청 실패', error);
             });
     }, []);
-  //  return <>code: {code} token: {JSON.stringify(googleToken)} accessToken:{accessToken}</>
 }

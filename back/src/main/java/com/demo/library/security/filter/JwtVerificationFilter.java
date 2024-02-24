@@ -1,12 +1,15 @@
 package com.demo.library.security.filter;
 
 
+import com.demo.library.exception.BusinessLogicException;
+import com.demo.library.exception.ExceptionCode;
 import com.demo.library.security.jwt.jwttokenizer.JWTTokenizer;
 import com.demo.library.security.utils.AuthorityUtils;
 import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.security.SignatureException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
@@ -27,6 +30,7 @@ public class JwtVerificationFilter extends OncePerRequestFilter {
     private final AuthorityUtils authorityUtils;
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
+        boolean isEe = false;
         try {
             Map<String, Object> claims = verifyJws(request);
             setAuthenticationToContext(claims);
@@ -34,6 +38,7 @@ public class JwtVerificationFilter extends OncePerRequestFilter {
             request.setAttribute("exception", se);
         } catch (ExpiredJwtException ee) {
             request.setAttribute("exception", ee);
+
         } catch (Exception e) {
             request.setAttribute("exception", e);
         }

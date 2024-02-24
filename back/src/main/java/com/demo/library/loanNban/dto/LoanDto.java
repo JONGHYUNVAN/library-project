@@ -11,7 +11,6 @@ public class LoanDto {
     @NoArgsConstructor
     @AllArgsConstructor
     public static class Post {
-        private Long userId;
         private Long bookId;
 
     }

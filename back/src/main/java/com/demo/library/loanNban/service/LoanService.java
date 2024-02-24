@@ -11,7 +11,6 @@ import com.demo.library.utils.timeConverter.LocalDateTimeConverter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.awt.print.Book;
 import java.time.LocalDateTime;
 import java.util.*;
 import java.util.Optional;
@@ -36,6 +35,8 @@ public class LoanService {
 
         bookService.loanBook(book);
         loan.setDueDate(LocalDateTime.now().plusDays(7));
+
+        userService.updateUserGenreLoan(user,book.getGenre());
 
         return repository.save(loan);
     }

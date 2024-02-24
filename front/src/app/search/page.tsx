@@ -2,6 +2,8 @@
 import React, {useEffect, useState} from "react";
 import axios from 'axios';
 import { useSearchParams } from "next/navigation";
+import 'react-tooltip/dist/react-tooltip.css'
+import { Tooltip } from 'react-tooltip'
 
 
 export default function Search() {
@@ -11,7 +13,7 @@ export default function Search() {
     const [input, setInput] = useState("");
     const [selectedBook, setSelectedBook] = useState<Book | null>(null);
     const params = useSearchParams();
-    const id = params.get('id');
+    const [id, setId] = useState<string | null>(params.get('id'));
     const [message, setMessage] = useState("Type here");
 
     interface Book {
@@ -28,13 +30,23 @@ export default function Search() {
     useEffect(() => {
         async function fetchData() {
             if(id) {
-                const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/books/${id}`);
+                const token = localStorage.getItem('accessToken');
+                let config = {};
+
+                if (token) {
+                    config = {
+                        headers: {
+                            'Authorization': `Bearer ${token}`
+                        }
+                    }
+                }
+                const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/books/${id}`,config);
                 setSelectedBook(response.data.data);
                 setMessage(response.data.data.title);
             }
         }
         fetchData();
-    }, [])
+    }, [id])
     const handleTitleClick = () => {
         setStr("TITLE");
         setUrl("keyword")
@@ -63,17 +75,13 @@ export default function Search() {
     const handleButtonClick = async () => {
 
         try {
-            const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/books/${url}/${input}`)
+
+            const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/books/${url}/${input}`);
             const dataArray = response.data.data;
-            const books = dataArray.map((item: { id: string; title: string; imageURL: string, publisher: string, author : string, status : string, libraryName : string, genreName : string}) => ({
+            const books = dataArray.map((item: { id: string; title: string; imageURL: string}) => ({
                 id: item.id,
                 title: item.title,
-                imageURL: item.imageURL,
-                publisher:  item.publisher,
-                author: item.author,
-                status: item.status,
-                libraryName: item.libraryName,
-                genreName: item.genreName
+                imageURL:item.imageURL
             }));
             setBooks(books);
         }
@@ -84,9 +92,14 @@ export default function Search() {
     const handleInputChange = (event:React.ChangeEvent<HTMLInputElement>) => {
         setInput(event.target.value);
     };
-    const handleTextClick = (book:Book) => {
-        setSelectedBook(book);
-    }
+    const handleTextClick = (event: React.MouseEvent<HTMLDivElement>, book: Book) => {
+        if(book.id !== id) {
+            setSelectedBook(book);
+            setId(book.id);
+            (event.currentTarget as HTMLElement).classList.add('textClicked');
+        }
+    };
+
     return (
         <div>
 
@@ -143,11 +156,22 @@ export default function Search() {
                  onMouseDown={handleMouseDown}
                  onMouseUp={handleMouseUp}
                  onMouseLeave={handleMouseUp}/>
+
             <div className="searchResult">
                 {books.map((book, index) => (
-                    <div key={index} className="searchResultText" onClick={() => handleTextClick(book)}>{book.title}</div>
+                    <div  key={index} className="searchResultsText"  onClick={((event) => handleTextClick(event,book))}>
+                       <a id={`book-${index}` } className ="searchResultText">{book.title}</a>
+                        <Tooltip
+                            place={"left"}
+                            anchorSelect={`#book-${index}`}
+                            //@ts-ignore
+                            content={<img src={book.imageURL} alt={book.title} style={{ width: '8vw', height: '10vw' }}/>}
+                        />
+                    </div>
+
                 ))}
             </div>
+
             <div className="bookDetail">
                 {selectedBook ? (
                     <div className="bookDetailContent">
