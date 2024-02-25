@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import {logIn} from "@/redux/features/authSlice";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
+import Image from 'next/image'
 
 
 export default function Search() {
@@ -110,15 +111,17 @@ export default function Search() {
                     style={{ background: `radial-gradient(circle 900px at ${coords.x}px ${coords.y}px, rgba(255,255,255,0.06), rgba(255,255,255,0))`,
                     }} />
                 <div>
-                    <img className="login-form" src="/loginForm.png" alt="image" />
+                    <Image className="login-form" src="/loginForm.png" alt="image"  width={1100} height={700} />
                 </div>
             </div>
 
-            <img src="/key.png" alt="image"
+            <Image src="/key.png" alt="image"
                  onClick={() => handleLogin(email, password)}
                  onMouseDown={handleMouseDown}
                  onMouseUp={handleMouseUp}
                  className={isClicked ? 'login-button clicked' : 'login-button'}
+                 width={80}
+                   height={80}
             />
             <input
                 type="text"
@@ -146,10 +149,10 @@ export default function Search() {
                 marginTop: '-250px'
             }}>
                 <button onClick={handleKakaoClick} style={{ border: 'none', background: 'transparent',zIndex: 1 }}>
-                    <img src="/kakaoLogin.png" alt="Kakao Login" style={{ width: '300px', height: '45px' ,zIndex: 10}} />
+                    <Image src="/kakaoLogin.png" alt="Kakao Login"  width={300}  height={45}style={{zIndex: 10}} />
                 </button>
                 <button onClick={handleGoogleClick} style={{ border: 'none', background: 'transparent',zIndex: 1 }}>
-                    <img src="/googleLogin.png" alt="image" style={{ width: '300px', height: '45px', zIndex: 1 }}/>
+                    <Image src="/googleLogin.png" alt="image"  width={300}  height={45}style={{zIndex: 10}}/>
                 </button>
             </div>
         </div>

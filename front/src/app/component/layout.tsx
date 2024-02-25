@@ -22,7 +22,7 @@ export default function SharedLayout({
         } else {
             dispatch(logOut());
         }
-    }, []);
+    }, [dispatch]);
 
     const handleLogout = async () => {
 

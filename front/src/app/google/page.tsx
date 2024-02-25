@@ -1,23 +1,21 @@
 'use client'
-import { useEffect, useState } from 'react';
+import { useEffect, useState, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation'
 import axios from 'axios';
 import {logIn} from "@/redux/features/authSlice";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 
-export default function GoogleLogin() {
+function GoogleLoginComponent() {
     const searchParams = useSearchParams()
     const code = searchParams.get('code')
     const loggedIn = useAppSelector((state) => state.authReducer.value);
     const dispatch = useAppDispatch();
     const [googleToken, setGoogleToken] = useState('');
     const [accessToken, setAccessToken] = useState('');
-    useEffect(() => {
         fetch(`/api/google?code=${code}`, {
             method: 'POST',
         })
             .then(response => response.json())
-
             .then(data => {
                 setGoogleToken(data.access_token);
                 axios
@@ -38,5 +36,13 @@ export default function GoogleLogin() {
             .catch((error) => {
                 console.error('토큰 요청 실패', error);
             });
-    }, []);
+    return null;
+}
+
+export default function GoogleLogin() {
+    return (
+        <Suspense fallback={<div>Loading...</div>}>
+            <GoogleLoginComponent />
+        </Suspense>
+    );
 }
