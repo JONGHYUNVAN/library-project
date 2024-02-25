@@ -2,6 +2,7 @@ package com.demo.library.response;
 
 import com.demo.library.response.dto.ListResponseDto;
 import com.demo.library.response.dto.SingleResponseDto;
+import com.demo.library.user.dto.UserDto;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;

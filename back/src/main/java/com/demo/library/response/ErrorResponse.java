@@ -3,6 +3,7 @@ package com.demo.library.response;
 import com.demo.library.exception.ExceptionCode;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.Setter;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.BindingResult;
 import javax.validation.ConstraintViolation;
@@ -11,6 +12,7 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 @Getter
+@Setter
 @AllArgsConstructor
 public class ErrorResponse {
 

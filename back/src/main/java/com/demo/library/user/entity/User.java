@@ -1,5 +1,7 @@
 package com.demo.library.user.entity;
 
+import com.demo.library.genre.entity.Genre;
+import com.demo.library.genre.entity.UserGenre;
 import com.demo.library.loanNban.entity.Ban;
 import com.demo.library.loanNban.entity.Loan;
 import javax.persistence.*;
@@ -54,6 +56,7 @@ public class User {
     private Status status;
     @Getter
     public enum Status{ACTIVE,DORMANT}
-
+    @OneToMany(mappedBy = "user")
+    private List<UserGenre> userGenres;
 }
 

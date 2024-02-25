@@ -5,6 +5,7 @@ import com.demo.library.security.jwt.jwttokenizer.JWTTokenizer;
 import com.demo.library.security.repository.RefreshTokenRepository;
 import com.demo.library.user.entity.User;
 import com.demo.library.user.service.UserService;
+import io.jsonwebtoken.*;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import org.springframework.stereotype.Service;
@@ -19,6 +20,12 @@ public class JWTService {
     private final JWTTokenizer jwtTokenizer;
     private final UserService userService;
     private final RefreshTokenRepository refreshTokenRepository;
+
+    public String getEmail(String token){
+        int i = token.lastIndexOf('.');
+        String payload = token.substring(7, i+1);
+        return jwtTokenizer.getSubjectFromPayload(payload);
+    }
     public String refreshAccessToken(String refreshToken) {
         String email = jwtTokenizer.getClaims(refreshToken, jwtTokenizer.encodeBase64SecretKey(jwtTokenizer.getSecretKey())).getBody().getSubject();
         User user = userService.findByEmail(email);

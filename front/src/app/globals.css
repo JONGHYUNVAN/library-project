@@ -22,7 +22,7 @@ body {
 
 }
 .smallTitle {
-  font-size: clamp(50px, 10vw, 150px);
+  font-size: clamp(50px, 10vw, 100px);
   text-align: center;
   color: whitesmoke;
   margin-top: -7vh;
@@ -68,6 +68,8 @@ body {
 .book-image {
   width: 15vw;
   height: 20vw;
+  max-width: 300px;
+  max-height: 400px;
 }
 .book-image-big {
   margin-left: 11vw;
@@ -288,9 +290,16 @@ body {
   border-radius: 2%;
   background-image: url("../public/paper.jpg");
 }
+
 .searchResultText{
   font-family: 'Nanum Pen Script', cursive;
   font-size: 3vw;
+}
+.textClicked{
+  background:darkgoldenrod;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: -1px -1px 0px gold;
 }
 .hidden {
   display: none;
@@ -419,4 +428,38 @@ body {
 .clicked {
   box-shadow: 0 0 10px darkgoldenrod, 0 0 20px goldenrod, 0 0 30px gold, 0 0 40px palegoldenrod;
   background: linear-gradient(to bottom right,darkgoldenrod,palegoldenrod);
+}
+.myInfo{
+  width: clamp(100px, 90vw, 1000px);
+  height: 80vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top:4vw;
+  margin-left: 30px;
+  margin-right :30px;
+  font-size: 2vw;
+  border-radius: 8px;
+  padding: 20px;
+  background-color: rgba(120, 90, 30, 0.2);
+  box-shadow: 0px 0px 8px rgba(100, 70, 20, 1);
+  text-shadow: 2px 2px 2px goldenrod;
+}
+.myInfoTextBox{
+  margin-top: -200px;
+  margin-bottom: 150px;
+  width: clamp(100px, 80vw, 800px);
+  height: clamp(80px, 30vh, 600px);
+  font-size: clamp(20px, 3vw, 40px);
+  background: linear-gradient(to bottom right, palegoldenrod, gold);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-family: 'Nanum Pen Script', cursive;
+
+}
+.radar{
+  width: clamp(100px, 80vw, 800px);
+  height: clamp(50px, 40vh, 400px);
+  border-radius: 8px;
+  background-color: rgba(120, 90, 30, 0.8);
 }

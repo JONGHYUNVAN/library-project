@@ -68,6 +68,7 @@ public class BookDto {
         private Long libraryId;
         private String libraryName;
         private String imageURL;
+        private String genreName;
 
     }
     @Getter

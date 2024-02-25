@@ -6,6 +6,9 @@ import com.demo.library.loanNban.mapper.LoanMapper;
 import com.demo.library.loanNban.service.LoanService;
 import com.demo.library.response.ResponseCreator;
 import com.demo.library.response.dto.SingleResponseDto;
+import com.demo.library.security.service.JWTAuthService;
+import com.demo.library.user.entity.User;
+import com.demo.library.user.service.UserService;
 import com.demo.library.utils.UriCreator;
 
 import lombok.RequiredArgsConstructor;
@@ -27,11 +30,13 @@ public class LoanController {
     private final static String LOAN_DEFAULT_URL = "/loans";
     private final LoanService service;
     private final LoanMapper mapper;
+    private final JWTAuthService jwtAuthService;
+    private final UserService userService;
 
     @PostMapping
     public ResponseEntity<Void> postLoan(@Valid @RequestBody LoanDto.Post post) {
-
-        Loan loan = mapper.postToLoan(post);
+        User user = userService.findByEmail(jwtAuthService.getEmail());
+        Loan loan = mapper.postToLoan(post,user);
         service.create(loan);
 
         URI location = UriCreator.createUri(LOAN_DEFAULT_URL, loan.getId());

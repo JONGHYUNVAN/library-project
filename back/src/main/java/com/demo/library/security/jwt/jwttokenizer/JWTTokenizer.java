@@ -3,9 +3,7 @@ package com.demo.library.security.jwt.jwttokenizer;
 import com.demo.library.security.entity.RefreshToken;
 import com.demo.library.security.repository.RefreshTokenRepository;
 import com.demo.library.user.entity.User;
-import io.jsonwebtoken.Claims;
-import io.jsonwebtoken.Jws;
-import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.*;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.io.Encoders;
 import io.jsonwebtoken.security.Keys;
@@ -98,6 +96,10 @@ public class JWTTokenizer {
 
         return expiration;
     }
+    public String getSubjectFromPayload(String payload){
+        Jwt<Header, Claims> headerClaimsJwt = Jwts.parserBuilder().build().parseClaimsJwt(payload);
+        return headerClaimsJwt.getBody().getSubject();
+    }
 
     private Key getKeyFromBase64EncodedKey(String base64EncodedSecretKey) {
         byte[] keyBytes = Decoders.BASE64.decode(base64EncodedSecretKey);
@@ -126,15 +128,15 @@ public class JWTTokenizer {
                 RefreshToken.builder().user(user).token(newToken).expiryDateTime(expiryDateTime).build()
         );
 
-
         return newToken;
     }
     public void setAsCookie(String refreshToken, HttpServletResponse response) {
         Cookie cookie = new Cookie("refreshToken", refreshToken);
         cookie.setHttpOnly(true);
-//        cookie.setSecure(true);
-//        cookie.setPath("/auth/");
-//        cookie.setMaxAge(60 * 60 * 24);
+        cookie.setSecure(true);
+        cookie.setPath("/");
+        cookie.setMaxAge(60 * 60 * 24);
+
         response.addCookie(cookie);
     }
 }

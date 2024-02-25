@@ -34,6 +34,7 @@ public class BookMapper {
         BookDto.Response response = mapper.map(book,BookDto.Response.class);
         response.setLibraryId(book.getLibrary().getId());
         response.setLibraryName(book.getLibrary().getName());
+        response.setGenreName(book.getGenre().getName());
         response.setCreatedAt(localDateTimeConverter.convert(book.getCreatedAt()));
         response.setUpdatedAt(localDateTimeConverter.convert(book.getUpdatedAt()));
         return response;

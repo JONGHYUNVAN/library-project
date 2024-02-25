@@ -1,6 +1,8 @@
 package com.demo.library.user.service;
 
 import com.demo.library.exception.BusinessLogicException;
+import com.demo.library.genre.entity.UserGenre;
+import com.demo.library.genre.repository.UserGenreRepository;
 import com.demo.library.loanNban.entity.Loan;
 import com.demo.library.security.utils.AuthorityUtils;
 import com.demo.library.user.entity.User;
@@ -26,13 +28,15 @@ class InnerMethodTest {
     private UserService userService;
     @Mock
     private UserRepository userRepository;
-    private EntityUpdater entityUpdater;
+    private EntityUpdater<User> entityUpdater;
     private PasswordEncoder passwordEncoder;
     private AuthorityUtils authorityUtils;
+    @Mock
+    private UserGenreRepository userGenreRepository;
     @BeforeEach
     void setUp() {
         MockitoAnnotations.openMocks(this);
-        userService = new UserService(userRepository, entityUpdater,passwordEncoder,authorityUtils);
+        userService = new UserService(userRepository, entityUpdater,passwordEncoder,authorityUtils,userGenreRepository);
     }
 
     @Test
