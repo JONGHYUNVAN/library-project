@@ -7,7 +7,7 @@ import React, { useEffect } from 'react';
 export default function Home() {
   let name = 'J.H.VAN';
   const router = useRouter();
- const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
     useEffect(() => {
         if (localStorage.getItem('accessToken')) {

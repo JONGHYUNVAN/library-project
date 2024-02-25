@@ -1,23 +1,21 @@
 'use client'
-import { useEffect, useState } from 'react';
+import { useEffect, useState, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation'
 import axios from 'axios';
 import {logIn} from "@/redux/features/authSlice";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 
-export default function KakaoLogin() {
+function KakaoLoginComponent() {
     const searchParams = useSearchParams()
     const code = searchParams.get('code')
     const loggedIn = useAppSelector((state) => state.authReducer.value);
     const dispatch = useAppDispatch();
     const [kakaoToken, setKakaoToken] = useState('');
     const [accessToken, setAccessToken] = useState('');
-    useEffect(() => {
         fetch(`/api/kakao?code=${code}`, {
             method: 'POST',
         })
             .then(response => response.json())
-
             .then(data => {
                 setKakaoToken(data.access_token);
                 axios
@@ -38,5 +36,14 @@ export default function KakaoLogin() {
             .catch((error) => {
                 console.error('토큰 요청 실패', error);
             });
-    }, []);
+
+    return null;  
+}
+
+export default function KakaoLogin() {
+    return (
+        <Suspense fallback={<div>Loading...</div>}>
+            <KakaoLoginComponent />
+        </Suspense>
+    );
 }

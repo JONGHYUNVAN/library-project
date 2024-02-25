@@ -4,6 +4,7 @@ import axios from 'axios';
 import { useSearchParams } from "next/navigation";
 import 'react-tooltip/dist/react-tooltip.css'
 import { Tooltip } from 'react-tooltip'
+import { Suspense } from 'react'
 
 
 export default function Search() {
@@ -160,7 +161,7 @@ export default function Search() {
             <div className="searchResult">
                 {books.map((book, index) => (
                     <div  key={index} className="searchResultsText"  onClick={((event) => handleTextClick(event,book))}>
-                       <a id={`book-${index}` } className ="searchResultText">{book.title}</a>
+                        <a id={`book-${index}` } className ="searchResultText">{book.title}</a>
                         <Tooltip
                             place={"left"}
                             anchorSelect={`#book-${index}`}
@@ -190,6 +191,5 @@ export default function Search() {
                 )}
             </div>
         </div>
-
     );
 }
