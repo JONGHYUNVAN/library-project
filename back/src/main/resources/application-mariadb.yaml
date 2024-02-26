@@ -1,0 +1,16 @@
+spring:
+  datasource:
+    url: jdbc:mariadb://svc.sel5.cloudtype.app:31111/libDB #데이터베이스 연결 URL
+    username: jhvan
+    password: library1!
+    driver-class-name: org.mariadb.jdbc.Driver # 데이터베이스 연결에 사용될 JDBC 드라이버의 클래스 이름
+  jpa:
+    hibernate:
+      ddl-auto: update #Hibernate의 데이터베이스 스키마 자동 생성 전략. update 는 기존 스키마를 유지하면서 필요한 변경사항만 반영하도록 설정
+    database-platform: org.hibernate.dialect.MySQL5Dialect #사용할 SQL 방언(Dialect)을 지정
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true #Hibernate가 출력하는 SQL 을 보기 좋게 포맷팅
+config:
+  domain: {} #사용자 정의 설정

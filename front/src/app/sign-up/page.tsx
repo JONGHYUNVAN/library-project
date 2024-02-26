@@ -3,6 +3,8 @@ import axios from 'axios';
 import React, {useState} from "react";
 import { z } from 'zod';
 import { useRouter } from 'next/navigation';
+import Image from 'next/image'
+
 
 export default function SignUp() {
     const router = useRouter();
@@ -87,7 +89,7 @@ export default function SignUp() {
             <source src="/backgroundSignIn.mp4" type="video/mp4" />
         </video>
         <div style={{ position: 'relative', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-            <img src="/signInPaper.png" alt="image" style={{ width: '80vw', maxWidth: '1000px', height: '80vh', maxHeight: '2000px', marginTop: '10px'}} />
+            <Image src="/signInPaper.png" alt="image" width={1000} height={2000} style={{ width: '80vw', maxWidth: '1000px', height: '80vh', maxHeight: '2000px', marginTop: '10px'}} />
             <div style={{ position: 'absolute', display: 'flex', flexDirection: 'column', alignItems: 'flex-end', justifyContent: 'space-between', minHeight: '20vw' }}>
                 <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center',maxHeight:'50vh' }}>
                     <div>
