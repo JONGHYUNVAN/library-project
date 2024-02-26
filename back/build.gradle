@@ -41,6 +41,7 @@ dependencies {
 	//Remote Debugging: 원격 디버깅을 쉽게
 	//Additional Development-time Features: H2 콘솔을 자동으로 활성화하는 등의 추가 개발 시간 기능을 제공
 	implementation 'org.springframework.boot:spring-boot-devtools'
+	testImplementation 'org.projectlombok:lombok:1.18.22'
 	// 애노테이션을 사용하여 자동으로 생성
 	compileOnly 'org.projectlombok:lombok'
 	runtimeOnly 'com.h2database:h2'
@@ -60,6 +61,9 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-oauth2-client'
 	//mySql
 	implementation 'mysql:mysql-connector-java'
+
+	implementation 'org.mariadb.jdbc:mariadb-java-client:2.7.2'
+
 
 }
 

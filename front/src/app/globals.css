@@ -70,6 +70,7 @@ body {
   height: 20vw;
   max-width: 300px;
   max-height: 400px;
+  object-fit: cover;
 }
 .book-image-big {
   margin-left: 11vw;

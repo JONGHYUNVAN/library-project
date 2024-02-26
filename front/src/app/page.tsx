@@ -4,6 +4,8 @@ import { useDispatch } from 'react-redux';
 import { logIn, logOut } from './redux/features/authSlice';
 import React, { useEffect } from 'react';
 
+
+
 export default function Home() {
   let name = 'J.H.VAN';
   const router = useRouter();
@@ -18,9 +20,9 @@ export default function Home() {
     }, []);
 
   return (
-      <html>
+      <>
           <head>
-              <title>Welcome! </title>
+              <title> Welcome! </title>
           </head>
           <div className="main-page"
                onClick={() => router.push('/ranking')}>
@@ -36,7 +38,7 @@ export default function Home() {
               <source src="/background.mp4" type="video/mp4" />
             </video>
           </div>
-      </html>
+      </>
   );
 }
 

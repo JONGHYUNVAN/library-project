@@ -31,35 +31,7 @@ public class PatchTest {
     private MockMvc mockMvc;
     @Autowired
     private ObjectMapper objectMapper;
-    @Autowired
-    private BookRepository bookRepository;
-    @Autowired
-    private LibraryRepository libraryRepository;
-    @BeforeEach
-    void  setup() {
-        Library existingLibrary = Library.builder()
-                .id(1L)
-                .name("existingName")
-                .address("existingAddress")
-                .openTime("9:30")
-                .closeTime("17:30")
 
-
-                .build();
-
-        libraryRepository.save(existingLibrary);
-        BookEntity setupBook = BookEntity.builder()
-                .id(1L)
-                .title("setupTitle")
-                .publisher("setupPublisher")
-                .author("setupAuthor")
-                .status(BookEntity.Status.ON_LOAN)
-                .library(existingLibrary)
-                .build();
-
-        bookRepository.save(setupBook);
-
-    }
     @Test
     void patchBookTest() throws Exception {
         // Given
