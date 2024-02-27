@@ -10,7 +10,7 @@ export async function logout(dispatch: AppDispatch) {
         const response = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/auth/logout`, {}, {
             headers: {
                 'Authorization': `Bearer ${localStorage.getItem('accessToken')}`,
-            },
+            }, 
             withCredentials: true
         });
 
