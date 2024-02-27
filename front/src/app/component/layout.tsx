@@ -5,8 +5,9 @@ import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import '../globals.css'
 import React, {useEffect} from 'react';
 import Link from 'next/link';
-import axios from "axios";
 import Head from "next/head"
+import { logout } from './logout';
+
 
 export default function SharedLayout({
                                    children,
@@ -24,28 +25,8 @@ export default function SharedLayout({
         }
     }, [dispatch]);
 
-    const handleLogout = async () => {
-
-        try {
-            const response = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/auth/logout`, {}, {
-                headers: {
-                    'Authorization': `Bearer ${localStorage.getItem('accessToken')}`,
-                },
-                withCredentials: true
-            });
-
-            if (response.status === 200) {
-                alert('Logged out successfully');
-                dispatch(logOut());
-                localStorage.removeItem('accessToken');
-                window.location.href = '/';
-            }
-        }
-        catch (error ) {
-            const err = error as Error;
-            alert(`로그아웃에 실패했습니다. ${err.name}`);
-        }
-
+    const handleLogout = () => {
+        logout(dispatch);
     };
 
     return (
@@ -66,7 +47,7 @@ export default function SharedLayout({
                 <div className="navbar-button-holder">
                     <Link href={{ pathname: '/ranking' }}
                           className="navbar-left-side-button">
-                        rank
+                        ranking
                     </Link><span></span>
                 </div>
                 <div className="navbar-button-holder">
@@ -118,14 +99,7 @@ export default function SharedLayout({
                 )}
             </div>
 
-            <link
-                rel="stylesheet"
-                href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap"
-            />
-            <link
-                rel="stylesheet"
-                href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap"
-            />
+
 
         </div>
         <Providers>{children}</Providers>
