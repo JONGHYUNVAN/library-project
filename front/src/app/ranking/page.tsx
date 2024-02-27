@@ -21,7 +21,7 @@ export default function List() {
     const [books, setBooks] = useState<Book[]>([]);
 
     useEffect(() => {
-        axios.get(`${process.env.NEXT_PUBLIC_API_URL}/books/`)
+        axios.get(`${process.env.NEXT_PUBLIC_API_URL}/books`)
             .then((response) => {
                 const dataArray = response.data.data;
                 const books = dataArray.map((item: { id: string; title: string; imageURL: string}) => ({

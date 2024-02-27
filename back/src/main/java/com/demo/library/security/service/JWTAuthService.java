@@ -8,6 +8,7 @@ import com.demo.library.security.repository.RefreshTokenRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
@@ -54,6 +55,9 @@ public class JWTAuthService {
         return refreshToken.getExpiryDateTime().isBefore(LocalDateTime.now());
     }
     public String getEmail(){
+
+       SecurityContext c = SecurityContextHolder.getContext();
+
        return Optional.ofNullable(SecurityContextHolder.getContext().getAuthentication())
                 .map(Authentication::getName)
                .filter(auth -> !auth.equals("anonymousUser"))

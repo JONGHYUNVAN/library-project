@@ -17,14 +17,13 @@ import javax.servlet.http.HttpServletResponse;
 import java.nio.charset.StandardCharsets;
 import java.security.Key;
 import java.time.LocalDateTime;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 @Component
 @RequiredArgsConstructor
 public class JWTTokenizer {
+    private final List<String> USER_ROLES_STRING = List.of("USER");
+
     @Getter
     @Value("${jwt.key}")
     private String secretKey;
@@ -111,6 +110,7 @@ public class JWTTokenizer {
         Map<String, Object> claims = new HashMap<>();
         claims.put("userId", user.getId());
         claims.put("userName", user.getName());
+        claims.put("roles", USER_ROLES_STRING);
         String subject = user.getEmail();
         Date expiration = getTokenExpiration(getAccessTokenExpirationMinutes());
         String base64EncodedSecretKey = encodeBase64SecretKey(getSecretKey());

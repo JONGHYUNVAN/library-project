@@ -30,7 +30,6 @@ public class JwtVerificationFilter extends OncePerRequestFilter {
     private final AuthorityUtils authorityUtils;
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
-        boolean isEe = false;
         try {
             Map<String, Object> claims = verifyJws(request);
             setAuthenticationToContext(claims);

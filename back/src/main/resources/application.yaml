@@ -1,6 +1,6 @@
 spring:
   profiles:
-    active: mariadb
+    active: h2
   security:
     oauth2:
       client:
