@@ -30,10 +30,6 @@ export default function Home() {
               <h4>library project</h4>
               <span className="title-sub">by {name}</span>
             </div>
-            <link
-                rel="stylesheet"
-                href="https://fonts.googleapis.com/css2?family=Long+Cang&display=swap"
-            />
             <video className="background-video" autoPlay muted loop>
               <source src="/background.mp4" type="video/mp4" />
             </video>
