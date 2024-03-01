@@ -3,22 +3,16 @@ import React, { useEffect, useRef ,useState} from "react";
 import axios from 'axios';
 import Link from 'next/link';
 import Image from 'next/image'
+import {Book} from '../interface/Book'
+import {BarLoader, BounceLoader } from 'react-spinners';
 
 export default function List() {
     const imagesRef = useRef<HTMLImageElement[]>([]);
     const width = 15;
     const height = 20;
-
-    interface Book {
-        id: string;
-        title: string;
-        imageURL: string;
-        publisher: string;
-        author : string;
-        status : string;
-        libraryName : string;
-    }
     const [books, setBooks] = useState<Book[]>([]);
+    const [loading, setLoading] = useState(true);
+
 
     useEffect(() => {
         axios.get(`${process.env.NEXT_PUBLIC_API_URL}/books`)
@@ -30,6 +24,7 @@ export default function List() {
                     imageURL: item.imageURL,
                 }));
                 setBooks(books);
+                setLoading(false);
             })
             .catch((error) => {
                 console.error(error);
@@ -121,12 +116,23 @@ export default function List() {
                 {books.slice(0, 5).map((book, index) => (
                     <div className="book" key={index}>
                         <Link href={`/search?id=${book.id}`} style={{ textDecoration: 'none'}} >
-                            <img className="book-image"
-                                 src={book.imageURL}
-                                 alt="book cover"
-                                 ref={el => imagesRef.current[index] = el as HTMLImageElement}
-                            />
+                            {loading ?
+                                <div className="book-image">
+                                    <BounceLoader color="#8B4513" size={20*width} />
+                                </div>
+                                                 :
+                                <img className="book-image"
+                                     src={book.imageURL}
+                                     ref={el => imagesRef.current[index] = el as HTMLImageElement}
+                                />
+                            }
+                         {loading ?
+                             <div className="book-title">
+                                <BarLoader color="#8B4513" width={20*width}/>
+                             </div>
+                                        :
                         <p className="book-title">{book.title}</p>
+                         }
                         </Link>
                     </div>
                 ))}
@@ -136,11 +142,23 @@ export default function List() {
                 {books.slice(5, 10).map((book, index) => (
                     <div className="book" key={index}>
                         <Link href={`/search?id=${book.id}`} style={{ textDecoration: 'none'}} >
-                            <img className="book-image" src={book.imageURL}
-                                 alt="book cover"
-                                 ref={el => imagesRef.current[index + 5] = el as HTMLImageElement}
-                            />
-                            <p className="book-title">{book.title}</p>
+                            {loading ?
+                                <div className="book-image">
+                                    <BounceLoader color="#8B4513" size={20*width} />
+                                </div>
+                                :
+                                <img className="book-image"
+                                     src={book.imageURL}
+                                     ref={el => imagesRef.current[index+5] = el as HTMLImageElement}
+                                />
+                            }
+                            {loading ?
+                                <div className="book-title">
+                                    <BarLoader color="#8B4513" width={20*width}/>
+                                </div>
+                                :
+                                <p className="book-title">{book.title}</p>
+                            }
                         </Link>
                     </div>
                 ))}

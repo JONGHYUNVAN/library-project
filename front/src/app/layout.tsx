@@ -12,6 +12,7 @@ export default function RootLayout({
             <link rel="preconnect" href="https://fonts.gstatic.com" />
             <link href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap" rel="stylesheet" />
             <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet" />
+            <link href="https://fonts.googleapis.com/css2?family=Josefin+Slab:ital,wght@1,400;1,500;1,700&display=swap" rel="stylesheet"/>
             <link
                 rel="stylesheet"
                 href="https://fonts.googleapis.com/css2?family=Long+Cang&display=swap"

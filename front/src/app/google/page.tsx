@@ -25,7 +25,6 @@ function GoogleLoginComponent() {
                     .then((response) => {
                         setAccessToken(response.headers.authorization);
                         localStorage.setItem('accessToken', response.headers.authorization);
-                        alert(`logged in successfully.`);
                         dispatch(logIn());
                         window.close();
                     })
@@ -41,7 +40,7 @@ function GoogleLoginComponent() {
 
 export default function GoogleLogin() {
     return (
-        <Suspense fallback={<div>Loading...</div>}>
+        <Suspense fallback={<div>Logging...in</div>}>
             <GoogleLoginComponent />
         </Suspense>
     );

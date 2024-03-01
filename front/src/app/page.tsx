@@ -17,7 +17,7 @@ export default function Home() {
         } else {
             dispatch(logOut());
         }
-    }, []);
+    }, [dispatch]);
 
   return (
       <>

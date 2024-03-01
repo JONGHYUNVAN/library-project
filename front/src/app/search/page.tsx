@@ -5,6 +5,8 @@ import { useSearchParams } from "next/navigation";
 import 'react-tooltip/dist/react-tooltip.css'
 import { Tooltip } from 'react-tooltip'
 import { Suspense } from 'react'
+import {Book} from '../interface/Book'
+import {PuffLoader, PropagateLoader } from 'react-spinners';
 
 
 export default function Search() {
@@ -16,20 +18,14 @@ export default function Search() {
     const params = useSearchParams();
     const [id, setId] = useState<string | null>(params.get('id'));
     const [message, setMessage] = useState("Type here");
-
-    interface Book {
-        id: string;
-        title: string;
-        imageURL: string;
-        publisher: string;
-        author : string;
-        status : string;
-        libraryName : string;
-        genreName : string;
-    }
     const [books, setBooks] = useState<Book[]>([]);
+    const [loading, setLoading] = useState(true);
+    const [seraching, setSearching] = useState(false);
+
     useEffect(() => {
         async function fetchData() {
+            setLoading(true);
+            setSearching(true);
             if(id) {
                 const token = localStorage.getItem('accessToken');
                 let config = {};
@@ -43,6 +39,7 @@ export default function Search() {
                 }
                 const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/books/${id}`,config);
                 setSelectedBook(response.data.data);
+                setLoading(false);
                 setMessage(response.data.data.title);
             }
         }
@@ -74,9 +71,7 @@ export default function Search() {
         handleButtonClick();
     };
     const handleButtonClick = async () => {
-
         try {
-
             const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/books/${url}/${input}`);
             const dataArray = response.data.data;
             const books = dataArray.map((item: { id: string; title: string; imageURL: string}) => ({
@@ -174,18 +169,31 @@ export default function Search() {
             </div>
 
             <div className="bookDetail">
-                {selectedBook ? (
-                    <div className="bookDetailContent">
-                        <img src={selectedBook.imageURL} alt={selectedBook.title} className="book-image-big"/>
-                        <div className="searchInfo">
-                            <h2 >{selectedBook.title }</h2>
-                            <p>장르: {selectedBook.genreName}</p>
-                            <p>저자: {selectedBook.author}</p>
-                            <p>출판사: {selectedBook.publisher}</p>
-                            <p>상태: {selectedBook.status}</p>
-                            <p>소장 도서관: {selectedBook.libraryName}</p>
-                        </div>
-                    </div>
+                {seraching ? (
+                        loading?(
+                            <div className="bookDetailContent" style={{ display: 'flex', flexDirection: 'row'}}>
+                                <div className="book-image-big"style={{ display: 'flex', alignItems: 'center', justifyContent: 'center',marginTop: '50px'}} >
+                                    <PuffLoader size={400} color="#DAA520" />
+                                </div>
+                                <div className="searchInfo" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
+                                     <PropagateLoader size={20} color="#FFD700"/>
+                                </div>
+                            </div>)
+                                         :
+                                (
+                        selectedBook?(
+                        <div className="bookDetailContent">
+                            <img src={selectedBook.imageURL} alt={selectedBook.title} className="book-image-big"/>
+                            <div className="searchInfo">
+                                <h2 >{selectedBook.title }</h2>
+                                <p>장르: {selectedBook.genreName}</p>
+                                <p>저자: {selectedBook.author}</p>
+                                <p>출판사: {selectedBook.publisher}</p>
+                                <p>상태: {selectedBook.status}</p>
+                                <p>소장 도서관: {selectedBook.libraryName}</p>
+                            </div>
+                        </div>):(<div></div>)
+                                 )
                 ) : (
                     <div></div>
                 )}

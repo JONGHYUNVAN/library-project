@@ -22,6 +22,6 @@ export async function logout(dispatch: AppDispatch) {
         }
     } catch (error) {
         const err = error as Error;
-        alert(`로그아웃에 실패했습니다. ${err.name}`);
+        alert(`Log out failed. ${err.name}`);
     }
 }

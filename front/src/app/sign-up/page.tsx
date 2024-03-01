@@ -38,8 +38,6 @@ export default function SignUp() {
     const handleButtonClick = () => {
         const result = schema.safeParse(values);
 
-
-
         if (!result.success) {
             result.error.errors.forEach((error) => {
                 if (error.message === 'Required') {
@@ -149,13 +147,8 @@ export default function SignUp() {
                         {text}
                     </h1>
                 </div>
-
             </div>
-
-
         </div>
-
-        <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet"/>
     </div>
     )
 }

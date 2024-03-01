@@ -140,7 +140,6 @@ export default function Search() {
                 onMouseMove={(event) => handleMouseMove(event, "password")}
             />
             <h2 className="passwordOutputBox">{'$'.repeat(passwordLength)}</h2>
-            <link href="https://fonts.googleapis.com/css2?family=Josefin+Slab:ital,wght@1,400;1,500;1,700&display=swap" rel="stylesheet"/>
             <div style={{
                 display: 'flex',
                 flexDirection: 'column',
