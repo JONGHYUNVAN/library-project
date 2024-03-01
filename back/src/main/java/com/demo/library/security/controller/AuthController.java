@@ -66,7 +66,7 @@ public class AuthController {
     }
     @GetMapping("/cookie/test")
     public  ResponseEntity<String> testCookie(HttpServletResponse response) {
-        jwtTokenizer.setAsCookie("test cookiecookiechococookiecookiecookiechococookiecookiecookiechococookie",response);
+        jwtTokenizer.setAsCookie("testcookiecookiechococookiecookiecookiechococookiecookiecookiechococookie",response);
         return new ResponseEntity<>("Token has been refreshed.", HttpStatus.OK);
     }
 
