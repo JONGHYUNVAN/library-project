@@ -21,9 +21,7 @@ public class RefreshToken {
     @Column(nullable = false, unique = true)
     private String token;
 
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id", nullable = false)
-    private User user;
+    private String userEmail;
 
     @Column(nullable = false)
     private LocalDateTime expiryDateTime;

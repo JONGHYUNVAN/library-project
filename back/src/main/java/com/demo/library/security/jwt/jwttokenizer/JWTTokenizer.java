@@ -10,12 +10,14 @@ import io.jsonwebtoken.security.Keys;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.ResponseCookie;
 import org.springframework.stereotype.Component;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
 import java.nio.charset.StandardCharsets;
 import java.security.Key;
+import java.time.Duration;
 import java.time.LocalDateTime;
 import java.util.*;
 
@@ -125,18 +127,20 @@ public class JWTTokenizer {
         String newToken = generateRefreshToken(subject, expiration, base64EncodedSecretKey);
 
         refreshTokenRepository.save(
-                RefreshToken.builder().user(user).token(newToken).expiryDateTime(expiryDateTime).build()
+                RefreshToken.builder().userEmail(subject).token(newToken).expiryDateTime(expiryDateTime).build()
         );
 
         return newToken;
     }
     public void setAsCookie(String refreshToken, HttpServletResponse response) {
-        Cookie cookie = new Cookie("refreshToken", refreshToken);
-        cookie.setHttpOnly(true);
-        cookie.setSecure(true);
-        cookie.setPath("/");
-        cookie.setMaxAge(60 * 60 * 24);
+        ResponseCookie cookie = ResponseCookie.from("refreshToken", refreshToken)
+                .httpOnly(true)
+                .secure(true)
+                .sameSite("None")
+                .path("/")
+                .maxAge(Duration.ofDays(1))
+                .build();
 
-        response.addCookie(cookie);
+        response.addHeader("Set-Cookie", cookie.toString());
     }
 }

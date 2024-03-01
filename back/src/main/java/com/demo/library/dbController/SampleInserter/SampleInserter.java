@@ -10,17 +10,21 @@ import com.demo.library.genre.repository.GenreRepository;
 import com.demo.library.genre.repository.UserGenreRepository;
 import com.demo.library.library.entity.Library;
 import com.demo.library.library.repository.LibraryRepository;
+import com.demo.library.security.utils.AuthorityUtils;
 import com.demo.library.user.entity.User;
 import com.demo.library.user.repository.UserRepository;
 import com.demo.library.user.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 import java.util.Random;
 
 
 import java.util.*;
+
+import static com.demo.library.user.entity.User.Status.ACTIVE;
 
 @Component
 @RequiredArgsConstructor
@@ -31,6 +35,8 @@ public class SampleInserter implements CommandLineRunner {
     private final UserRepository userRepository;
     private final GenreRepository genreRepository;
     private final UserGenreRepository userGenreRepository;
+    private final PasswordEncoder passwordEncoder;
+    private final AuthorityUtils authorityUtils;
     @Value("${mail.address.admin}")
     private String adminMailAddress;
     @Value("${password.address.admin}")
@@ -52,7 +58,12 @@ public class SampleInserter implements CommandLineRunner {
             genreRepository.saveAll(genreList);
 
             User user = createUser(1L, password, adminMailAddress, "관리자", "admin", "010-1234-5678", User.Gender.MALE, User.Status.ACTIVE);
-            userService.create(user);
+            String encryptedPassword = passwordEncoder.encode(user.getPassword());
+            user.setPassword(encryptedPassword);
+            List<String> roles = authorityUtils.createRoles(user.getEmail());
+            user.setRoles(roles);
+            user.setStatus(ACTIVE);
+            userRepository.save(user);
 
             Library library = createLibrary(1L, "중앙도서관", "서울시 구구구 동동동 로로로 77-7", "09:30", "17:30");
             libraryRepository.save(library);

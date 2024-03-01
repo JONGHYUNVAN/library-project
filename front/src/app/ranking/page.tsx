@@ -146,7 +146,7 @@ export default function List() {
                                 <div className="book-image">
                                     <BounceLoader color="#8B4513" size={20*width} />
                                 </div>
-                                :
+                                            :
                                 <img className="book-image"
                                      src={book.imageURL}
                                      ref={el => imagesRef.current[index+5] = el as HTMLImageElement}
@@ -156,7 +156,7 @@ export default function List() {
                                 <div className="book-title">
                                     <BarLoader color="#8B4513" width={20*width}/>
                                 </div>
-                                :
+                                            :
                                 <p className="book-title">{book.title}</p>
                             }
                         </Link>

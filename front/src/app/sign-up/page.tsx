@@ -14,6 +14,7 @@ export default function SignUp() {
     const [color, setColor] = useState('black');
     const [values, setValues] = useState({});
     const [errorMessage, setErrorMessage] = useState('');
+    const [submitting, setSubmitting] = useState(false);
 
     const fieldSchemas = {
         name: z.string().min(1,'Name must not be empty').max(20,"it's too long"),
@@ -48,7 +49,7 @@ export default function SignUp() {
             });
             return;
         }
-
+        setSubmitting(true);
         axios.post(`${process.env.NEXT_PUBLIC_API_URL}/users`, values)
             .then(async response => {
                 alert(`Your registration has been successfully completed. Welcome,${name}!`);
@@ -57,6 +58,7 @@ export default function SignUp() {
             .catch(error => {
                 alert(error.response.data.message)
             });
+        setSubmitting(false);
 
     }
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -140,7 +142,7 @@ export default function SignUp() {
 
                 <div>
                     <h1 style={{ fontSize: '2vw', fontFamily: 'Pacifico, cursive', marginTop: '50px',color:color }}
-                        onClick={handleButtonClick}
+                        onClick={submitting ? () => {} : handleButtonClick  }
                         onMouseDown={handleMouseDown}
                         onMouseUp={handleMouseUp}
                     >
