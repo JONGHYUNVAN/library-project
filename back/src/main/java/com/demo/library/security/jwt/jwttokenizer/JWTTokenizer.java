@@ -139,7 +139,7 @@ public class JWTTokenizer {
                 .sameSite("None")
                 .path("/")
                 .maxAge(Duration.ofDays(1))
-                .domain("library-project-blush.vercel.app")
+        //        .domain("library-project-blush.vercel.app")
                 .build();
 
         response.addHeader("Set-Cookie", cookie.toString());
