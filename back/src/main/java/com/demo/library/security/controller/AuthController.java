@@ -64,6 +64,11 @@ public class AuthController {
 
         return new ResponseEntity<>(HttpStatus.OK);
     }
+    @GetMapping("/cookie/test")
+    public  ResponseEntity<String> testCookie(HttpServletResponse response) {
+        jwtTokenizer.setAsCookie("test cookiecookiechococookiecookiecookiechococookiecookiecookiechococookie",response);
+        return new ResponseEntity<>("Token has been refreshed.", HttpStatus.OK);
+    }
 
     @PostMapping("/token/refresh")
     public  ResponseEntity<String> refreshAccessToken(HttpServletRequest request, HttpServletResponse response) {
