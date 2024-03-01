@@ -2,6 +2,7 @@
 import React, { useEffect ,useState} from 'react';
 import {MyResponsiveRadar} from '../nivo/radar'
 import axios from 'axios';
+import {SyncLoader, ClimbingBoxLoader } from 'react-spinners';
 
 
 export default function My() {
@@ -47,8 +48,9 @@ export default function My() {
                     searched: genre.searched,
                     loaned: genre.loaned
                 }));
-                // @ts-ignore
-                setUser(user);
+               if(user) { // @ts-ignore
+                   setUser(user);
+               }
                 setGenres(genres);
             })
             .catch((error) => {
@@ -66,24 +68,36 @@ export default function My() {
         <div style={{ alignItems:'center', display: 'flex', justifyContent:'center'}}>
             <div className="myInfo" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
                 {user ? (
-                    <div className="myInfoTextBox">
-                        <h2>Welcome, {user.name } !</h2>
-                        <p>email: {user.email}</p>
-                        <p>nick name: {user.nickName}</p>
-                        <p>phone number: {user.phoneNumber}</p>
-                        <p>gender: {user.gender}</p>
-                    </div>
-                ) : (
-                    <div></div>
-                )}
-                <div className="radar">
-                    <MyResponsiveRadar data={chartData} />
-                    <video className="background-video" autoPlay muted loop>
-                        <source src="/backgroundMy.mp4" type="video/mp4" />
-                    </video>
-                </div>
+                        <>
+                            <div className="myInfoTextBox">
+                                <h2>Welcome, {user.name } !</h2>
+                                <p>email: {user.email}</p>
+                                <p>nick name: {user.nickName}</p>
+                                <p>phone number: {user.phoneNumber}</p>
+                                <p>gender: {user.gender}</p>
+                            </div>
+                            <div className="radar">
+                                <MyResponsiveRadar data={chartData} />
+                            </div>
+                        </>
+                    )
+                                    :
+                    (
+                    <>
+                        <div className="myInfoTextBox" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center',marginTop: '50px'}}>
+                            <SyncLoader size={50} color="darkgoldenrod" />
+                        </div>
+                        <div className="radar" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center',marginTop: '50px'}}>
+                            <ClimbingBoxLoader color="darkgoldenrod" size={50}/>
+                        </div>
+                    </>
+                    )}
             </div>
+            <video className="background-video" autoPlay muted loop>
+                <source src="/backgroundMy.mp4" type="video/mp4" />
+            </video>
         </div>
     );
+
 }
 

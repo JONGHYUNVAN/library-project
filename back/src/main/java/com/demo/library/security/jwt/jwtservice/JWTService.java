@@ -50,7 +50,7 @@ public class JWTService {
         String newToken = jwtTokenizer.generateRefreshToken(subject, expiration, base64EncodedSecretKey);
 
         refreshTokenRepository.save(
-                RefreshToken.builder().user(user).token(newToken).expiryDateTime(expiryDateTime).build()
+                RefreshToken.builder().userEmail(subject).token(newToken).expiryDateTime(expiryDateTime).build()
         );
 
 

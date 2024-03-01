@@ -19,8 +19,8 @@ export default function Search() {
     const [id, setId] = useState<string | null>(params.get('id'));
     const [message, setMessage] = useState("Type here");
     const [books, setBooks] = useState<Book[]>([]);
-    const [loading, setLoading] = useState(true);
-    const [seraching, setSearching] = useState(false);
+    const [loading, setLoading] = useState(false);
+    const [searching, setSearching] = useState(false);
 
     useEffect(() => {
         async function fetchData() {
@@ -169,8 +169,8 @@ export default function Search() {
             </div>
 
             <div className="bookDetail">
-                {seraching ? (
-                        loading?(
+                {searching ? (
+                        loading ? (
                             <div className="bookDetailContent" style={{ display: 'flex', flexDirection: 'row'}}>
                                 <div className="book-image-big"style={{ display: 'flex', alignItems: 'center', justifyContent: 'center',marginTop: '50px'}} >
                                     <PuffLoader size={400} color="#DAA520" />

@@ -5,6 +5,7 @@ import com.demo.library.exception.BusinessLogicException;
 import com.demo.library.genre.entity.Genre;
 import com.demo.library.genre.entity.UserGenre;
 import com.demo.library.genre.repository.UserGenreRepository;
+import com.demo.library.genre.service.UserGenreService;
 import com.demo.library.security.utils.AuthorityUtils;
 import com.demo.library.user.dto.UserDto;
 import com.demo.library.user.entity.User;
@@ -33,7 +34,7 @@ public class UserService {
     private final PasswordEncoder passwordEncoder;
     private final AuthorityUtils authorityUtils;
     private final UserGenreRepository userGenreRepository;
-
+    private final UserGenreService userGenreService;
 
 
 
@@ -45,6 +46,7 @@ public class UserService {
         user.setRoles(roles);
         user.setStatus(ACTIVE);
         save(user);
+        userGenreService.generateUserGenres(user);
 
         return user;
     }
