@@ -87,15 +87,15 @@ export default function My() {
                     (
                     <>
                         <div className="myInfoTextBox" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center',marginTop: '50px'}}>
-                            <SyncLoader size={50} color="darkgoldenrod" />
+                            <SyncLoader size={'3vw'} color="darkgoldenrod" />
                         </div>
                         <div className="radar" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center',marginTop: '50px'}}>
-                            <ClimbingBoxLoader color="darkgoldenrod" size={50}/>
+                            <ClimbingBoxLoader color="darkgoldenrod" size={'3vw'}/>
                         </div>
                     </>
                     )}
             </div>
-            <video className="background-video" autoPlay muted loop>
+            <video poster={"/myposter.png"} className="background-video" autoPlay muted loop >
                 <source src="/backgroundMy.mp4" type="video/mp4" />
             </video>
         </div>
