@@ -89,11 +89,11 @@ export default function SignUp() {
             <source src="/backgroundSignIn.mp4" type="video/mp4" />
         </video>
         <div style={{ position: 'relative', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-            <Image src="/signInPaper.png" alt="image" width={1000} height={2000} style={{ width: '80vw', maxWidth: '1000px', height: '80vh', maxHeight: '2000px', marginTop: '10px'}} />
-            <div style={{ position: 'absolute', display: 'flex', flexDirection: 'column', alignItems: 'flex-end', justifyContent: 'space-between', minHeight: '20vw' }}>
-                <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center',maxHeight:'50vh' }}>
+            <Image src="/signInPaper.png" alt="image" width={1000} height={2000} style={{ width: 'clamp(500px, 80vw, 1000px)', height: 'clamp(600px, 80vh, 2000px)', marginTop: '1vh'}} />
+            <div style={{ position: 'absolute', display: 'flex', flexDirection: 'column', alignItems: 'flex-start', justifyContent: 'space-between' }}>
+                <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', maxHeight:'50vh' }}>
                     <div>
-                        <h1 style={{fontSize: '2vw', fontFamily:'Pacifico, cursive',marginTop :'0.1vw'}}>Registration Form </h1>
+                        <h1 style={{position: 'absolute', top: '-15%', left :'40%', fontSize: 'clamp(20px, 2vw, 40px)', fontFamily:'Pacifico, cursive'}}>Registration Form </h1>
                     </div>
 
                     <div style={{ display: 'flex', justifyContent: 'space-between', width: '100%' }}>
@@ -137,11 +137,11 @@ export default function SignUp() {
                             />
                         </div>
                     </div>
-                    <h1 style={{ fontSize: '20px', fontFamily: 'Pacifico, cursive', marginTop: '30px',color: 'red' }}>{errorMessage}</h1>
+                    <h1 style={{ fontSize: '20px', fontFamily: 'Pacifico, cursive', marginTop: '2vh',color: 'red' }}>{errorMessage}</h1>
                 </div>
 
                 <div>
-                    <h1 style={{ fontSize: '2vw', fontFamily: 'Pacifico, cursive', marginTop: '50px',color:color }}
+                    <h1 style={{ position: 'absolute',  fontSize: 'clamp(20px, 2vw, 40px)', fontFamily: 'Pacifico, cursive', color:color,  bottom: '-10%',  right: '-5%', transform: 'translate(-50%, -50%)' }}
                         onClick={submitting ? () => {} : handleButtonClick  }
                         onMouseDown={handleMouseDown}
                         onMouseUp={handleMouseUp}
@@ -150,6 +150,7 @@ export default function SignUp() {
                     </h1>
                 </div>
             </div>
+
         </div>
     </div>
     )

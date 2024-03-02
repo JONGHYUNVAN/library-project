@@ -7,6 +7,7 @@ import { Tooltip } from 'react-tooltip'
 import { Suspense } from 'react'
 import {Book} from '../interface/Book'
 import {PuffLoader, PropagateLoader } from 'react-spinners';
+import Image from 'next/image'
 
 
 export default function Search() {
@@ -100,7 +101,7 @@ export default function Search() {
     return (
         <div>
 
-            <div className="smallTitle">
+            <div className="smallTitle" style={{marginTop:'0.1vh',marginBottom: '0.1vh'}}>
                 <h4>search</h4>
             </div>
 
@@ -108,51 +109,48 @@ export default function Search() {
                 <source src="/backgroundSearch.mp4" type="video/mp4" />
             </video>
 
-            <div className="search-container">
-                <h2 style={{ float: 'left', fontFamily: 'Long Cang, cursive', fontSize: '2vw',color: 'papayawhip',marginLeft: '10vw',marginRight: '30px' }} className="search-label">Search by</h2>
-
-                <div className="buttons" style={{float:'left',marginRight: '30px'}}>
-                    <button className="title-button"
-                            onClick={handleTitleClick}>
-                        Title
+            <div className="search-container" style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
+                <h2 style={{ fontFamily: 'Long Cang, cursive', fontSize: 'clamp(20px,2vw,40px)',color: 'papayawhip',marginRight: '1vw',marginLeft: '3vw',minWidth:'10vw' }} className="search-label"> Search by</h2>
+                <div className="buttons" style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', gap: '0.1vh', marginRight: '1vw' }}>
+                    <button className="title-button" onClick={handleTitleClick}>
+                        {'\u00A0\u00A0\u00A0\u00A0Title\u00A0\u00A0\u00A0\u00A0'}
                     </button>
-                    <div></div>
-                    <button className="author-button"
-                            onClick={handleAuthorClick}>
-                        Author
+                    <button className="author-button" onClick={handleAuthorClick}>
+                        {'\u00A0\u00A0Author\u00A0\u00A0'}
                     </button>
-                    <div></div>
-                    <button className="publisher-button"
-                            onClick={handlePublisherClick}>
+                    <button className="publisher-button" onClick={handlePublisherClick}>
                         Publisher
                     </button>
                 </div>
-                <div className="selected-wrapper"
-                     style={{ float: 'left', width: '13vw',justifyContent: 'center',alignItems: 'center', height: '5vw',marginTop: '20px'}}>
-                    <div className="selected"
-                         style={{ float: 'left', fontFamily: 'Nanum Pen Script',marginRight: '50px',textAlign: 'center',marginTop: '10px',fontSize: '3vw',color:'gold' }}>
+                <div className="selected-wrapper" style={{ width: '10%', justifyContent: 'center', alignItems: 'center', height: '5vh', marginRight: '1vw' }}>
+                    <div className="selected" style={{ fontFamily: 'Nanum Pen Script',textAlign: 'center',fontSize: 'clamp(20px,2vw,100px)',color:'gold' }}>
                         <div>
                             {selected}
                         </div>
                     </div>
                 </div>
-                <div className="search"
-                     style={{float:'left',marginRight: '30px',marginTop: '42px'}}>
+                <div className="search" style={{ width: '45%',marginRight: '4vw' }}>
                     <form onSubmit={handleFormSubmit}>
                         <input type="text"
                                placeholder={message}
-                               style={{ width: '35vw', height: '2.5vw',fontSize: '2vw' }}
+                               style={{ width: '100%', height: '2.5vw', fontSize: '2vw' }}
                                onChange={handleInputChange} />
                     </form>
-
                 </div>
+
+                <Image
+                    src="/search.gif"
+                    alt="image"
+                    width={500}
+                    height={300}
+                    style={{ width: 'clamp(10vw,10vw,5px)', height: 'clamp(10vw,10vw,5px)'}}
+                    onClick={handleButtonClick}
+                    className={isClicked ? 'searchImage clicked' : 'searchImage'}
+                    onMouseDown={handleMouseDown}
+                    onMouseUp={handleMouseUp}
+                    onMouseLeave={handleMouseUp}/>
             </div>
-            <img src="/search.gif" alt="image"
-                 onClick={handleButtonClick}
-                 className={isClicked ? 'searchImage clicked' : 'searchImage'}
-                 onMouseDown={handleMouseDown}
-                 onMouseUp={handleMouseUp}
-                 onMouseLeave={handleMouseUp}/>
+
 
             <div className="searchResult">
                 {books.map((book, index) => (
@@ -174,10 +172,10 @@ export default function Search() {
                         loading ? (
                             <div className="bookDetailContent" style={{ display: 'flex', flexDirection: 'row'}}>
                                 <div className="book-image-big"style={{ display: 'flex', alignItems: 'center', justifyContent: 'center',marginTop: '50px'}} >
-                                    <PuffLoader size={400} color="#DAA520" />
+                                    <PuffLoader size={'40vw'} color="#DAA520" />
                                 </div>
                                 <div className="searchInfo" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
-                                     <PropagateLoader size={20} color="#FFD700"/>
+                                     <PropagateLoader size={'2vw'} color="#FFD700"/>
                                 </div>
                             </div>)
                                          :
