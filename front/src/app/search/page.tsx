@@ -104,11 +104,7 @@ export default function Search() {
             <div className="smallTitle" style={{marginTop:'0.1vh',marginBottom: '0.1vh'}}>
                 <h4>search</h4>
             </div>
-
-            <video className="background-video" autoPlay muted loop>
-                <source src="/backgroundSearch.mp4" type="video/mp4" />
-            </video>
-
+            
             <div className="search-container" style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
                 <h2 style={{ fontFamily: 'Long Cang, cursive', fontSize: 'clamp(20px,2vw,40px)',color: 'papayawhip',marginRight: '1vw',marginLeft: '3vw',minWidth:'10vw' }} className="search-label"> Search by</h2>
                 <div className="buttons" style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', gap: '0.1vh', marginRight: '1vw' }}>
@@ -197,6 +193,11 @@ export default function Search() {
                     <div></div>
                 )}
             </div>
+            <video  poster={"/posterSearch.png"} className="background-video" autoPlay muted loop>
+                <source src="/backgroundSearch.mp4" type="video/mp4" />
+            </video>
+
         </div>
+        
     );
 }

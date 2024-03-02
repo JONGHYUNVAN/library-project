@@ -96,9 +96,6 @@ export default function Search() {
 
     return (
         <div>
-            <video className="background-video" autoPlay muted loop>
-                <source src="/backgroundLogIn.mp4" type="video/mp4" />
-            </video>
             <div style={{
                 display: 'flex',
                 flexDirection: 'column',
@@ -182,6 +179,9 @@ export default function Search() {
                     </button>
                 </div>
             </div>
+            <video poster={"/posterLogin.png"} className="background-video" autoPlay muted loop>
+                <source src="/backgroundLogIn.mp4" type="video/mp4" />
+            </video>
 
         </div>
 

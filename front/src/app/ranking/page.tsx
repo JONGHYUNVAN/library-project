@@ -179,7 +179,7 @@ export default function List() {
                 ))}
             </div>
 
-            <video className="background-video" autoPlay muted loop>
+            <video poster={"/rankingPoster.png"} className="background-video" autoPlay muted loop>
                 <source src="/backgroundList.mp4" type="video/mp4" />
             </video>
         </div>
