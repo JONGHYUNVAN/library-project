@@ -167,7 +167,7 @@ export default function Search() {
                 {searching ? (
                         loading ? (
                             <div className="bookDetailContent" style={{ display: 'flex', flexDirection: 'row'}}>
-                                <div className="book-image-big"style={{ display: 'flex', alignItems: 'center', justifyContent: 'center',marginTop: '50px'}} >
+                                <div className="book-image-big" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center',marginTop: '50px'}} >
                                     <PuffLoader size={'40vw'} color="#DAA520" />
                                 </div>
                                 <div className="searchInfo" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center'}}>

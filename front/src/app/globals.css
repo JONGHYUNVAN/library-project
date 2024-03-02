@@ -1,7 +1,7 @@
 body {
   margin: 0;
   padding: 0;
-  background-color: rgb(250, 200, 90);
+  background-image: url('../public/backposter.png');
   cursor: url('../public/mouse.png') 1 1, auto;
 }
 
@@ -243,7 +243,7 @@ body {
   background: linear-gradient(to bottom right, white ,gold);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
   text-shadow: 2px 2px 2px goldenrod;
 }
 .searchImage {
@@ -287,7 +287,7 @@ body {
   background:darkgoldenrod;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  text-shadow: -1px -1px 0px gold;
+  text-shadow: -1px -1px 0 gold;
 }
 .hidden {
   display: none;
@@ -423,7 +423,7 @@ body {
   border-radius: 8px;
   padding: 20px;
   background-color: rgba(120, 90, 30, 0.2);
-  box-shadow: 0px 0px 8px rgba(100, 70, 20, 1);
+  box-shadow: 0 0 8px rgba(100, 70, 20, 1);
   text-shadow: 2px 2px 2px goldenrod;
 }
 .myInfoTextBox{
