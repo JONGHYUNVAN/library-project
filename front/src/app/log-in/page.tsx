@@ -101,59 +101,88 @@ export default function Search() {
             </video>
             <div style={{
                 display: 'flex',
+                flexDirection: 'column',
                 justifyContent: 'center',
                 alignItems: 'center',
                 height: '80vh',
                 position: 'relative'
             }}>
                 <div
-                    className="box-form" onMouseMove={(event) => handleMouseMove(event, "")}
-                    style={{ background: `radial-gradient(circle 900px at ${coords.x}px ${coords.y}px, rgba(255,255,255,0.06), rgba(255,255,255,0))`,
-                    }} />
-                <div>
-                    <Image className="login-form" src="/loginForm.png" alt="image"  width={1100} height={700} />
+                    onMouseMove={(event) => handleMouseMove(event, "")}
+                    style={{
+                        position: 'relative',
+                        width: 'clamp(325px, 80vw, 800px)',
+                        height: 'clamp(200px, 40vw, 400px)',
+                        marginTop: '10px',
+                        background: `radial-gradient(circle 900px at ${coords.x}px ${coords.y}px, rgba(255,255,255,0.06), rgba(255,255,255,0))`,
+                    }} >
+                    <Image className="login-form" src="/loginForm.png" alt="image"  width={1100} height={700}
+                           style={{
+                               position: 'absolute',
+                               top: 0,
+                               left:0,
+                               width: '100%',
+                               height: '100%',
+                           }} />
+                    <Image src="/key.png" alt="image"
+                           onClick={() => handleLogin(email, password)}
+                           onMouseDown={handleMouseDown}
+                           onMouseUp={handleMouseUp}
+                           className={isClicked ? 'login-button clicked' : 'login-button'}
+                           style={{
+                               position: 'absolute',
+                               top: '80%',
+                               left: '83%',
+                               transform: 'translate(-50%, -50%)',
+                           }}
+                           width={80}
+                           height={80}
+                    />
+                    <input
+                        type="text"
+                        name="email"
+                        onChange={handleEmailChange}
+                        placeholder={email}
+                        className="emailInputBox"
+                        onMouseMove={(event) => handleMouseMove(event, "email")}
+                        style={{
+                            position: 'absolute',
+                            top: '55%',
+                            left: '70%',
+                            transform: 'translateX(-50%)',
+                        }}
+                    />
+                    <input
+                        type="password"
+                        onChange={handlePasswordChange}
+                        className="passwordInputBox"
+                        placeholder={password}
+                        onMouseMove={(event) => handleMouseMove(event, "password")}
+                        style={{
+                            position: 'absolute',
+                            top: '60%',
+                            left: '70%',
+                            transform: 'translateX(-50%)',
+                        }}
+                    />
+                    <h2 className="passwordOutputBox">{'$'.repeat(passwordLength)}</h2>
+                </div>
+                <div style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    marginTop: '20px'
+                }}>
+                    <button onClick={handleKakaoClick} style={{ border: 'none', background: 'transparent', zIndex: 1 }}>
+                        <Image src="/kakaoLogin.png" alt="Kakao Login"  width={300}  height={45} style={{zIndex: 10}} />
+                    </button>
+                    <button onClick={handleGoogleClick} style={{ border: 'none', background: 'transparent', zIndex: 1 }}>
+                        <Image src="/googleLogin.png" alt="image"  width={300}  height={45} style={{zIndex: 10}}/>
+                    </button>
                 </div>
             </div>
 
-            <Image src="/key.png" alt="image"
-                 onClick={() => handleLogin(email, password)}
-                 onMouseDown={handleMouseDown}
-                 onMouseUp={handleMouseUp}
-                 className={isClicked ? 'login-button clicked' : 'login-button'}
-                 width={80}
-                   height={80}
-            />
-            <input
-                type="text"
-                name="email"
-                onChange={handleEmailChange}
-                placeholder={email}
-                className="emailInputBox"
-                onMouseMove={(event) => handleMouseMove(event, "email")}
-
-            />
-            <input
-                type="password"
-                onChange={handlePasswordChange}
-                className="passwordInputBox"
-                placeholder={password}
-                onMouseMove={(event) => handleMouseMove(event, "password")}
-            />
-            <h2 className="passwordOutputBox">{'$'.repeat(passwordLength)}</h2>
-            <div style={{
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'center',
-                justifyContent: 'center',
-                marginTop: '-250px'
-            }}>
-                <button onClick={handleKakaoClick} style={{ border: 'none', background: 'transparent',zIndex: 1 }}>
-                    <Image src="/kakaoLogin.png" alt="Kakao Login"  width={300}  height={45}style={{zIndex: 10}} />
-                </button>
-                <button onClick={handleGoogleClick} style={{ border: 'none', background: 'transparent',zIndex: 1 }}>
-                    <Image src="/googleLogin.png" alt="image"  width={300}  height={45}style={{zIndex: 10}}/>
-                </button>
-            </div>
         </div>
 
 

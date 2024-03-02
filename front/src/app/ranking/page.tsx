@@ -71,8 +71,15 @@ export default function List() {
 
                 }
                 else {
-                    image.style.width = `${width}vw`;
-                    image.style.height = `${height}vw`;
+                    let vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0) / 100;
+                    let imgWidth = 15 * vw;
+
+                    imgWidth = Math.max(imgWidth, 200); // 최소 크기 200px
+                    imgWidth = Math.min(imgWidth, 300); // 최대 크기 300px
+                    let imgHight = imgWidth*4/3;
+
+                    image.style.width = `${imgWidth}px`;
+                    image.style.height = `${imgHight}px`;
                     image.style.transform = 'rotateX(0deg) rotateY(0deg)';
 
                 }
@@ -80,8 +87,16 @@ export default function List() {
         };
         const handleMouseLeave = (e: MouseEvent) => {
             const image = e.target as HTMLImageElement;
-            image.style.width = `${width}vw`;
-            image.style.height = `${height}vw`;
+
+            let vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0) / 100;
+            let imgWidth = 15 * vw;
+
+            imgWidth = Math.max(imgWidth, 200); // 최소 크기 200px
+            imgWidth = Math.min(imgWidth, 300); // 최대 크기 300px
+            let imgHight = imgWidth*4/3;
+
+            image.style.width = `${imgWidth}px`;
+            image.style.height = `${imgHight}px`;
             image.style.transform = 'rotateX(0deg) rotateY(0deg)';
         };
 
