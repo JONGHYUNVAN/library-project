@@ -53,12 +53,13 @@ export default function Search() {
             const response = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/auth/login`, {
                 email,
                 password,
-            });
+            },
+            { withCredentials: true }
+            );
 
             if (response.status === 200) {
                 const accessToken = response.headers['authorization'];
                 localStorage.setItem('accessToken', accessToken);
-                const refreshToken = response.headers['Set-Cookie']
                 alert(`logged in successfully.`);
                 dispatch(logIn());
                 window.history.back();
