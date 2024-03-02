@@ -29,7 +29,9 @@ export default function My() {
     useEffect(() => {
         axios
             .get(`${process.env.NEXT_PUBLIC_API_URL}/users/my`, {
-                headers: { "Authorization": "Bearer " + localStorage.getItem('accessToken') }
+                headers: { "Authorization": "Bearer " + localStorage.getItem('accessToken') ,
+                withCredentials: true 
+                }
             })
             .then((response) => {
                 const userData = response.data.data;

@@ -34,7 +34,8 @@ export default function Search() {
                     config = {
                         headers: {
                             'Authorization': `Bearer ${token}`
-                        }
+                        },
+                     withCredentials: true 
                     }
                 }
                 const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/books/${id}`,config);

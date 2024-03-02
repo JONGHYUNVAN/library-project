@@ -54,7 +54,6 @@ export default function Search() {
                 email,
                 password,
             },
-            { withCredentials: true }
             );
 
             if (response.status === 200) {
