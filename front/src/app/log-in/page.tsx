@@ -69,6 +69,10 @@ export default function Search() {
             alert(`Failed to log in. ${err.message}`);
         }
     };
+    const handleFormSubmit = (event: React.FormEvent) => {
+        event.preventDefault();
+        handleLogin(email, password);
+    };
     const handleKakaoClick = () => {
         const newWindow = window.open(`https://kauth.kakao.com/oauth/authorize?client_id=${process.env.NEXT_PUBLIC_KAKAO_CLIENT_ID}&redirect_uri=${process.env.NEXT_PUBLIC_KAKAO_REDIRECT_URL}&response_type=code`, 'newWindow', 'width=600,height=400');
 
@@ -160,6 +164,7 @@ export default function Search() {
                             transform: 'translate(-40%, 100%)',
                         }}
                     />
+                    <form onSubmit={handleFormSubmit}>
                     <input
                         type="password"
                         onChange={handlePasswordChange}
@@ -173,6 +178,7 @@ export default function Search() {
                             transform: 'translate(-50%, -30%)',
                         }}
                     />
+                    </form>
                     <h2 className="passwordOutputBox">{'$'.repeat(passwordLength)}</h2>
                 </div>
                 
