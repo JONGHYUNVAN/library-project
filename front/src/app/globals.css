@@ -370,9 +370,9 @@ body {
 }
 .passwordOutputBox{
   position: absolute;
-  top: 70%;
-  left: 65%;
-  transform: translate(-50%,-50%);
+  top: 65%;
+  left: 70%;
+  transform: translate(-50%,-30%);
   width: clamp(50px, 80vw, 300px);
   height: clamp(25px, 40vw, 150px);
   background: transparent;
@@ -397,7 +397,6 @@ body {
 
 }
 .login-form {
-  background: radial-gradient(circle, rgba(255,255,255,0.5), rgba(255,255,255,0));
 
 }
 .login-button{

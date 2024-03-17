@@ -15,10 +15,12 @@ export default function List() {
 
 
     useEffect(() => {
-        axios.get(`${process.env.NEXT_PUBLIC_API_URL}/books`)
-            .then((response) => {
-                const dataArray = response.data.data;
-                const books = dataArray.map((item: { id: string; title: string; imageURL: string}) => ({
+        setLoading(true);
+        fetch(`${process.env.NEXT_PUBLIC_API_URL}/books`)
+            .then((response) => response.json())
+            .then((data) => {
+                const dataArray = data.data;
+                const books = dataArray.map((item: { id: string; title: string; imageURL: string }) => ({
                     id: item.id,
                     title: item.title,
                     imageURL: item.imageURL,
@@ -28,6 +30,7 @@ export default function List() {
             })
             .catch((error) => {
                 console.error(error);
+                setLoading(false);
             });
     }, []);
 
@@ -74,8 +77,8 @@ export default function List() {
                     let vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0) / 100;
                     let imgWidth = 15 * vw;
 
-                    imgWidth = Math.max(imgWidth, 200); // 최소 크기 200px
-                    imgWidth = Math.min(imgWidth, 300); // 최대 크기 300px
+                    imgWidth = Math.max(imgWidth, 200);
+                    imgWidth = Math.min(imgWidth, 300);
                     let imgHight = imgWidth*4/3;
 
                     image.style.width = `${imgWidth}px`;
@@ -91,8 +94,8 @@ export default function List() {
             let vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0) / 100;
             let imgWidth = 15 * vw;
 
-            imgWidth = Math.max(imgWidth, 200); // 최소 크기 200px
-            imgWidth = Math.min(imgWidth, 300); // 최대 크기 300px
+            imgWidth = Math.max(imgWidth, 200); 
+            imgWidth = Math.min(imgWidth, 300);
             let imgHight = imgWidth*4/3;
 
             image.style.width = `${imgWidth}px`;
@@ -122,61 +125,71 @@ export default function List() {
     
 
     return (
+
         <div>
             <div className="container" style={{marginTop: '10vh', marginBottom: '5vh'}}>
                 <div className="smallTitle">Ranked In TOP 10</div>
             </div>
 
             <div className="book-container">
-                {books.slice(0, 5).map((book, index) => (
-                    <div className="book" key={index}>
-                        <Link href={`/search?id=${book.id}`} style={{ textDecoration: 'none'}} >
-                            {loading ?
-                                <div className="book-image">
-                                    <BounceLoader color="#8B4513" size={20*width} />
-                                </div>
-                                                 :
-                                <img className="book-image"
-                                     src={book.imageURL}
-                                     ref={el => imagesRef.current[index] = el as HTMLImageElement}
-                                />
-                            }
-                         {loading ?
-                             <div className="book-title">
-                                <BarLoader color="#8B4513" width={20*width}/>
-                             </div>
-                                        :
-                        <p className="book-title">{book.title}</p>
-                         }
-                        </Link>
-                    </div>
-                ))}
+                {loading ? (
+                    Array.from({ length: 5 }).map((_, index) => (
+                        <div className="book" key={index}>
+                            <div className="book-image">
+                                <BounceLoader color="#8B4513" size={20 * width} />
+                            </div>
+                            <div className="book-title">
+                                <BarLoader color="#8B4513" width={20 * width} />
+                            </div>
+                        </div>
+                    ))
+                ) : (
+                    books.slice(0, 5).map((book, index) => (
+                        <div className="book" key={index}>
+                            <Link href={`/search?id=${book.id}`} style={{ textDecoration: 'none' }}>
+                                <>
+                                    <img
+                                        className="book-image"
+                                        src={book.imageURL}
+                                        ref={el => (imagesRef.current[index] = el as HTMLImageElement)}
+                                    />
+                                    <p className="book-title">{book.title}</p>
+                                </>
+                            </Link>
+                        </div>
+                    ))
+                )}
             </div>
 
+
             <div className="book-container">
-                {books.slice(5, 10).map((book, index) => (
-                    <div className="book" key={index}>
-                        <Link href={`/search?id=${book.id}`} style={{ textDecoration: 'none'}} >
-                            {loading ?
-                                <div className="book-image">
-                                    <BounceLoader color="#8B4513" size={20*width} />
-                                </div>
-                                            :
-                                <img className="book-image"
-                                     src={book.imageURL}
-                                     ref={el => imagesRef.current[index+5] = el as HTMLImageElement}
-                                />
-                            }
-                            {loading ?
-                                <div className="book-title">
-                                    <BarLoader color="#8B4513" width={20*width}/>
-                                </div>
-                                            :
-                                <p className="book-title">{book.title}</p>
-                            }
-                        </Link>
-                    </div>
-                ))}
+                {loading ? (
+                    Array.from({ length: 5 }).map((_, index) => (
+                        <div className="book" key={index}>
+                            <div className="book-image">
+                                <BounceLoader color="#8B4513" size={20 * width} />
+                            </div>
+                            <div className="book-title">
+                                <BarLoader color="#8B4513" width={20 * width} />
+                            </div>
+                        </div>
+                    ))
+                ) : (
+                    books.slice(5, 10).map((book, index) => (
+                        <div className="book" key={index}>
+                            <Link href={`/search?id=${book.id}`} style={{ textDecoration: 'none' }}>
+                                <>
+                                    <img
+                                        className="book-image"
+                                        src={book.imageURL}
+                                        ref={el => (imagesRef.current[index+5] = el as HTMLImageElement)}
+                                    />
+                                    <p className="book-title">{book.title}</p>
+                                </>
+                            </Link>
+                        </div>
+                    ))
+                )}
             </div>
 
             <video poster={"/rankingPoster.png"} className="background-video" autoPlay muted loop>
