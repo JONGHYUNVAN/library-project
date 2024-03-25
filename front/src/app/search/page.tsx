@@ -22,6 +22,8 @@ export default function Search() {
     const [books, setBooks] = useState<Book[]>([]);
     const [loading, setLoading] = useState(false);
     const [searching, setSearching] = useState(false);
+    const previousClickedElement = React.useRef<HTMLElement | null>(null);
+
 
     useEffect(() => {
         async function fetchData() {
@@ -90,14 +92,21 @@ export default function Search() {
     const handleInputChange = (event:React.ChangeEvent<HTMLInputElement>) => {
         setInput(event.target.value);
     };
+
     const handleTextClick = (event: React.MouseEvent<HTMLDivElement>, book: Book) => {
         if(book.id !== id) {
             setSelectedBook(book);
             setId(book.id);
-            (event.currentTarget as HTMLElement).classList.add('textClicked');
+            if (previousClickedElement.current) {
+                previousClickedElement.current.classList.remove('textClicked');
+            }
+            const currentElement = event.currentTarget as HTMLElement;
+            currentElement.classList.add('textClicked');
+
+            previousClickedElement.current = currentElement;
         }
     };
-
+    
     return (
         <div>
 

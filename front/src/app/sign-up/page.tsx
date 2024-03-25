@@ -93,7 +93,7 @@ export default function SignUp() {
             <div style={{ position: 'absolute', display: 'flex', flexDirection: 'column', alignItems: 'flex-start', justifyContent: 'space-between' }}>
                 <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', maxHeight:'50vh' }}>
                     <div>
-                        <h1 style={{position: 'absolute', top: '-15%', left :'40%', fontSize: 'clamp(20px, 2vw, 40px)', fontFamily:'Pacifico, cursive'}}>Registration Form </h1>
+                        <h1 style={{position: 'absolute', top: '-15%', left :'35%', fontSize: 'clamp(20px, 2vw, 40px)', fontFamily:'Pacifico, cursive'}}>Registration Form </h1>
                     </div>
 
                     <div style={{ display: 'flex', justifyContent: 'space-between', width: '100%' }}>

@@ -69,6 +69,10 @@ export default function Search() {
             alert(`Failed to log in. ${err.message}`);
         }
     };
+    const handleFormSubmit = (event: React.FormEvent) => {
+        event.preventDefault();
+        handleLogin(email, password);
+    };
     const handleKakaoClick = () => {
         const newWindow = window.open(`https://kauth.kakao.com/oauth/authorize?client_id=${process.env.NEXT_PUBLIC_KAKAO_CLIENT_ID}&redirect_uri=${process.env.NEXT_PUBLIC_KAKAO_REDIRECT_URL}&response_type=code`, 'newWindow', 'width=600,height=400');
 
@@ -96,28 +100,39 @@ export default function Search() {
 
     return (
         <div>
+            <video poster={"/posterLogin.png"} className="background-video" autoPlay muted loop>
+                <source src="/backgroundLogIn.mp4" type="video/mp4" />
+            </video>
+
             <div style={{
                 display: 'flex',
                 flexDirection: 'column',
                 justifyContent: 'center',
                 alignItems: 'center',
                 height: '80vh',
-                position: 'relative'
+                position: 'relative',
             }}>
                 <div
-                    onMouseMove={(event) => handleMouseMove(event, "")}
                     style={{
                         position: 'relative',
-                        width: 'clamp(325px, 80vw, 800px)',
+                        width: 'clamp(325px, 80vw, 700px)',
                         height: 'clamp(200px, 40vw, 400px)',
                         marginTop: '10px',
-                        background: `radial-gradient(circle 900px at ${coords.x}px ${coords.y}px, rgba(255,255,255,0.06), rgba(255,255,255,0))`,
                     }} >
-                    <Image className="login-form" src="/loginForm.png" alt="image"  width={1100} height={700}
+                    <div onMouseMove={(event) => handleMouseMove(event, "")}
+                         style={{
+                             position: 'absolute',
+                             width: 'clamp(325px, 80vw, 700px)',
+                             height: 'clamp(200px, 40vw, 400px)',
+                             marginTop: '10px',
+                             background: `radial-gradient(circle 900px at ${coords.x}px ${coords.y}px, rgba(255,255,255,0.06), rgba(255,255,255,0))`,
+                             pointerEvents: 'auto',
+                             zIndex: '2'
+                         }}
+                    />
+                    <Image src="/loginForm.png" alt="image"  width={1100} height={700}
                            style={{
                                position: 'absolute',
-                               top: 0,
-                               left:0,
                                width: '100%',
                                height: '100%',
                            }} />
@@ -144,11 +159,12 @@ export default function Search() {
                         onMouseMove={(event) => handleMouseMove(event, "email")}
                         style={{
                             position: 'absolute',
-                            top: '55%',
+                            top: '45%',
                             left: '70%',
-                            transform: 'translateX(-50%)',
+                            transform: 'translate(-40%, 100%)',
                         }}
                     />
+                    <form onSubmit={handleFormSubmit}>
                     <input
                         type="password"
                         onChange={handlePasswordChange}
@@ -159,17 +175,19 @@ export default function Search() {
                             position: 'absolute',
                             top: '60%',
                             left: '70%',
-                            transform: 'translateX(-50%)',
+                            transform: 'translate(-50%, -30%)',
                         }}
                     />
+                    </form>
                     <h2 className="passwordOutputBox">{'$'.repeat(passwordLength)}</h2>
                 </div>
+                
                 <div style={{
                     display: 'flex',
                     flexDirection: 'column',
                     alignItems: 'center',
                     justifyContent: 'center',
-                    marginTop: '20px'
+                    marginTop: '20px',
                 }}>
                     <button onClick={handleKakaoClick} style={{ border: 'none', background: 'transparent', zIndex: 1 }}>
                         <Image src="/kakaoLogin.png" alt="Kakao Login"  width={300}  height={45} style={{zIndex: 10}} />
@@ -179,9 +197,6 @@ export default function Search() {
                     </button>
                 </div>
             </div>
-            <video poster={"/posterLogin.png"} className="background-video" autoPlay muted loop>
-                <source src="/backgroundLogIn.mp4" type="video/mp4" />
-            </video>
 
         </div>
 
