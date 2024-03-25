@@ -55,8 +55,15 @@ export default function List() {
 
                     if (Math.abs(distanceX) <= rect.width / 2  &&
                         Math.abs(distanceY) <= rect.height / 2){
-                        image.style.width = `${width*1.5}vw`;
-                        image.style.height = `${height * 1.5}vw`;
+
+                        let vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0) / 100;
+                        let imgWidth = 15 * vw;
+                        imgWidth = Math.max(imgWidth, 200);
+                        imgWidth = Math.min(imgWidth, 300);
+                        let imgHight = imgWidth*4/3;
+
+                        image.style.width = `${imgWidth*1.2}px`;
+                        image.style.height = `${imgHight*1.2}px`;
                         if(distanceY>0) {
                             if(distanceX>0)
                                 image.style.transform = `perspective(20vw) rotateX(${-rotateY}deg) rotateY(${rotateX}deg)`;
