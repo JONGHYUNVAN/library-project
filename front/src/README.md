@@ -136,6 +136,27 @@ When loading the page, the top 10 data based on the number of views is received 
 
 ## 검색 Search
 검색 페이지의 목적은 사용자들에게 제목, 저자, 출판사 기준으로 도서를 검색 할 수 있게 하는 것임.  
+또한 로그인한 사용자의 경우 백엔드 서버가 검색 데이터를 수집하여 사용자의 관심 장르를 분석할 수 있게 하는 것임.
 title, author, publisher 버튼에 따라 검색 기준이 정해지고, 이중 제목검색은 검색어의 일부만 검색해도 검색어를 포함하는 모든 도서를 검색 할 수 있음.  
 검색 결과 리스트에서 특정 결과를 클릭하면 클릭한 결과의 색이 금색으로 변하여 사용자가 어떤 도서를 선택했는지 확인 할 수 있는데, 사용자가 어떤 검색결과를 선택하였는지는
-React 의 useState 훅을 사용하여 관리됨.
+React 의 useState 훅을 사용하여 관리됨.  
+The purpose of the search page is to allow users to search for books by title, author, and publisher criteria.  
+Also, for logged-in users, the backend server can collect search data to analyze the user's interests by genre.  
+The search criteria are determined by the title, author, and publisher buttons. The title search can find all books containing the search terms even if only part of the terms are entered.  
+In the search results list, if a specific result is clicked, its color changes to gold to indicate which book the user selected. Which search result the user selects is managed using React's useState hook.  
+
+## 회원가입 Sign up
+회원가입 페이지의 목적은 사용자들이 입력한 데이터를 바탕으로 향후 인증 인가 및 사용자 맞춤형 데이터 수집을 가능하게 하는 것임.  
+신규 사용자가 가입할 때, 이름, 닉네임, 이메일, 전화번호, 비밀번호, 성별 의 정보를 입력하는데, 각 정보가 입력 혹은 변경될 때 마다
+zod 에 의해 밸리데이션 되고 이 데이터는 제출 이후에 백엔드 서버에서 한번 더 밸리데이션 된 후 데이터베이스에 저장됨.  
+이후 사용자가 콘텐츠를 탐색하거나 토론 게시판, 대여, ai 와의 대화 기능 등 추가될 기능들을 이용할 때 사용자 검색 및 대여 , 혹은 성별 데이터를 참조하여 사용자가 관심을 가질 만 한 항목을 제안 할 수 있는 기반이 됨.  
+The purpose of the membership registration page is to enable future authentication and collection of user-customized data based on the data entered by users.  
+When a new user signs up, they enter information such as name, nickname, email, phone number, password, and gender, each time each information is entered or changed.  
+Validated by zod, this data is validated once more on the backend server after submission and then stored in the database.  
+Afterwards, when the user explores content or uses the discussion board, rental, or chat function with AI, it becomes the cornerstone of suggesting items that the user may be interested in by referring to user search and rental, or gender data.
+
+## 마이페이지 My (page)
+마이 페이지의 목적은 사용자들이 로그인 후 웹 사이트를 이용하며 생성된 사용자 맞춤 데이터를 사용자가 직접 확인할 수 있게 nivo 를 이용한 그래프로 나타내고,
+회원가임 시 기입한 개인 데이터와 함께 사용자들에게 제공하기 위함임.  
+The purpose of My Page is to display customized data generated while using the website after logging in as a graph using nivo so that users can directly check it.  
+It is intended to be provided to users along with the personal data entered when signing up for membership.
