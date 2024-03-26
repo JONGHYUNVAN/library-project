@@ -171,8 +171,13 @@ The redirected page issues an authorization code, which is then delivered to the
 Afterwards, when the jwt authentication token and refresh token are received from the backend server, they are stored in local storage and cookie storage, respectively.
 When the token is saved, the social login window turns off and the redux store recognizes the user's status as logged in.
 
-## 마이(페이지) My (page)
 마이 페이지의 목적은 사용자들이 로그인 후 웹 사이트를 이용하며 생성된 사용자 맞춤 데이터를 사용자가 직접 확인할 수 있게 nivo 를 이용한 그래프로 나타내고,
 회원가임 시 기입한 개인 데이터와 함께 사용자들에게 제공하기 위함임.  
+useEffect 훅과 axios 를 사용하여 access token 을 포함한 요청시 사용자 정보와 선호 장르 데이터를 백엔드 API 로부터 받아오고, 사용자 정보가 도착할 때 까지 로딩 스피너를 표시함.  
+useState 를 이용해 받아온 정보를 user state 로 사용자 데이터, genres state 로 선호장르 데이터를 관리함.  
+선호장르 데이터를 기반으로 레이더 차트(MyResponsiveRadar)에 표시할 데이터를 구성함.
 The purpose of My Page is to display customized data generated while using the website after logging in as a graph using nivo so that users can directly check it.  
-It is intended to be provided to users along with the personal data entered when signing up for membership.
+It is intended to be provided to users along with the personal data entered when signing up for membership.  
+Using the useEffect hook and axios, user information and preferred genre data are received from the backend API upon request, including an access token, and a loading spinner is displayed until user information arrives.  
+The information received using useState is used to manage user data as user state and preferred genre data as genres state.  
+Configures data to be displayed on the radar chart (MyResponsiveRadar) based on preferred genre data.
