@@ -178,4 +178,7 @@ useEffect 훅과 axios 를 사용하여 access token 을 포함한 요청시 사
 useState 를 이용해 받아온 정보를 user state 로 사용자 데이터, genres state 로 선호장르 데이터를 관리함.  
 선호장르 데이터를 기반으로 레이더 차트(MyResponsiveRadar)에 표시할 데이터를 구성함.
 The purpose of My Page is to display customized data generated while using the website after logging in as a graph using nivo so that users can directly check it.  
-It is intended to be provided to users along with the personal data entered when signing up for membership.
+It is intended to be provided to users along with the personal data entered when signing up for membership.  
+Using the useEffect hook and axios, user information and preferred genre data are received from the backend API upon request, including an access token, and a loading spinner is displayed until user information arrives.  
+The information received using useState is used to manage user data as user state and preferred genre data as genres state.  
+Configures data to be displayed on the radar chart (MyResponsiveRadar) based on preferred genre data.
