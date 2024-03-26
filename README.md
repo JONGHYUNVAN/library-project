@@ -29,6 +29,6 @@ https://library-project-blush.vercel.app/
 <img src="signup.gif" width="609">
 
 각 파트에 관한 상세:
-프론트엔드 사이드 : https://github.com/JONGHYUNVAN/library-project/blob/main/front/src/README.md
+프론트엔드 사이드 : https://github.com/JONGHYUNVAN/library-project/blob/main/front/src/README.md  
 백엔드 사이드    : https://github.com/JONGHYUNVAN/library-project/blob/main/back/README.md
 
