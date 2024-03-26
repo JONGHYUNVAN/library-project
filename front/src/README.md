@@ -155,7 +155,23 @@ When a new user signs up, they enter information such as name, nickname, email, 
 Validated by zod, this data is validated once more on the backend server after submission and then stored in the database.  
 Afterwards, when the user explores content or uses the discussion board, rental, or chat function with AI, it becomes the cornerstone of suggesting items that the user may be interested in by referring to user search and rental, or gender data.
 
-## 마이페이지 My (page)
+## 로그인 Log in
+로그인 페이지의 목적은 회원 가입한 사용자들이 백엔드 서버에서 발급받은 토큰을 이용하여 자신을 인증하고, 웹 사이트에서 사용자 맞춤형 데이터를 수집하거나
+수집한 데이터를 활용한 서비스를 제공받게 하는 것임.  
+사용자는 회원가입 페이지에서 제출한 아이디와 비밀번호를 이용한 로그인(폼 로그인)을 이용하거나, google, kakao 등의 소셜 로그인을 이용하여 로그인 할 수 있음.  
+소셜 로그인은 각각의 페이지로 새 창에서 연결되는데, 사용자가 각각의 로그인 페이지에서 로그인을 완료하면 authorization code가 발급되어 리디렉션 되고,  
+리디렉션된 페이지에서는 authorization code 를 발급한 뒤, 이 코드는 백엔드 서버에 전달됨.  
+이후 백엔드 서버에서 jwt 인증 토큰과 리프레시 토큰을 전달받으면, 이를 각각 local storage 와 cookie storage 에 저장함.  
+토큰이 저장되면, 소셜 로그인 창이 꺼지고 redux store 에서 사용자의 상태를 로그인 한 상태로 인식함.  
+The purpose of the login page is for registered users to authenticate themselves using tokens issued by the backend server, and to collect user-customized data from the website or
+The purpose is to provide services using the collected data.
+Users can log in (form login) using the ID and password submitted on the membership registration page, or use social logins such as Google and Kakao.
+Social login connects to each page in a new window. When the user completes login on each login page, an authorization code is issued and redirected.
+The redirected page issues an authorization code, which is then delivered to the backend server.
+Afterwards, when the jwt authentication token and refresh token are received from the backend server, they are stored in local storage and cookie storage, respectively.
+When the token is saved, the social login window turns off and the redux store recognizes the user's status as logged in.
+
+## 마이(페이지) My (page)
 마이 페이지의 목적은 사용자들이 로그인 후 웹 사이트를 이용하며 생성된 사용자 맞춤 데이터를 사용자가 직접 확인할 수 있게 nivo 를 이용한 그래프로 나타내고,
 회원가임 시 기입한 개인 데이터와 함께 사용자들에게 제공하기 위함임.  
 The purpose of My Page is to display customized data generated while using the website after logging in as a graph using nivo so that users can directly check it.  
