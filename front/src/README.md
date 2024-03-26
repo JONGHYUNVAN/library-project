@@ -171,6 +171,7 @@ The redirected page issues an authorization code, which is then delivered to the
 Afterwards, when the jwt authentication token and refresh token are received from the backend server, they are stored in local storage and cookie storage, respectively.
 When the token is saved, the social login window turns off and the redux store recognizes the user's status as logged in.
 
+## 마이 페이지 My page
 마이 페이지의 목적은 사용자들이 로그인 후 웹 사이트를 이용하며 생성된 사용자 맞춤 데이터를 사용자가 직접 확인할 수 있게 nivo 를 이용한 그래프로 나타내고,
 회원가임 시 기입한 개인 데이터와 함께 사용자들에게 제공하기 위함임.  
 useEffect 훅과 axios 를 사용하여 access token 을 포함한 요청시 사용자 정보와 선호 장르 데이터를 백엔드 API 로부터 받아오고, 사용자 정보가 도착할 때 까지 로딩 스피너를 표시함.  
