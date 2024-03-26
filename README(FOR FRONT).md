@@ -74,9 +74,9 @@ This document is a page containing descriptions of the frontend side of the Libr
   Adopted npm for the project's package management and dependency handling, leveraging its advantages such as standardization and built-in security audit tools
 
 ## 프로젝트 구조 Project Structure
-<img src="filesBefore" width="400" height="200">   
+<img src="filesBefore.png" width="400" height="200">   
 ---
-<img src="filesAfter" width="400" height="600">
+<img src="filesAfter.png" width="400" height="600">
 
 
 next 14 버전의 권장 사항에 따라, 기존의 pages 디렉토리 대신 app 폴더 안에 Route group 단위의 디렉토리를 지정하고, 각각의 page 를 생성하여 코드를 페이지 단위로 분리하였고,
