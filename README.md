@@ -9,9 +9,9 @@ https://library-project-blush.vercel.app/
 ### 설치 전에 Requirements
 For building and running the application you need:
 
-- [Node.js 14.19.3](https://nodejs.org/ca/blog/release/v14.19.3/)
-- [Npm 9.2.0](https://www.npmjs.com/package/npm/v/9.2.0)
-- [Strapi 3.6.6](https://www.npmjs.com/package/strapi/v/3.6.6)
+- ![Next](https://img.shields.io/badge/Next-14.1.0-black?style=for-the-badge&logo=next.js&logoColor=black)  
+- ![React](https://img.shields.io/badge/React-18.2.0-61DAFB?style=for-the-badge&logo=react&logoColor=61DAFB)  
+- ![npm](https://img.shields.io/badge/npm-10.2.5-CB3837?style=for-the-badge&logo=npm&logoColor=CB3837)  
 
 ### Installation
 ``` bash
