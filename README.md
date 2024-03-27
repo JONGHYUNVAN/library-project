@@ -24,7 +24,7 @@ $ npm run build
 $ npm start
 ```
 혹은  
-![image](https://github.com/JONGHYUNVAN/library-project/assets/116232652/8a2a4db0-5b81-4a3b-b6c5-a8d644de68af)
+![image](https://github.com/JONGHYUNVAN/library-project/assets/116232652/8a2a4db0-5b81-4a3b-b6c5-a8d644de68af)  
  backend 의 경우  
 ``` bash 
 $ cd back
