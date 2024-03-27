@@ -37,6 +37,9 @@ $ cd back
 ### 사용 스택 Stacks  
 <img src="stack.png" width="609" height="384">
 
+각 파트에 관한 상세 details about each side:  
+프론트엔드 사이드 frontend side: https://github.com/JONGHYUNVAN/library-project/blob/main/front/src/README.md  
+백엔드 사이드 backend side     : https://github.com/JONGHYUNVAN/library-project/blob/main/back/README.md
 ### 구현 화면 Implementation screen
 홈 화면 home :  
 <img src="home.gif" width="609" height="384">
@@ -56,6 +59,4 @@ $ cd back
 회원가입 화면 sign up :   
 <img src="signup.gif" width="609">
 
-각 파트에 관한 상세 details about each side:  
-프론트엔드 사이드 frontend side: https://github.com/JONGHYUNVAN/library-project/blob/main/front/src/README.md  
-백엔드 사이드 backend side     : https://github.com/JONGHYUNVAN/library-project/blob/main/back/README.md
+
