@@ -9,26 +9,30 @@ https://library-project-blush.vercel.app/
 ### 설치 전에 Requirements
 For building and running the application you need:
 
-- ![Next](https://img.shields.io/badge/Next-14.1.0-black?style=for-the-badge&logo=next.js&logoColor=black)  
-- ![React](https://img.shields.io/badge/React-18.2.0-61DAFB?style=for-the-badge&logo=react&logoColor=61DAFB)  
-- ![npm](https://img.shields.io/badge/npm-10.2.5-CB3837?style=for-the-badge&logo=npm&logoColor=CB3837)  
+- [Node.js 14.19.3](https://nodejs.org/ca/blog/release/v14.19.3/)
+- [Npm 9.2.0](https://www.npmjs.com/package/npm/v/9.2.0)
+- [Strapi 3.6.6](https://www.npmjs.com/package/strapi/v/3.6.6)
 
 ### Installation
 ``` bash
 $ git clone https://github.com/JONGHYUNVAN/library-project.git
- frontend 의 경우
+```
+ frontend 의 경우  
+``` bash
 $ cd front/src
 $ npm run build
 $ npm start
-혹은
-![image](https://github.com/JONGHYUNVAN/library-project/assets/116232652/8a2a4db0-5b81-4a3b-b6c5-a8d644de68af)
- backend 의 경우
-$ cd back
-![image](https://github.com/JONGHYUNVAN/library-project/assets/116232652/b45a76b1-fabe-4761-8cf4-3367e98f81b2)
-혹은
-![image](https://github.com/JONGHYUNVAN/library-project/assets/116232652/e6389b32-d342-430b-9d3b-505aef90611c)
-
 ```
+혹은  
+![image](https://github.com/JONGHYUNVAN/library-project/assets/116232652/8a2a4db0-5b81-4a3b-b6c5-a8d644de68af)
+ backend 의 경우  
+``` bash 
+$ cd back
+```
+![image](https://github.com/JONGHYUNVAN/library-project/assets/116232652/ada55994-5cf4-4476-a8d5-70b7a85979b6)  
+혹은  
+![image](https://github.com/JONGHYUNVAN/library-project/assets/116232652/e6389b32-d342-430b-9d3b-505aef90611c)  
+
 
 ### 사용 스택 Stacks  
 <img src="stack.png" width="609" height="384">
@@ -55,4 +59,3 @@ $ cd back
 각 파트에 관한 상세 details about each side:  
 프론트엔드 사이드 frontend side: https://github.com/JONGHYUNVAN/library-project/blob/main/front/src/README.md  
 백엔드 사이드 backend side     : https://github.com/JONGHYUNVAN/library-project/blob/main/back/README.md
-
