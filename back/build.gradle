@@ -61,7 +61,7 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-oauth2-client'
 	//mySql
 	implementation 'mysql:mysql-connector-java'
-
+	//mariaDB
 	implementation 'org.mariadb.jdbc:mariadb-java-client:2.7.2'
 
 
