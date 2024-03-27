@@ -6,6 +6,30 @@
 ### 배포 주소 Deployment URL
 https://library-project-blush.vercel.app/
 
+### 설치 전에 Requirements
+For building and running the application you need:
+
+- [Node.js 14.19.3](https://nodejs.org/ca/blog/release/v14.19.3/)
+- [Npm 9.2.0](https://www.npmjs.com/package/npm/v/9.2.0)
+- [Strapi 3.6.6](https://www.npmjs.com/package/strapi/v/3.6.6)
+
+### Installation
+``` bash
+$ git clone https://github.com/JONGHYUNVAN/library-project.git
+ frontend 의 경우
+$ cd front/src
+$ npm run build
+$ npm start
+혹은
+![image](https://github.com/JONGHYUNVAN/library-project/assets/116232652/8a2a4db0-5b81-4a3b-b6c5-a8d644de68af)
+ backend 의 경우
+$ cd back
+![image](https://github.com/JONGHYUNVAN/library-project/assets/116232652/b45a76b1-fabe-4761-8cf4-3367e98f81b2)
+혹은
+![image](https://github.com/JONGHYUNVAN/library-project/assets/116232652/e6389b32-d342-430b-9d3b-505aef90611c)
+
+```
+
 ### 사용 스택 Stacks  
 <img src="stack.png" width="609" height="384">
 
