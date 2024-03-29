@@ -1,6 +1,6 @@
 #           library-project
  ###                               library project by JHVAN   
-#### 프로젝트 목적 :  
+### 프로젝트 목적 :  
 #### 사이트의 분위기와 여러 상호작용 요소로 사용자들의 사이트와 책에 대한 관심을 얻고, 로그인한 사용자들의 활동과 관심사에 관한 활동 데이터를 얻는 웹 사이트의 구현   
 
 ### 배포 주소 Deployment URL
@@ -8,10 +8,6 @@ https://library-project-blush.vercel.app/
 
 ### 설치 전에 Requirements
 For building and running the application you need:
-
-- [Node.js 14.19.3](https://nodejs.org/ca/blog/release/v14.19.3/)
-- [Npm 9.2.0](https://www.npmjs.com/package/npm/v/9.2.0)
-- [Strapi 3.6.6](https://www.npmjs.com/package/strapi/v/3.6.6)
 
 ### Installation
 ``` bash
