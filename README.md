@@ -55,4 +55,5 @@ $ cd back
 회원가입 화면 sign up :   
 <img src="signup.gif" width="609">
 
-
+모바일 화면 mobile :  
+<img src="mobile.gif">
