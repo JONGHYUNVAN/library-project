@@ -1,7 +1,7 @@
 body {
   margin: 0;
   padding: 0;
-  background-color: rgb(250, 200, 90);
+  background-image: url('../public/backposter.png');
   cursor: url('../public/mouse.png') 1 1, auto;
 }
 
@@ -63,13 +63,13 @@ body {
   display: grid;
   justify-content: center;
   align-items: center;
+  width: clamp(300px,20vw,400px);
+  height: clamp(400px,28vw,800px);
   gap: 5px;
 }
 .book-image {
-  width: 15vw;
-  height: 20vw;
-  max-width: 300px;
-  max-height: 400px;
+  width: clamp(200px,15vw,300px);
+  height: clamp(300px,20vw,400px);
   object-fit: cover;
 }
 .book-image-big {
@@ -99,7 +99,7 @@ body {
   font-family: 'Nanum Pen Script', cursive;
   box-shadow: 10px 2px 5px sienna;
   margin-top: 10px;
-  width: 99vw;
+  width: 97vw;
   height: 4vh;
   max-height: 300px;
 }
@@ -198,18 +198,40 @@ body {
 .title-button {
   background: linear-gradient(to bottom right, gold,darkgoldenrod);
   color: white;
-  padding: 10px 33px;
+  padding: clamp(0.5vw, 1vw, 2vw) clamp(1.5vh, 3vh, 3vh);
   border: none;
   border-radius: 7px;
-  margin-right: 10px;
-  margin-bottom: 0.5vw;
+  margin-right: 1vw;
+  margin-bottom: 0.5vh;
   cursor: pointer;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  width: 5.5vw;
-  height: 1.7vw;
-  min-width: 100px;
-  min-height: 30px;
-  font-size: 1vw;
+  font-size: clamp(15px,1vw,40px);
+}
+
+.author-button {
+  background: linear-gradient(to bottom right, gold,darkgoldenrod);
+  color: white;
+  padding: clamp(0.5vw, 1vw, 2vw) clamp(1.5vh, 3vh, 3vh);
+  border: none;
+  border-radius: 7px;
+  margin-right: 1vw;
+  margin-bottom: 0.5vh;
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  font-size: clamp(15px,1vw,40px);
+}
+
+.publisher-button {
+  background: linear-gradient(to bottom right, gold,darkgoldenrod);
+  color: white;
+  padding: clamp(0.5vw, 1vw, 2vw) clamp(1.5vh, 3vh, 3vh);
+  border: none;
+  border-radius: 7px;
+  margin-right: 1vw;
+  margin-bottom: 0.5vh;
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  font-size: clamp(15px,1vw,40px);
 }
 .searchInfo{
   width: 90vw;
@@ -223,41 +245,8 @@ body {
   background: linear-gradient(to bottom right, white ,gold);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
   text-shadow: 2px 2px 2px goldenrod;
-}
-.author-button {
-  background: linear-gradient(to bottom right, gold, darkgoldenrod);
-  color: white;
-  padding: 10px 26px;
-  border: none;
-  border-radius: 7px;
-  margin-right: 10px;
-  margin-bottom: 0.5vw;
-  cursor: pointer;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  width: 5.5vw;
-  height: 1.7vw;
-  min-width: 100px;
-  min-height: 30px;
-  font-size: 1vw;
-}
-
-.publisher-button {
-  background: linear-gradient(to bottom right, gold, darkgoldenrod);
-  color: white;
-  padding: 10px 18px;
-  border: none;
-  border-radius: 7px;
-  margin-right: 10px;
-  margin-bottom: 0.5vw;
-  cursor: pointer;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  width: 5.5vw;
-  height: 1.7vw;
-  min-width: 100px;
-  min-height: 30px;
-  font-size: 1vw;
 }
 .searchImage {
   width: 6vw;
@@ -300,7 +289,7 @@ body {
   background:darkgoldenrod;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  text-shadow: -1px -1px 0px gold;
+  text-shadow: -1px -1px 0 gold;
 }
 .hidden {
   display: none;
@@ -383,19 +372,18 @@ body {
 }
 .passwordOutputBox{
   position: absolute;
-  top: 50%;
-  left: 50%;
-  margin-left: -41px;
-  margin-top: 10px;
-  width: 300px;
-  height: 30px;
+  top: 65%;
+  left: 70%;
+  transform: translate(-50%,-30%);
+  width: clamp(50px, 80vw, 300px);
+  height: clamp(25px, 40vw, 150px);
   background: transparent;
   border: none;
   font-family: 'Josefin Slab', serif;
   background: linear-gradient(to bottom right, palegoldenrod ,darkgoldenrod);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  font-size: 30px;
+  font-size: clamp(20px, 3vw, 30px);
   text-align: center;
   pointer-events: none;
   letter-spacing: 4px;
@@ -411,20 +399,12 @@ body {
 
 }
 .login-form {
-  transform: scale(0.6);
-  top: 50%;
-  left: 50%;
-  background: radial-gradient(circle, rgba(255,255,255,0.5), rgba(255,255,255,0));
 
 }
 .login-button{
-  transform: scale(0.5);
   border-radius: 100%;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  margin-left: 180px;
-  margin-top: 70px;
+  width: clamp(20px,3vw,50px);
+  height : clamp(20px,3vw ,50px);
   z-index: 2;
 }
 .clicked {
@@ -444,7 +424,7 @@ body {
   border-radius: 8px;
   padding: 20px;
   background-color: rgba(120, 90, 30, 0.2);
-  box-shadow: 0px 0px 8px rgba(100, 70, 20, 1);
+  box-shadow: 0 0 8px rgba(100, 70, 20, 1);
   text-shadow: 2px 2px 2px goldenrod;
 }
 .myInfoTextBox{

@@ -29,7 +29,9 @@ export default function My() {
     useEffect(() => {
         axios
             .get(`${process.env.NEXT_PUBLIC_API_URL}/users/my`, {
-                headers: { "Authorization": "Bearer " + localStorage.getItem('accessToken') }
+                headers: { "Authorization": "Bearer " + localStorage.getItem('accessToken') ,
+                withCredentials: true 
+                }
             })
             .then((response) => {
                 const userData = response.data.data;
@@ -85,15 +87,15 @@ export default function My() {
                     (
                     <>
                         <div className="myInfoTextBox" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center',marginTop: '50px'}}>
-                            <SyncLoader size={50} color="darkgoldenrod" />
+                            <SyncLoader size={'3vw'} color="darkgoldenrod" />
                         </div>
                         <div className="radar" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center',marginTop: '50px'}}>
-                            <ClimbingBoxLoader color="darkgoldenrod" size={50}/>
+                            <ClimbingBoxLoader color="darkgoldenrod" size={'3vw'}/>
                         </div>
                     </>
                     )}
             </div>
-            <video className="background-video" autoPlay muted loop>
+            <video poster={"/myposter.png"} className="background-video" autoPlay muted loop >
                 <source src="/backgroundMy.mp4" type="video/mp4" />
             </video>
         </div>
