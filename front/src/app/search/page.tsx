@@ -4,7 +4,6 @@ import axios from 'axios';
 import { useSearchParams } from "next/navigation";
 import 'react-tooltip/dist/react-tooltip.css'
 import { Tooltip } from 'react-tooltip'
-import { Suspense } from 'react'
 import {Book} from '../interface/Book'
 import {PuffLoader, PropagateLoader } from 'react-spinners';
 import Image from 'next/image'
@@ -27,9 +26,9 @@ export default function Search() {
 
     useEffect(() => {
         async function fetchData() {
-            setLoading(true);
-            setSearching(true);
             if(id) {
+                setLoading(true);
+                setSearching(true);
                 const token = localStorage.getItem('accessToken');
                 let config = {};
 
@@ -75,6 +74,8 @@ export default function Search() {
         handleButtonClick();
     };
     const handleButtonClick = async () => {
+        setLoading(true);
+        setSearching(true);
         try {
             const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/books/${url}/${input}`);
             const dataArray = response.data.data;
@@ -88,6 +89,7 @@ export default function Search() {
         catch(error){
             console.error('Error in axios.get', error);
         }
+        setLoading(false);
     };
     const handleInputChange = (event:React.ChangeEvent<HTMLInputElement>) => {
         setInput(event.target.value);
@@ -153,11 +155,16 @@ export default function Search() {
                     className={isClicked ? 'searchImage clicked' : 'searchImage'}
                     onMouseDown={handleMouseDown}
                     onMouseUp={handleMouseUp}
-                    onMouseLeave={handleMouseUp}/>
+                    onMouseLeave={handleMouseUp}
+                />
+
+
             </div>
 
-
+            {searching ?
+                (
             <div className="searchResult">
+                {loading ? (<div className = "nowSearching">Now Searching...</div>) : (<></>)}
                 {books.map((book, index) => (
                     <div  key={index} className="searchResultsText"  onClick={((event) => handleTextClick(event,book))}>
                         <a id={`book-${index}` } className ="searchResultText">{book.title}</a>
@@ -171,6 +178,10 @@ export default function Search() {
 
                 ))}
             </div>
+                )
+                :
+                (<></>)
+                }
 
             <div className="bookDetail">
                 {searching ? (

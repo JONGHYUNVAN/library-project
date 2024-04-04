@@ -233,6 +233,18 @@ body {
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   font-size: clamp(15px,1vw,40px);
 }
+.nowSearching {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: clamp(20px,5vw,80px);
+  background: linear-gradient(to bottom right, palegoldenrod ,darkgoldenrod);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: white;
+}
+
 .searchInfo{
   width: 90vw;
   height: 40vw;
