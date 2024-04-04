@@ -11,7 +11,7 @@ export default function Search() {
     const dispatch = useAppDispatch();
     const [passwordLength, setPasswordLength] = useState(0);
     const [coords, setCoords] = useState({ x: 0, y: 0 });
-    const [isClicked, setIsClicked] = useState(false);
+    const [isLoggingIn, setIsLoggingIn] = useState(false);
     const [email,setEmail] = useState('');
     const [password,setPassword] = useState('');
 
@@ -34,13 +34,7 @@ export default function Search() {
         });
 
     };
-    const handleMouseDown = () => {
-        setIsClicked(true);
-    };
 
-    const handleMouseUp = () => {
-        setIsClicked(false);
-    };
     const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setPasswordLength(e.target.value.length);
         setPassword(e.target.value);
@@ -49,25 +43,31 @@ export default function Search() {
         setEmail(e.target.value);
     };
     const handleLogin = async (email:string, password:string): Promise<void> => {
-        try {
-            const response = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/auth/login`, {
-                email,
-                password,
-            },
-            );
+        if (!isLoggingIn){
+            try {
+                setIsLoggingIn(true);
+                const response = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/auth/login`, {
+                        email,
+                        password,
+                    },
+                );
 
-            if (response.status === 200) {
-                const accessToken = response.headers['authorization'];
-                localStorage.setItem('accessToken', accessToken);
-                alert(`logged in successfully.`);
-                dispatch(logIn());
-                window.history.back();
+                if (response.status === 200) {
+                    setIsLoggingIn(false);
+                    const accessToken = response.headers['authorization'];
+                    localStorage.setItem('accessToken', accessToken);
+                    alert(`logged in successfully.`);
+                    dispatch(logIn());
+                    window.history.back();
 
+                }
+            } catch (error) {
+                setIsLoggingIn(false);
+                const err = error as Error;
+                alert(`Failed to log in. ${err.message}`);
             }
-        } catch (error ) {
-            const err = error as Error;
-            alert(`Failed to log in. ${err.message}`);
         }
+        setIsLoggingIn(false);
     };
     const handleFormSubmit = (event: React.FormEvent) => {
         event.preventDefault();
@@ -138,15 +138,7 @@ export default function Search() {
                            }} />
                     <Image src="/key.png" alt="image"
                            onClick={() => handleLogin(email, password)}
-                           onMouseDown={handleMouseDown}
-                           onMouseUp={handleMouseUp}
-                           className={isClicked ? 'login-button clicked' : 'login-button'}
-                           style={{
-                               position: 'absolute',
-                               top: '80%',
-                               left: '83%',
-                               transform: 'translate(-50%, -50%)',
-                           }}
+                           className={isLoggingIn ? 'login-button loggingIn' : 'login-button'}
                            width={80}
                            height={80}
                     />

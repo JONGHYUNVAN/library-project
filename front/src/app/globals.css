@@ -265,8 +265,9 @@ body {
   height: 6vw;
   border-radius: 50%;
 }
+
 .clicked {
-  box-shadow: 0 0 10px darkgoldenrod, 0 0 20px goldenrod, 0 0 30px gold, 0 0 40px palegoldenrod;
+  box-shadow: 0 0 5px darkgoldenrod, 0 0 10px goldenrod, 0 0 15px gold, 0 0 20px palegoldenrod;
 }
 
 @keyframes glow {
@@ -418,10 +419,23 @@ body {
   width: clamp(20px,3vw,50px);
   height : clamp(20px,3vw ,50px);
   z-index: 2;
+  position: absolute;
+  top: 80%;
+  left: 83%;
+  transform: translate(-50%, -50%);
 }
-.clicked {
+@keyframes spin {
+  from {
+    transform: translate(-50%, -50%) rotateY(0deg);
+  }
+  to {
+    transform: translate(-50%, -50%) rotateY(360deg);
+  }
+}
+.loggingIn {
   box-shadow: 0 0 10px darkgoldenrod, 0 0 20px goldenrod, 0 0 30px gold, 0 0 40px palegoldenrod;
   background: linear-gradient(to bottom right,darkgoldenrod,palegoldenrod);
+  animation: spin 1ms linear infinite;
 }
 .myInfo{
   width: clamp(100px, 90vw, 1000px);
