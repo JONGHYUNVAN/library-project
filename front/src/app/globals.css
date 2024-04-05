@@ -404,6 +404,7 @@ body {
   text-align: center;
   pointer-events: none;
   letter-spacing: 4px;
+  z-index: 3;
 
 
 }

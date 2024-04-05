@@ -135,6 +135,7 @@ export default function Search() {
                                position: 'absolute',
                                width: '100%',
                                height: '100%',
+                               zIndex: '1',
                            }} />
                     <Image src="/key.png" alt="image"
                            onClick={() => handleLogin(email, password)}
