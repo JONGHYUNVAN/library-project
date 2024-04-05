@@ -161,7 +161,7 @@ export default function Search() {
                         type="password"
                         onChange={handlePasswordChange}
                         className="passwordInputBox"
-                        placeholder={password}
+                        placeholder=""
                         onMouseMove={(event) => handleMouseMove(event, "password")}
                         style={{
                             position: 'absolute',

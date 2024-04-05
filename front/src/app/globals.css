@@ -380,6 +380,10 @@ body {
   font-size: 30px;
   z-index: 2;
 }
+.passwordInputBox::selection {
+  background: transparent;
+  color: transparent;
+}
 .passwordInputBox:focus {
   outline: none;
 }
