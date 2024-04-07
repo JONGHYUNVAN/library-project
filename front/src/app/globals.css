@@ -100,7 +100,7 @@ body {
   box-shadow: 10px 2px 5px sienna;
   margin-top: 10px;
   width: 97vw;
-  height: 4vh;
+  height: 8vh;
   max-height: 300px;
 }
 .navbar a{
@@ -307,6 +307,67 @@ body {
 .hidden {
   display: none;
 }
+.profileSelect{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    border-radius: 8px;
+    padding: 20px;
+    background-color: rgba(192, 134, 17, 0.15);
+    background-position: center;
+    font-family: 'Nanum Pen Script', cursive;
+    box-shadow: 10px 2px 5px sienna;
+    margin-top: 100px;
+    width: 80vw;
+    height: 60vh;
+    margin-left: 8vw;
+    align-items: stretch;
+    gap: 1.25rem;
+    transition: all 400ms;
+}
+.chooseProfileText{
+  position: absolute;
+  font-size: clamp(20px, 2vh, 50px);
+  display: flex;
+  background: linear-gradient(to bottom right, palegoldenrod, gold);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  overflow: hidden;
+}
+.profileImage{
+  flex:1;
+  transition: all 400ms;
+  cursor: pointer;
+  width: 15vw;
+  height: 80%;
+}
+.profileImage > img{
+  display: block;
+  max-width: 100%;
+  object-fit: none;
+}
+.profileImage:nth-child(odd){
+  translate: 0 3vh;
+}
+.profileImage:nth-child(even){
+  translate: 0 8vh;
+}
+.profileSelect:hover .profileImage:not(:hover) {
+  filter: grayscale(100%);
+  width : 10vw
+}
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.profileImage:hover{
+  flex:3;
+  width : 30vw;
+  height : 90%;
+}
 .signInText{
   font-family: Pacifico, cursive;
   height: 2vh;
@@ -458,17 +519,23 @@ body {
   box-shadow: 0 0 8px rgba(100, 70, 20, 1);
   text-shadow: 2px 2px 2px goldenrod;
 }
+.myInfoProfile {
+  width: clamp(150px, 30vw, 400px);
+  height: clamp(100px, 30vh, 600px);
+  margin-left: 12%;
+  margin-right: 5%;
+  margin-bottom: 5%;
+}
 .myInfoTextBox{
-  margin-top: -200px;
-  margin-bottom: 150px;
+  margin-left: 5%;
+  margin-right: 5%;
   width: clamp(100px, 80vw, 800px);
   height: clamp(80px, 30vh, 600px);
-  font-size: clamp(20px, 3vw, 40px);
+  font-size: clamp(10px, 3vw, 40px);
   background: linear-gradient(to bottom right, palegoldenrod, gold);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   font-family: 'Nanum Pen Script', cursive;
-
 }
 .radar{
   width: clamp(100px, 80vw, 800px);
