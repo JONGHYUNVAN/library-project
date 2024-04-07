@@ -15,6 +15,7 @@ export default function My() {
         phoneNumber: string;
         gender: string;
         genres: Genre[];
+        profile: number;
     }
     interface Genre {
         genre: string;
@@ -42,7 +43,8 @@ export default function My() {
                     email: userData.email,
                     nickName: userData.nickName,
                     phoneNumber: userData.phoneNumber,
-                    gender:userData.gender
+                    gender:userData.gender,
+                    profile:userData.profile
                 };
 
                 const genres = userData.genres.map((genre: Genre) => ({
@@ -70,7 +72,12 @@ export default function My() {
         <div style={{ alignItems:'center', display: 'flex', justifyContent:'center'}}>
             <div className="myInfo" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
                 {user ? (
-                        <>
+                    <>
+                    <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
+                        <div className="myInfoProfile">
+                            <img src={`/profile${user.profile}.jpg`} className="myInfoProfile" alt="image"/>
+                        </div>
+
                             <div className="myInfoTextBox">
                                 <h2>Welcome, {user.name } !</h2>
                                 <p>email: {user.email}</p>
@@ -78,10 +85,13 @@ export default function My() {
                                 <p>phone number: {user.phoneNumber}</p>
                                 <p>gender: {user.gender}</p>
                             </div>
+                    </div>
+                    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
                             <div className="radar">
                                 <MyResponsiveRadar data={chartData} />
                             </div>
-                        </>
+                    </div>
+                    </>
                     )
                                     :
                     (
