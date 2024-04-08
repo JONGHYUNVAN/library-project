@@ -10,6 +10,7 @@ export default function SignUp() {
     const router = useRouter();
     const labels = ['name', 'nickName', 'email', 'phoneNumber', 'password', 'gender'];
     const [name, setName] = useState("");
+    const [profile, setProfile] = useState(0);
     const [text, setText] = useState('sign');
     const [color, setColor] = useState('black');
     const [values, setValues] = useState({});
@@ -49,16 +50,23 @@ export default function SignUp() {
             });
             return;
         }
+        const userData = {
+            ...values,
+            profile
+        };
+
         setSubmitting(true);
-        axios.post(`${process.env.NEXT_PUBLIC_API_URL}/users`, values)
+        axios.post(`${process.env.NEXT_PUBLIC_API_URL}/users`, userData)
             .then(async response => {
                 alert(`Your registration has been successfully completed. Welcome,${name}!`);
                 await router.push('/log-in');
             })
             .catch(error => {
                 alert(error.response.data.message)
+            })
+            .finally(() => {
+            setSubmitting(false);
             });
-        setSubmitting(false);
 
     }
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -88,70 +96,115 @@ export default function SignUp() {
         <video className="background-video" autoPlay muted loop>
             <source src="/backgroundSignIn.mp4" type="video/mp4" />
         </video>
-        <div style={{ position: 'relative', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-            <Image src="/signInPaper.png" alt="image" width={1000} height={2000} style={{ width: 'clamp(500px, 80vw, 1000px)', height: 'clamp(600px, 80vh, 2000px)', marginTop: '1vh'}} />
-            <div style={{ position: 'absolute', display: 'flex', flexDirection: 'column', alignItems: 'flex-start', justifyContent: 'space-between' }}>
-                <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', maxHeight:'50vh' }}>
+        {!profile ?
+            (<div className="profileSelect">
+                <h2 className="chooseProfileText" >choose your character</h2>
+                <Image src="/profile1.jpg" className="profileImage" alt="image" width={200} height={2000} onClick={() => setProfile(1)} />
+                <Image src="/profile2.jpg" className="profileImage" alt="image" width={200} height={2000} onClick={() => setProfile(2)} />
+                <Image src="/profile3.jpg" className="profileImage" alt="image" width={200} height={2000} onClick={() => setProfile(3)} />
+                <Image src="/profile4.jpg" className="profileImage" alt="image" width={200} height={2000} onClick={() => setProfile(4)} />
+                <Image src="/profile5.jpg" className="profileImage" alt="image" width={200} height={2000} onClick={() => setProfile(5)} />
+            </div>)
+
+            : (<div style={{position: 'relative', display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
+
+                <Image src="/signInPaper.png" alt="image" width={1000} height={2000} style={{
+                    width: 'clamp(500px, 80vw, 1000px)',
+                    height: 'clamp(600px, 80vh, 2000px)',
+                    marginTop: '1vh'
+                }}/>
+                <div style={{
+                    position: 'absolute',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'flex-start',
+                    justifyContent: 'space-between'
+                }}>
+                    <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center', maxHeight: '50vh'}}>
+                        <div>
+                            <h1 style={{
+                                position: 'absolute',
+                                top: '-15%',
+                                left: '35%',
+                                fontSize: 'clamp(20px, 2vw, 40px)',
+                                fontFamily: 'Pacifico, cursive'
+                            }}>Registration Form </h1>
+                        </div>
+
+                        <div style={{display: 'flex', justifyContent: 'space-between', width: '100%'}}>
+                            <div>
+                                {labels.map((label, index) => (
+                                    <div key={index}>
+                                        <h2 className={"signInText"}>{label.charAt(0).toUpperCase() + label.slice(1)}:</h2>
+                                    </div>
+                                ))}
+                            </div>
+                            <div>
+                                <input
+                                    type="text"
+                                    name="name"
+                                    placeholder="Name"
+                                    onChange={handleChange}
+                                    className={"signInInput"}
+                                    onBlur={() => setErrorMessage("")}
+                                />
+
+                                {labels.slice(1, 5).map((label, index) => (
+                                    <div key={index}>
+                                        <input
+                                            type="text"
+                                            name={label}
+                                            placeholder={label.charAt(0).toUpperCase() + label.slice(1)}
+                                            onChange={handleChange}
+                                            className={"signInInput"}
+                                            onBlur={() => setErrorMessage("")}
+                                        />
+                                    </div>
+                                ))}
+
+                                <input
+                                    type="text"
+                                    name="gender"
+                                    placeholder="MALE or FEMALE"
+                                    onChange={handleChange}
+                                    className={"signInInput"}
+                                    onBlur={() => setErrorMessage("")}
+                                />
+                            </div>
+                        </div>
+                        <h1 style={{
+                            fontSize: '20px',
+                            fontFamily: 'Pacifico, cursive',
+                            marginTop: '2vh',
+                            color: 'red'
+                        }}>{errorMessage}</h1>
+                    </div>
+
                     <div>
-                        <h1 style={{position: 'absolute', top: '-15%', left :'35%', fontSize: 'clamp(20px, 2vw, 40px)', fontFamily:'Pacifico, cursive'}}>Registration Form </h1>
+                        <h1 style={{
+                            position: 'absolute',
+                            fontSize: 'clamp(20px, 2vw, 40px)',
+                            fontFamily: 'Pacifico, cursive',
+                            color: color,
+                            bottom: '-10%',
+                            right: '-5%',
+                            transform: 'translate(-50%, -50%)'
+                        }}
+                            onClick={submitting ? () => {
+                            } : handleButtonClick}
+                            onMouseDown={handleMouseDown}
+                            onMouseUp={handleMouseUp}
+                        >
+                            {text}
+                        </h1>
                     </div>
-
-                    <div style={{ display: 'flex', justifyContent: 'space-between', width: '100%' }}>
-                        <div>
-                            {labels.map((label, index) => (
-                                <div key={index}>
-                                    <h2 className={"signInText"}>{label.charAt(0).toUpperCase() + label.slice(1)}:</h2>
-                                </div>
-                            ))}
-                        </div>
-                        <div>
-                            <input
-                                type="text"
-                                name="name"
-                                placeholder="Name"
-                                onChange={handleChange}
-                                className={"signInInput"}
-                                onBlur={() => setErrorMessage("")}
-                            />
-
-                            {labels.slice(1, 5).map((label, index) => (
-                                <div key={index}>
-                                    <input
-                                        type="text"
-                                        name={label}
-                                        placeholder={label.charAt(0).toUpperCase() + label.slice(1)}
-                                        onChange={handleChange}
-                                        className={"signInInput"}
-                                        onBlur={() => setErrorMessage("")}
-                                    />
-                                </div>
-                            ))}
-
-                            <input
-                                type="text"
-                                name="gender"
-                                placeholder="MALE or FEMALE"
-                                onChange={handleChange}
-                                className={"signInInput"}
-                                onBlur={() => setErrorMessage("")}
-                            />
-                        </div>
-                    </div>
-                    <h1 style={{ fontSize: '20px', fontFamily: 'Pacifico, cursive', marginTop: '2vh',color: 'red' }}>{errorMessage}</h1>
                 </div>
 
-                <div>
-                    <h1 style={{ position: 'absolute',  fontSize: 'clamp(20px, 2vw, 40px)', fontFamily: 'Pacifico, cursive', color:color,  bottom: '-10%',  right: '-5%', transform: 'translate(-50%, -50%)' }}
-                        onClick={submitting ? () => {} : handleButtonClick  }
-                        onMouseDown={handleMouseDown}
-                        onMouseUp={handleMouseUp}
-                    >
-                        {text}
-                    </h1>
-                </div>
-            </div>
+            </div>)
+        }
 
-        </div>
+
     </div>
+
     )
 }

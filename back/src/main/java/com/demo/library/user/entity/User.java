@@ -43,6 +43,8 @@ public class User {
     @Getter
     public enum Gender{MALE,FEMALE,OAUTH}
 
+    private int profile;
+
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Loan> loans;
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL,  fetch = FetchType.LAZY)

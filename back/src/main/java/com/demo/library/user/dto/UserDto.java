@@ -42,6 +42,7 @@ public class UserDto {
         @NotBlank(message = "gender should be contained.")
         @GenderValidation
         private String gender;
+        private int profile;
 
     }
 
@@ -58,6 +59,7 @@ public class UserDto {
         private String password;
         @PhoneNumberValidation
         private String phoneNumber;
+        private int profile;
 
     }
 
@@ -76,6 +78,7 @@ public class UserDto {
         private String phoneNumber;
         private String gender;
         private List<LoanDto.Response> loans;
+        private int profile;
 
     }
 
@@ -95,6 +98,7 @@ public class UserDto {
         private String gender;
         private List<LoanDto.Response> loans;
         private List<MyUserGenre> genres;
+        private int profile;
 
     }
     @Getter
