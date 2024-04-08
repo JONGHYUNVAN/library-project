@@ -156,7 +156,7 @@ export default function SignUp() {
                                             name={label}
                                             placeholder={label.charAt(0).toUpperCase() + label.slice(1)}
                                             onChange={handleChange}
-                                            className={"signInInput"}
+                                            className="signInInput"
                                             onBlur={() => setErrorMessage("")}
                                         />
                                     </div>
