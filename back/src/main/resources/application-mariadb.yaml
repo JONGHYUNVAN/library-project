@@ -6,7 +6,7 @@ spring:
     driver-class-name: org.mariadb.jdbc.Driver # 데이터베이스 연결에 사용될 JDBC 드라이버의 클래스 이름
   jpa:
     hibernate:
-      ddl-auto: validate #Hibernate의 데이터베이스 스키마 자동 생성 전략. validate 는  애플리케이션 실행 시 데이터베이스 스키마가 엔티티와 정확히 일치하는지 검증
+      ddl-auto: none #Hibernate의 데이터베이스 스키마 자동 생성 전략. validate 는  애플리케이션 실행 시 데이터베이스 스키마가 엔티티와 정확히 일치하는지 검증
     database-platform: org.hibernate.dialect.MySQL5Dialect #사용할 SQL 방언(Dialect)을 지정
     show-sql: true
     properties:
