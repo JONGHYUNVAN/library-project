@@ -4,7 +4,6 @@ body {
   background-image: url('../public/backposter.png');
   cursor: url('../public/mouse.png') 1 1, auto;
 }
-
 .container {
   max-width: 800px;
   margin: 0 auto;
@@ -14,12 +13,26 @@ body {
 .title {
   font-size: 8vw;
   text-align: center;
-  color: papayawhip;
+  color: palegoldenrod;
   margin-top: 150px;
   margin-bottom: 20px;
   font-family: 'Long Cang', cursive;
-  position: relative;
-
+}
+.titleLetter{
+  transition: text-shadow 0.3s ease;
+  display: inline-block;
+  margin-left: 1vw;
+}
+.titleLetter:hover {
+  color : palegoldenrod;
+  text-shadow:
+          0 0 5px rgba(0, 0, 0, 10),
+          0 0 10px rgba(255, 255, 255, 0.6),
+          0 0 20px rgba(255, 255, 255, 10);
+}
+.title-space {
+  display: inline-block;
+  width: 3vw;
 }
 .smallTitle {
   font-size: clamp(50px, 10vw, 100px);
@@ -30,7 +43,9 @@ body {
   font-family: 'Nanum Pen Script', cursive;
   position: relative;
 
+
 }
+
 .title-sub {
   font-size: 1.8vw;
   color: lightgoldenrodyellow;
@@ -38,6 +53,14 @@ body {
   font-family:Arial,cursive;
   right: 25.0vw;
   top: 9.0vw;
+  transition: text-shadow 0.3s ease;
+}
+.title-sub:hover {
+  color : palegoldenrod;
+  text-shadow:
+          0 0 5px rgba(0, 0, 0, 10),
+          0 0 10px rgba(255, 255, 255, 0.6),
+          0 0 20px rgba(255, 255, 255, 10);
 }
 
 .background-video {
