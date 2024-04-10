@@ -14,8 +14,13 @@ body {
   font-family: 'Nanum Pen Script', serif;
   display: flex;
   align-items: center;
-  position: relative;
+  position: absolute;
   flex-direction: column;
+  width: 70vw;
+  top: 10%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
 }
 .titleLetter{
   font-size: 8vw;
