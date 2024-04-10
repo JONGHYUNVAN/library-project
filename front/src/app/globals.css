@@ -61,8 +61,8 @@ body {
   position: absolute;
   font-family:Arial,cursive;
   transition: text-shadow 0.3s ease;
-  top : 100%;
-  left : 85%;
+  top : 17%;
+  left : 75%;
   transform: translate(-50%, -50%);
 }
 .title-sub:hover {
