@@ -11,49 +11,54 @@ body {
   text-align: center;
 }
 .title {
-  font-size: 8vw;
-  text-align: center;
-  color: palegoldenrod;
-  margin-top: 150px;
-  margin-bottom: 20px;
-  font-family: 'Long Cang', cursive;
+  font-family: 'Nanum Pen Script', serif;
+  display: flex;
+  align-items: center;
+  position: relative;
+  flex-direction: column;
 }
 .titleLetter{
-  transition: text-shadow 0.3s ease;
-  display: inline-block;
-  margin-left: 1vw;
+  font-size: 8vw;
+  background: linear-gradient(90deg, goldenrod, palegoldenrod, darkgoldenrod), no-repeat;
+  letter-spacing: 5px;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-size: 80%;
+  animation: shine 2s linear infinite;
+}
+@keyframes shine {
+  0% {
+    background-position-x: -500%;
+  }
+  1000% {
+    background-position-x: 500%;
+  }
 }
 .titleLetter:hover {
   color : palegoldenrod;
   text-shadow:
-          0 0 5px rgba(0, 0, 0, 10),
-          0 0 10px rgba(255, 255, 255, 0.6),
-          0 0 20px rgba(255, 255, 255, 10);
+          0 0 5px rgba(255, 255, 255, 0.1),
+          0 0 10px rgba(255, 255, 255, 0.2),
+          0 0 20px rgba(255, 255, 255, 0.3);
 }
-.title-space {
-  display: inline-block;
-  width: 3vw;
-}
+
 .smallTitle {
   font-size: clamp(50px, 10vw, 100px);
   text-align: center;
   color: whitesmoke;
-  margin-top: -7vh;
-  margin-bottom: -150px;
   font-family: 'Nanum Pen Script', cursive;
   position: relative;
-
-
 }
 
 .title-sub {
   font-size: 1.8vw;
   color: lightgoldenrodyellow;
-  position: absolute;
+  position: relative;
   font-family:Arial,cursive;
-  right: 25.0vw;
-  top: 9.0vw;
   transition: text-shadow 0.3s ease;
+  margin-left: 50vw;
+  margin-top: -5vh;
 }
 .title-sub:hover {
   color : palegoldenrod;
