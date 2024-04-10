@@ -59,11 +59,12 @@ body {
 .title-sub {
   font-size: 1.8vw;
   color: lightgoldenrodyellow;
-  position: relative;
+  position: absolute;
   font-family:Arial,cursive;
   transition: text-shadow 0.3s ease;
-  margin-left: 50vw;
-  margin-top: -5vh;
+  top : 80%;
+  left : 85%;
+  transform: translate(-50%, -50%);
 }
 .title-sub:hover {
   color : palegoldenrod;
