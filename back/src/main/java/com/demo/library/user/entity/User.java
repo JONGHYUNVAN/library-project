@@ -1,10 +1,11 @@
 package com.demo.library.user.entity;
 
-import com.demo.library.genre.entity.Genre;
 import com.demo.library.genre.entity.UserGenre;
 import com.demo.library.loanNban.entity.Ban;
 import com.demo.library.loanNban.entity.Loan;
 import javax.persistence.*;
+
+import com.demo.library.post.entity.PostEntity;
 import lombok.*;
 
 import java.util.ArrayList;
@@ -47,6 +48,9 @@ public class User {
     private List<Loan> loans;
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL,  fetch = FetchType.LAZY)
     private List<Ban> bans;
+    @OneToMany(mappedBy = "user", cascade = CascadeType.PERSIST,  fetch = FetchType.LAZY)
+    private List<PostEntity> posts;
+
     @Column
     private String provider;
     @Column
