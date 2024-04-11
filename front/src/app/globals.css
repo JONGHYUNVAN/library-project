@@ -572,3 +572,40 @@ body {
   border-radius: 8px;
   background-color: rgba(120, 90, 30, 0.8);
 }
+.post{
+  border-radius: 8px;
+  padding: 20px;
+  background-color: rgba(192, 134, 17, 0.15);
+  background-position: center;
+  font-family: 'Nanum Pen Script', cursive;
+  box-shadow: 10px 2px 5px sienna;
+  margin-top: 100px;
+  width: 80vw;
+  height: 60vh;
+  margin-left: 8vw;
+  text-align: center;
+  position: relative;
+}
+.postTitle{
+  text-align: center;
+  font-size: clamp(15px, 5vw, 60px);
+  background: linear-gradient(to bottom right, palegoldenrod, gold);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.postContent{
+  margin-top: 5vh;
+  text-align: left;
+  font-size: clamp(10px, 3vw, 40px);
+  background: linear-gradient(to bottom right, palegoldenrod, gold);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.postTimes{
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  background: linear-gradient(to bottom right, palegoldenrod, gold);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
