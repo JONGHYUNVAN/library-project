@@ -95,7 +95,7 @@ public class BookService {
         return bookRepository.findAllByPublisher(publisher,of);
     }
 
-    public void deleteBook(long Id) {
+    public void deleteBook(Long Id) {
         BookEntity verifiedBookEntity = verifyById(Id);
         ifOnLoan(verifiedBookEntity);
         bookRepository.delete(verifiedBookEntity);
@@ -127,9 +127,7 @@ public class BookService {
 
     public BookEntity verifyById(Long bookId) {
         return bookRepository.findById(bookId)
-                .orElseThrow(() -> {
-                    throw new BusinessLogicException(INVALID_BOOK_ID);
-                });
+                .orElseThrow(() -> new BusinessLogicException(INVALID_BOOK_ID));
     }
 
     public List<String> convertLogs (List<String>logs){

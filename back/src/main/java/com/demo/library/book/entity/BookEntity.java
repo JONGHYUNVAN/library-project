@@ -19,7 +19,7 @@ public class BookEntity extends Auditable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
     @Column(length = 100, nullable = false)
     private String title;
     @Column(nullable = false, length = 30)
@@ -46,12 +46,14 @@ public class BookEntity extends Auditable {
     @Column
     private String imageURL;
 
+//    따로 엔티티화 하여 사용하지 않음
 //    @Enumerated(EnumType.STRING)
 //    private Genre genre;
 //    @Getter
 //    public enum Genre {
 //        LITERATURE_ART,SCIENCE_TECHNOLOGY,SOCIETY_POLITICS,ECONOMY_BUSINESS,SELF_IMPROVEMENT__LIFE
 //    }
+
     @ElementCollection
     @CollectionTable(name = "log", joinColumns = @JoinColumn(name = "book_id"))
     @Column(name = "logs")

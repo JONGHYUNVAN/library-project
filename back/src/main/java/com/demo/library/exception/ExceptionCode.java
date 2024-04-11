@@ -31,6 +31,11 @@ public enum ExceptionCode {
     LIBRARY_ALREADY_EXISTS(409, "Library already exists"),
     INVALID_LIBRARY_ID(400, "Invalid library Id"),
 
+    POST_NOT_FOUND(404, "Post not found"),
+    INVALID_POST_ID(400, "Invalid post Id"),
+    NOT_ALLOWED(400,"Not allowed user"),
+
+
     ACCESS_TOKEN_EXPIRED(404, "AccessToken Expired"),
     INVALID_TOKEN_REQUEST(404, "Invalid Token Request"),
     REFRESH_TOKEN_NOT_FOUND(404, "RefreshToken Not Found"),
