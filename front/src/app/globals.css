@@ -2,8 +2,46 @@ body {
   margin: 0;
   padding: 0;
   background-image: url('../public/backposter.png');
-  cursor: url('../public/mouse.png') 1 1, auto;
+  cursor: url('../public/cursor.png') 1 1, auto;
 }
+#app {
+  position: relative;
+  margin: 0;
+  width: 100vw;
+  height: 100vh;
+  color: #ffffff;
+  font-family: 'Montserrat', sans-serif;
+  text-align: center;
+  text-shadow: 0 0 5px #ffffff, 0 0 20px #000, 0 0 30px #000;
+}
+#app h1{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: linear-gradient(to bottom right, palegoldenrod, gold);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+#app a {
+  margin-top: 10px;
+  width: 100vw;
+  height: 100vh;
+  display: inline-block;
+  text-decoration: none;
+  color: #fff;
+}
+
+#app canvas {
+  margin: 0;
+  width: 100vw;
+  height: 100vh;
+  display: block;
+  position: fixed;
+  top: 0;
+  z-index: -1;
+}
+
 .container {
   max-width: 800px;
   margin: 0 auto;
@@ -571,4 +609,76 @@ body {
   height: clamp(50px, 40vh, 400px);
   border-radius: 8px;
   background-color: rgba(120, 90, 30, 0.8);
+}
+
+
+.post{
+  border-radius: 8px;
+  padding: 20px;
+  background-color: rgba(192, 134, 17, 0.15);
+  background-position: center;
+  font-family: 'Nanum Pen Script', cursive;
+  box-shadow: 10px 2px 5px sienna;
+  margin-top: 100px;
+  width: 80vw;
+  height: 80vh;
+  margin-left: 8vw;
+  text-align: center;
+  position: relative;
+}
+.postTitle{
+  text-align: center;
+  font-size: clamp(15px, 5vw, 60px);
+  background: linear-gradient(to bottom right, palegoldenrod, gold);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.postBook{
+  position: absolute;
+  bottom: 50px;
+  right: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-direction: column;
+}
+.postImage{
+  width: 100px;
+  height: 150px;
+  right:10px;
+}
+.postBookTitle{
+  font-size: clamp(10px, 3vw, 40px);
+  background: linear-gradient(to bottom right, palegoldenrod, gold);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.postContent{
+  width: 80%;
+  height: 50%;
+  margin-top: 5vh;
+  text-align: left;
+  font-size: clamp(10px, 3vw, 40px);
+  background: linear-gradient(to bottom right, palegoldenrod, gold);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.postTimes{
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  background: linear-gradient(to bottom right, palegoldenrod, gold);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.postNoContent{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-size: clamp(10px, 3vw, 40px);
+  background: linear-gradient(to bottom right, palegoldenrod, gold);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  height: 80vh;
 }
