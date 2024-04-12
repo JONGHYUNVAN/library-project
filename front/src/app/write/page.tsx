@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation';
 import { useSearchParams } from "next/navigation";
 import {Post} from '../interface/Post'
 
-export default function Post() {
+export default function Write() {
     const router = useRouter();
     const params = useSearchParams();
     const [id, setId] = useState<string | null>(params.get('id'));
@@ -23,7 +23,7 @@ export default function Post() {
     return (
     <div>
         <video className="background-video" autoPlay muted loop>
-            <source src="/post.mp4" type="video/mp4" />
+            <source src="/write.mp4" type="video/mp4" />
         </video>
         {post?(
                 <div className="post">

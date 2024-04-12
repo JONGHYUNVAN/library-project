@@ -1,8 +1,6 @@
 'use client'
 import React, { useEffect, useRef ,useState} from "react";
-import axios from 'axios';
 import Link from 'next/link';
-import Image from 'next/image'
 import {Book} from '../interface/Book'
 import {BarLoader, BounceLoader } from 'react-spinners';
 

@@ -13,7 +13,7 @@ export default function Home() {
               <div className="title" >
                   <h2 className="titleLetter">Library project</h2>
               </div>
-                  <span className="title-sub">by {name}</span>
+                  <Link className="title-sub" href="/cursor">by {name}</Link>
 
               <Link href="/ranking">
               <video poster={"/backposter.png"} className="background-video" autoPlay muted loop >
