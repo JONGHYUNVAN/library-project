@@ -1,6 +1,7 @@
 package com.demo.library.book.entity;
 
 import com.demo.library.genre.entity.Genre;
+import com.demo.library.post.entity.PostEntity;
 import com.demo.library.timeEntity.Auditable;
 import com.demo.library.library.entity.Library;
 import com.demo.library.loanNban.entity.Loan;
@@ -45,6 +46,8 @@ public class BookEntity extends Auditable {
     private Long searchCount;
     @Column
     private String imageURL;
+    @OneToOne
+    private PostEntity post;
 
 //    따로 엔티티화 하여 사용하지 않음
 //    @Enumerated(EnumType.STRING)

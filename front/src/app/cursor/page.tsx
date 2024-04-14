@@ -16,16 +16,28 @@ export default function Cursor() {
             noiseIntensity: 0.001,//노이즈 강도
             noiseTimeCoef: 0.0001,//노이즈 변화율
             pointDecay: 0.002,//소멸속도
-            sleepRadiusX: 500, // 커서와의 거리들
+            sleepRadiusX: 500, // sleep시 x각
             sleepRadiusY: 500,
-            sleepTimeCoefX: 0.01,// 움직일때 비활성
+            sleepTimeCoefX: 0.01,// sleep 시 함수계수
             sleepTimeCoefY: 0.01,
         });
+        const h1 = document.querySelector('#app h1')as HTMLElement;
+
         const handleClick = () => {
             pc.uniforms.uColor.value.set(Math.random() * 0xffffff);
             pc.uniforms.uCoordScale.value = 0.005 + Math.random() * 2
             pc.uniforms.uNoiseIntensity.value = 0.0005 + Math.random() * 0.001
             pc.uniforms.uPointSize.value = 10 + Math.random() * 10
+            const color = '#' + Math.floor(Math.random()*16777215).toString(16);
+            const alpha1 = 1;
+            const alpha2 = 0.7;
+            const alpha3 = 0.5;
+
+            h1.style.textShadow =
+                `0 0 5px rgba(${parseInt(color.substring(1, 3), 16)}, ${parseInt(color.substring(3, 5), 16)}, ${parseInt(color.substring(5, 7), 16)}, ${alpha1}),
+                 0 0 10px rgba(${parseInt(color.substring(1, 3), 16)}, ${parseInt(color.substring(3, 5), 16)}, ${parseInt(color.substring(5, 7), 16)}, ${alpha2}),
+                 0 0 20px rgba(${parseInt(color.substring(1, 3), 16)}, ${parseInt(color.substring(3, 5), 16)}, ${parseInt(color.substring(5, 7), 16)}, ${alpha3})`;
+
         };
 
         document.body.addEventListener('click', handleClick);

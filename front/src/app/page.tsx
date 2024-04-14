@@ -11,11 +11,11 @@ export default function Home() {
 
           <div className="main-page">
               <div className="title" >
-                  <h2 className="titleLetter">Library project</h2>
+                  <Link href="/ranking" className="titleLetter">Library project</Link>
               </div>
                   <Link className="title-sub" href="/cursor">by {name}</Link>
 
-              <Link href="/ranking">
+              <Link href="/ranking" className="cursor">
               <video poster={"/backposter.png"} className="background-video" autoPlay muted loop >
                   <source src="/background.mp4" type="video/mp4" />
                 </video>

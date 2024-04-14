@@ -1,5 +1,6 @@
 package com.demo.library.post.service;
 
+import com.demo.library.book.entity.BookEntity;
 import com.demo.library.exception.BusinessLogicException;
 import com.demo.library.post.dto.PostDto;
 import com.demo.library.post.entity.PostEntity;
@@ -7,6 +8,10 @@ import com.demo.library.post.repository.PostRepository;
 import com.demo.library.user.entity.User;
 import com.demo.library.utils.EntityUpdater;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.Objects;
@@ -28,6 +33,15 @@ public class PostService {
         entityUpdater.update(updatingEntity,savedEntity, PostEntity.class);
 
         return postRepository.save(savedEntity);
+    }
+    public Page<PostEntity> getPostsByCreatedAt(Pageable pageable) {
+        PageRequest of = PageRequest.of(pageable.getPageNumber() ,
+                pageable.getPageSize(),
+                pageable.getSort()
+                        .and(Sort.by("createdAt").descending())
+        );
+
+        return postRepository.findPostsByCreatedAtWithoutContent(of);
     }
 
     public PostEntity checkValidRequest(PostDto.Patch patchDto, User user){

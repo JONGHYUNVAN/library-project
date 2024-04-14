@@ -7,9 +7,11 @@ import { Tooltip } from 'react-tooltip'
 import {Book} from '../interface/Book'
 import {PuffLoader, PropagateLoader } from 'react-spinners';
 import Image from 'next/image'
+import { useRouter } from 'next/navigation';
 
 
 export default function Search() {
+    const router = useRouter();
     const [selected, setStr] = useState("TITLE");
     const [isClicked, setIsClicked] = useState(false);
     const [url, setUrl] = useState("keyword");
@@ -206,6 +208,11 @@ export default function Search() {
                                 <p>출판사: {selectedBook.publisher}</p>
                                 <p>상태: {selectedBook.status}</p>
                                 <p>소장 도서관: {selectedBook.libraryName}</p>
+                                <div className="discussionButton"
+                                    onClick={() => router.push(`/write/?id=${selectedBook.id}`)}
+                                >
+                                    discuss
+                                </div>
                             </div>
                         </div>):(<div></div>)
                                  )
