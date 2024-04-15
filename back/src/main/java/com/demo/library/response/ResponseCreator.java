@@ -18,8 +18,8 @@ public class ResponseCreator {
     public static <T> ResponseEntity<SingleResponseDto<T>> single(T response) {
         return new ResponseEntity<>(new SingleResponseDto<>(response), HttpStatus.OK);
     }
-    public static <T> ResponseEntity<ListResponseDto<T>> list(List<T> responses) {
-        return new ResponseEntity<>(new ListResponseDto<>(responses), HttpStatus.OK);
+    public static <T> ResponseEntity<ListResponseDto<T>> list(List<T> responses,int totalPages) {
+        return new ResponseEntity<>(new ListResponseDto<>(responses,totalPages), HttpStatus.OK);
     }
     public static ResponseEntity<Void> deleted() {
         return ResponseEntity.noContent().build();

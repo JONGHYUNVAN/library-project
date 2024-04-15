@@ -1,21 +1,28 @@
 package com.demo.library.post.controller;
 
 import com.demo.library.book.dto.BookDto;
+import com.demo.library.book.entity.BookEntity;
+import com.demo.library.book.mapper.BookMapper;
+import com.demo.library.book.service.BookService;
 import com.demo.library.post.dto.PostDto;
 import com.demo.library.post.entity.PostEntity;
 import com.demo.library.post.mapper.PostMapper;
 import com.demo.library.post.service.PostService;
 import com.demo.library.response.ResponseCreator;
+import com.demo.library.response.dto.ListResponseDto;
 import com.demo.library.response.dto.SingleResponseDto;
 import com.demo.library.security.service.JWTAuthService;
 import com.demo.library.user.service.UserService;
 import com.demo.library.utils.UriCreator;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.net.URI;
+import java.util.List;
 
 @RestController
 @RequestMapping("/posts")
@@ -26,10 +33,12 @@ public class PostController {
     private final PostMapper mapper;
     private final JWTAuthService jwtAuthService;
     private final UserService userService;
-
+    private final BookService bookService;
     @PostMapping
     public ResponseEntity<Void> create(@Valid @RequestBody PostDto.Post post) {
         PostEntity postEntity = mapper.postToPostEntity(post,userService.findByEmail(jwtAuthService.getEmail()));
+        postEntity.setBook(bookService.getBook(post.getBookId()));
+        postEntity.setViews(0L);
         service.create(postEntity);
 
         URI location = UriCreator.createUri(POST_DEFAULT_URL, postEntity.getId());
@@ -44,6 +53,16 @@ public class PostController {
         PostDto.Response responseDto = mapper.postEntityToResponse(updatedPost);
         return ResponseCreator.single(responseDto);
     }
+    @GetMapping()
+    public ResponseEntity<ListResponseDto<PostDto.Listed>>
+                                get(Pageable pageable) {
+        Page<PostEntity> postPage = service.getPostsByCreatedAt(pageable);
+        List<PostEntity> postList = postPage.getContent();
+
+        List<PostDto.Listed> listedPosts = mapper.postsToList(postList);
+
+        return ResponseCreator.list(listedPosts,postPage.getTotalPages());
+    }
 
     @GetMapping("/{post-id}")
     public ResponseEntity<SingleResponseDto<PostDto.Response>>
@@ -51,7 +70,6 @@ public class PostController {
 
         PostEntity postEntity = service.getPost(Id);
         PostDto.Response responseDto = mapper.postEntityToResponse(postEntity);
-
         return ResponseCreator.single(responseDto);
     }
     @DeleteMapping("/{post-id}")

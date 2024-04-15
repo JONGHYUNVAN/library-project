@@ -40,8 +40,7 @@ public class BookMapper {
         return response;
     }
     public BookDto.Image bookToImage(BookEntity book) {
-        BookDto.Image image = mapper.map(book,BookDto.Image.class);
-        return image;
+        return mapper.map(book,BookDto.Image.class);
     }
     public List<BookDto.Response> booksToResponses(List<BookEntity> books) {
         return books.stream().map(this::bookToResponse).collect(Collectors.toList());

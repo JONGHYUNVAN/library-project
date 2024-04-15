@@ -14,18 +14,19 @@ export default function Post() {
 
     useEffect(() => {
         async function fetchData() {
-            const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/posts/${id}`);
-            const dataArray = response.data.data;
-            setPost(dataArray);
+                const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/posts/${id}`);
+                const dataArray = response.data.data;
+                setPost(dataArray);
         }
         fetchData();
-    }, [id])
+    }, [])
+    
     return (
     <div>
         <video className="background-video" autoPlay muted loop>
-            <source src="/post.mp4" type="video/mp4" />
+            <source src="/backgroundPost.mp4" type="video/mp4" />
         </video>
-        {post?(
+        {post? (
                 <div className="post">
                     <span className="postTitle">
                         {post.title}
@@ -38,20 +39,20 @@ export default function Post() {
                         {post.content}
                     </div>
                     <div className="postBook">
-                        <img src={post.bookImageURL}
+                        <img src={post.bookImage.imageURL}
                              className="postImage"
-                             onClick={() => router.push(`/search/?id=${post.bookId}`)}
+                             onClick={() => router.push(`/search/?id=${post.bookImage.id}`)}
                         />
                         <span className="postBookTitle">
-                            {post.bookTitle}
+                            {post.bookImage.title}
                         </span>
-                    </div>
+                 </div>
                     <div className="postTimes">
                         <p>Created at : {post.createdAt}</p>
                         <p>Updated at : {post.updatedAt}</p>
                     </div>
-
-                </div>)
+                </div>
+            )
             : (<div className="postNoContent"> No content here </div>)}
 
 

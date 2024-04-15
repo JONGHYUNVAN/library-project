@@ -1,7 +1,9 @@
 package com.demo.library.timeEntity;
 
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
@@ -17,6 +19,8 @@ import java.time.LocalDateTime;
 @Getter
 @Setter
 @MappedSuperclass
+@AllArgsConstructor
+@NoArgsConstructor
 @EntityListeners(AuditingEntityListener.class)
 public abstract class Auditable {
     @CreatedDate
@@ -26,5 +30,6 @@ public abstract class Auditable {
     @LastModifiedDate
     @Column(name = "updatedAt")
     private LocalDateTime updatedAt;
+
 
 }
