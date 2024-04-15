@@ -40,13 +40,6 @@ export default function Write() {
             ...currentValues,
             [name]: value,
         }));
-        try {
-            const schema = fieldSchemas[name as keyof typeof fieldSchemas];
-            schema.parse(value);
-            setErrorMessage('');
-        } catch (error) {
-            if (error instanceof z.ZodError) setErrorMessage(error.errors[0].message);
-        }
     };
     const checkBook = () => {
         setChecked(true);

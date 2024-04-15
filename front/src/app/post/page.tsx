@@ -35,9 +35,9 @@ export default function Post() {
                         </span>
                     </span>
 
-                    <div className="postContent">
+                    <pre className="postContent">
                         {post.content}
-                    </div>
+                    </pre>
                     <div className="postBook">
                         <img src={post.bookImage.imageURL}
                              className="postImage"
@@ -46,7 +46,7 @@ export default function Post() {
                         <span className="postBookTitle">
                             {post.bookImage.title}
                         </span>
-                 </div>
+                    </div>
                     <div className="postTimes">
                         <p>Created at : {post.createdAt}</p>
                         <p>Updated at : {post.updatedAt}</p>

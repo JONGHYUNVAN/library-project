@@ -170,15 +170,13 @@ body {
   max-height: 300px;
 }
 .navbar a{
-  margin-right: 10px;
   text-decoration: none;
   font-family: 'Nanum Pen Script', cursive;
   color: goldenrod;
 }
 .navbar-left-side-button {
-  margin-left: 0.7vw;
-  margin-right: 1.5vw;
-  float: left;
+  margin-left: 1vw;
+  margin-right: 1vw;
   justify-content: center;
   font-size: clamp(1px, 3vw, 30px);
   display: flex;
@@ -188,28 +186,31 @@ body {
   overflow: hidden;
 }
 .navbar-right-side-button{
-  margin-left: 0.7vw;
-  margin-right: 1.5vw;
-  float: left;
+  margin-left: 1vw;
+  margin-right: 1vw;
   justify-content: center;
   font-size: clamp(1px, 2vw, 30px);
   display: flex;
   background: linear-gradient(to bottom right, palegoldenrod, gold);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  overflow: hidden;
+
 }
+
 .navbar-left-side-button::before, .navbar-left-side-button::after,
-.navbar-right-side-button::before, .navbar-right-side-button::after {
+.navbar-right-side-button::before, .navbar-right-side-button::after{
   content: '';
   position: absolute;
   width: 100%;
+  height: 2px;
   transform: scaleX(0);
-  transition: all 0.6s ease;
+  transition: all 0.4s ease;
   background: linear-gradient(to bottom right, palegoldenrod, gold);
 }
 
 
-.navbar-left-side-button::before, .navbar-right-side-button::before {
+.navbar-left-side-button::before, .navbar-right-side-button::before{
   top: 0;
   transform-origin: left;
 }
@@ -220,9 +221,9 @@ body {
 }
 
 .navbar-left-side-button:hover::before, .navbar-left-side-button:hover::after,
-.navbar-right-side-button:hover::before, .navbar-right-side-button:hover::after {
+.navbar-right-side-button:hover::before, .navbar-right-side-button:hover::after{
   height: 2px;
-  transform: scalex(1);
+  transform: scaleX(1);
 }
 
 .navbar-button-holder{
@@ -233,7 +234,6 @@ body {
 
 .navbar-button-holder::before,
 .navbar-button-holder::after {
-
   content: '';
   position: absolute;
   height: 100%;
@@ -647,16 +647,15 @@ body {
 .postBook{
   position: absolute;
   bottom: 50px;
-  right: 40px;
+  right: 4vw;
   display: flex;
   align-items: center;
   justify-content: flex-end;
   flex-direction: column;
 }
 .postImage{
-  width: 100px;
-  height: 150px;
-  right:10px;
+  width: clamp(50px,10vw,100px);
+  height: clamp(75px,15vw,150px);
 }
 .postBookTitle{
   font-size: clamp(10px, 3vw, 40px);
@@ -665,14 +664,17 @@ body {
   -webkit-text-fill-color: transparent;
 }
 .postContent{
-  width: 80%;
-  height: 50%;
+  position: relative;
+  width: 85%;
+  height: 73%;
   margin-top: 5vh;
   text-align: left;
   font-size: clamp(10px, 5vw, 40px);
-  background: linear-gradient(to bottom right, palegoldenrod, gold);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color:palegoldenrod;
+  text-shadow: 1px 1px 1px goldenrod;
+  overflow-y: auto;
+  white-space: pre-wrap;
+  overflow-wrap: break-word;
 }
 .postTimes{
   position: absolute;
@@ -726,10 +728,12 @@ body {
   margin-top: 5vh;
   text-align: left;
   font-size: clamp(10px, 3vw, 40px);
-  background: linear-gradient(to bottom right, palegoldenrod, gold);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color:palegoldenrod;
+  text-shadow: 1px 1px 1px goldenrod;
+  overflow-y: auto;
+  overflow-wrap: break-word;
   resize: none;
+  background: transparent;
 }
 .writeContent:focus {
   outline: 2px solid darkgoldenrod;
