@@ -177,11 +177,11 @@ body {
   color: goldenrod;
 }
 .navbar-left-side-button {
-  margin-left: 1vw;
-  margin-right: 1vw;
+  margin-left: 0.7vw;
+  margin-right: 1.5vw;
   float: left;
   justify-content: center;
-  font-size: clamp(1px, 2vw, 65px);
+  font-size: clamp(1px, 3vw, 65px);
   display: flex;
   background: linear-gradient(to bottom right, palegoldenrod, gold);
   -webkit-background-clip: text;
@@ -189,11 +189,11 @@ body {
   overflow: hidden;
 }
 .navbar-right-side-button{
-  margin-left: 1vw;
-  margin-right: 1vw;
+  margin-left: 0.7vw;
+  margin-right: 1.5vw;
   float: left;
   justify-content: center;
-  font-size: clamp(1px, 2vw, 65px);
+  font-size: clamp(1px, 3vw, 65px);
   display: flex;
   background: linear-gradient(to bottom right, palegoldenrod, gold);
   -webkit-background-clip: text;
