@@ -6,7 +6,7 @@ import {BookImage} from  '../interface/Post'
 import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 
-export default function discussion() {
+export default function Discussion() {
     const router = useRouter();
     const [posts, setPosts] = useState<Post[] | null>(null);
     const [book, setBook] = useState<BookImage | null>(null);
