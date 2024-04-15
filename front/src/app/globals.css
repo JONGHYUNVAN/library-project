@@ -173,7 +173,6 @@ body {
   margin-right: 10px;
   text-decoration: none;
   font-family: 'Nanum Pen Script', cursive;
-  font-size: 2vh;
   color: goldenrod;
 }
 .navbar-left-side-button {
@@ -181,7 +180,7 @@ body {
   margin-right: 1.5vw;
   float: left;
   justify-content: center;
-  font-size: clamp(1px, 3vw, 65px);
+  font-size: clamp(1px, 3vw, 30px);
   display: flex;
   background: linear-gradient(to bottom right, palegoldenrod, gold);
   -webkit-background-clip: text;
@@ -193,7 +192,7 @@ body {
   margin-right: 1.5vw;
   float: left;
   justify-content: center;
-  font-size: clamp(1px, 3vw, 65px);
+  font-size: clamp(1px, 2vw, 30px);
   display: flex;
   background: linear-gradient(to bottom right, palegoldenrod, gold);
   -webkit-background-clip: text;

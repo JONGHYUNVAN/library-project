@@ -163,7 +163,7 @@ public class SampleInserter implements CommandLineRunner {
                 .nickName(nickName)
                 .phoneNumber(phoneNumber)
                 .gender(gender)
-
+                .profile(0)
                 .status(status)
 
                 .build();
