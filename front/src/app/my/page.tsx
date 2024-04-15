@@ -31,7 +31,6 @@ export default function My() {
         axios
             .get(`${process.env.NEXT_PUBLIC_API_URL}/users/my`, {
                 headers: { "Authorization": "Bearer " + localStorage.getItem('accessToken') ,
-                withCredentials: true 
                 }
             })
             .then((response) => {

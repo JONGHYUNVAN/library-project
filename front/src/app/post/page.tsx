@@ -14,12 +14,13 @@ export default function Post() {
 
     useEffect(() => {
         async function fetchData() {
-            const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/posts/${id}`);
-            const dataArray = response.data.data;
-            setPost(dataArray);
+                const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/posts/${id}`);
+                const dataArray = response.data.data;
+                setPost(dataArray);
         }
         fetchData();
-    }, [id])
+    }, [])
+    
     return (
     <div>
         <video className="background-video" autoPlay muted loop>

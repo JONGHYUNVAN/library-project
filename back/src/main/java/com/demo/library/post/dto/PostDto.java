@@ -41,6 +41,7 @@ public class PostDto {
         private String createdAt;
         private String updatedAt;
         private String authorNickName;
+        private Long views;
         private BookDto.Image bookImage;
     }
     @Getter
@@ -48,10 +49,12 @@ public class PostDto {
     @Builder
     @NoArgsConstructor
     @AllArgsConstructor
-    public static class List {
+    public static class Listed {
         private Long id;
         private String title;
         private String authorNickName;
+        private Long views;
         private BookDto.Image bookImage;
     }
+
 }

@@ -10,6 +10,7 @@ export interface Post {
     content: string;
     createdAt: string;
     updatedAt: string;
+    views: number;
     authorNickName: string;
     bookImage: BookImage;
 }

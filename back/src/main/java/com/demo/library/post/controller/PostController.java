@@ -38,7 +38,7 @@ public class PostController {
     public ResponseEntity<Void> create(@Valid @RequestBody PostDto.Post post) {
         PostEntity postEntity = mapper.postToPostEntity(post,userService.findByEmail(jwtAuthService.getEmail()));
         postEntity.setBook(bookService.getBook(post.getBookId()));
-
+        postEntity.setViews(0L);
         service.create(postEntity);
 
         URI location = UriCreator.createUri(POST_DEFAULT_URL, postEntity.getId());
@@ -54,13 +54,14 @@ public class PostController {
         return ResponseCreator.single(responseDto);
     }
     @GetMapping()
-    public ResponseEntity<ListResponseDto<PostDto.List>>
+    public ResponseEntity<ListResponseDto<PostDto.Listed>>
                                 get(Pageable pageable) {
         Page<PostEntity> postPage = service.getPostsByCreatedAt(pageable);
         List<PostEntity> postList = postPage.getContent();
 
-        List<PostDto.List> responseDto = mapper.postsToList(postList);
-        return ResponseCreator.list(responseDto);
+        List<PostDto.Listed> listedPosts = mapper.postsToList(postList);
+
+        return ResponseCreator.list(listedPosts,postPage.getTotalPages());
     }
 
     @GetMapping("/{post-id}")

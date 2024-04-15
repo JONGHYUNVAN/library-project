@@ -70,7 +70,7 @@ public class LibraryController {
         List<Library> libraryList = libraryPage.getContent();
 
         List<LibraryDto.Response> responseDto = mapper.librariesToResponses(libraryList);
-        return ResponseCreator.list(responseDto);
+        return ResponseCreator.list(responseDto, libraryPage.getTotalPages());
     }
 
     @DeleteMapping("/{library-id}")

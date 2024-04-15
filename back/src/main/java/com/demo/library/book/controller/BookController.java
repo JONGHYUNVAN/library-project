@@ -60,7 +60,7 @@ public class BookController {
         List<BookEntity> bookList = bookPage.getContent();
 
         List<BookDto.Image> responseDto = mapper.booksToImages(bookList);
-        return ResponseCreator.list(responseDto);
+        return ResponseCreator.list(responseDto, bookPage.getTotalPages());
     }
     @GetMapping("/{book-id}")
     public ResponseEntity<SingleResponseDto<BookDto.Response>>
@@ -81,7 +81,7 @@ public class BookController {
         List<BookEntity> bookList = bookPage.getContent();
 
         List<BookDto.Image> responseDto = mapper.booksToImages(bookList);
-        return ResponseCreator.list(responseDto);
+        return ResponseCreator.list(responseDto, bookPage.getTotalPages());
     }
     @GetMapping("/author/{author}")
     public ResponseEntity<ListResponseDto<BookDto.Response>>
@@ -91,7 +91,7 @@ public class BookController {
         List<BookEntity> bookList = bookPage.getContent();
 
         List<BookDto.Response> responseDto = mapper.booksToResponses(bookList);
-        return ResponseCreator.list(responseDto);
+        return ResponseCreator.list(responseDto, bookPage.getTotalPages());
     }
     @GetMapping("/publisher/{publisher}")
     public ResponseEntity<ListResponseDto<BookDto.Response>>
@@ -101,14 +101,14 @@ public class BookController {
         List<BookEntity> bookList = bookPage.getContent();
 
         List<BookDto.Response> responseDto = mapper.booksToResponses(bookList);
-        return ResponseCreator.list(responseDto);
+        return ResponseCreator.list(responseDto, bookPage.getTotalPages());
     }
     @GetMapping("/logs/{id}")
     public ResponseEntity<ListResponseDto<String>> getBookLogs(@PathVariable("id") Long id) {
         BookEntity book = service.getBook(id);
         List<String> logs = service.convertLogs(book.getLogs());
 
-        return ResponseCreator.list(logs);
+        return ResponseCreator.list(logs,1);
     }
     @DeleteMapping("/{book-id}")
     public ResponseEntity<Void> delete(@PathVariable("book-id") Long Id) {

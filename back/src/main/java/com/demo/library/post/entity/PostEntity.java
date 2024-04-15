@@ -33,11 +33,15 @@ public class PostEntity extends Auditable {
     @JoinColumn(name = "book_id")
     private BookEntity book;
 
-    public PostEntity(Long id, String title, User user, BookEntity book, LocalDateTime createdAt, LocalDateTime updatedAt) {
+    @Column
+    private Long views;
+
+    public PostEntity(Long id, String title, User user, BookEntity book, LocalDateTime createdAt, LocalDateTime updatedAt, Long views) {
         super(createdAt, updatedAt);
         this.id = id;
         this.title = title;
         this.user = user;
         this.book = book;
+        this.views = views;
     }
 }

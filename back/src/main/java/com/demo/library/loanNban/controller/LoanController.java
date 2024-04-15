@@ -66,7 +66,7 @@ public class LoanController {
         List<Loan> loans = service.findLoans(userId);
         List<LoanDto.Response> responses = mapper.loansToLoanResponses(loans);
 
-        return ResponseCreator.list(responses);
+        return ResponseCreator.list(responses,1);
     }
 
     @DeleteMapping("/{loan-id}")

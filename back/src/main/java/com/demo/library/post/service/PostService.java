@@ -27,7 +27,9 @@ public class PostService {
         return postRepository.save(postEntity);
     }
     public PostEntity getPost(Long Id) {
-        return verifyById(Id);
+        PostEntity postEntity = verifyById(Id);
+        postEntity.setViews(postEntity.getViews() + 1);
+        return postEntity;
     }
     public PostEntity update(PostEntity savedEntity, PostEntity updatingEntity){
         entityUpdater.update(updatingEntity,savedEntity, PostEntity.class);

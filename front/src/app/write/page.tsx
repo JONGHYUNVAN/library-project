@@ -70,12 +70,17 @@ export default function Write() {
         }
         const postData = {
             ...values,
+            bookId: book ? book.id : null
         };
 
         setSubmitting(true);
-        axios.post(`${process.env.NEXT_PUBLIC_API_URL}/posts`, postData)
+
+        axios.post(`${process.env.NEXT_PUBLIC_API_URL}/posts`, postData, {
+            headers: { "Authorization": "Bearer " + localStorage.getItem('accessToken') }
+             })
+
             .then(async response => {
-                router.push('/posts');
+                router.push('/discussion');
             })
             .catch(error => {
                 alert(error.response.data.message)

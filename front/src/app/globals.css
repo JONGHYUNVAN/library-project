@@ -177,11 +177,11 @@ body {
   color: goldenrod;
 }
 .navbar-left-side-button {
-  margin-left:10px;
-  margin-right: 8px;
+  margin-left: 1vw;
+  margin-right: 1vw;
   float: left;
   justify-content: center;
-  font-size: clamp(20px, 2vw, 65px);
+  font-size: clamp(1px, 2vw, 65px);
   display: flex;
   background: linear-gradient(to bottom right, palegoldenrod, gold);
   -webkit-background-clip: text;
@@ -189,16 +189,15 @@ body {
   overflow: hidden;
 }
 .navbar-right-side-button{
-  margin-left:10px;
-  margin-right: 8px;
+  margin-left: 1vw;
+  margin-right: 1vw;
   float: left;
   justify-content: center;
-  font-size: clamp(20px, 2vh, 50px);
+  font-size: clamp(1px, 2vw, 65px);
   display: flex;
   background: linear-gradient(to bottom right, palegoldenrod, gold);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  overflow: hidden;
 }
 .navbar-left-side-button::before, .navbar-left-side-button::after,
 .navbar-right-side-button::before, .navbar-right-side-button::after {
@@ -628,11 +627,11 @@ body {
 .post{
   border-radius: 8px;
   padding: 20px;
-  background-color: rgba(192, 134, 17, 0.15);
+  background-color: rgba(100, 72, 8, 0.5);
   background-position: center;
   font-family: 'Nanum Pen Script', cursive;
   box-shadow: 10px 2px 5px sienna;
-  margin-top: 100px;
+  margin-top: 6vw;
   width: 80vw;
   height: 80vh;
   margin-left: 8vw;
@@ -671,7 +670,7 @@ body {
   height: 50%;
   margin-top: 5vh;
   text-align: left;
-  font-size: clamp(10px, 3vw, 40px);
+  font-size: clamp(10px, 5vw, 40px);
   background: linear-gradient(to bottom right, palegoldenrod, gold);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -733,7 +732,6 @@ body {
   -webkit-text-fill-color: transparent;
   resize: none;
 }
-
 .writeContent:focus {
   outline: 2px solid darkgoldenrod;
   outline-offset: 10px;
@@ -747,4 +745,87 @@ body {
   -webkit-text-fill-color: transparent;
   resize: none;
   font-size: clamp(10px, 3vw, 40px);
+}
+
+
+
+.discussion{
+  border-radius: 8px;
+  padding: 20px;
+  background-color: rgba(102, 64, 5, 0.7);
+  background-position: center;
+  font-family: 'Nanum Pen Script', cursive;
+  box-shadow: 10px 2px 5px sienna;
+  margin-top: 6vh;
+  width: 80vw;
+  height: 80vh;
+  margin-left: 8vw;
+  text-align: center;
+  position: relative;
+}
+.postsList{
+  font-weight: bold;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.postListColumn{
+  border-radius: 8px;
+  outline: 2px solid goldenrod;
+  background: linear-gradient(to bottom right, palegoldenrod, goldenrod);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -webkit-filter: drop-shadow(1px 1px darkgoldenrod);
+  font-size: clamp(2px, 4vh, 30px);
+  font-weight: bolder;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-self: center;
+}
+.postListPosts{
+  background: linear-gradient(to bottom right, palegoldenrod, gold);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: clamp(2px, 4vw, 30px);
+  font-weight: bolder;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-self: center;
+}
+.postsList div {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 95%;
+  height: 100%;
+  margin-top: 3vh;
+}
+.postListColumn p, .postsList > div p {
+  flex-basis: 20%;
+  text-align: center;
+  height: 200%;
+  font-size: clamp(2px, 4vw, 30px);
+}
+.postListColumn h2, .postsList > div a {
+  flex-basis: 50%;
+  text-align: center;
+  font-size: clamp(2px, 4vw, 30px);
+
+}
+.pageInfos{
+  display: flex;
+  position: absolute;
+  align-items: center;
+  left: 45%;
+  bottom:5%;
+  font-family: "French Script MT", cursive;
+  background: linear-gradient(to bottom right, palegoldenrod, gold);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: clamp(1px, 3vw, 30px);
+}
+.pageInfos p {
+  margin: 0 10px;
 }

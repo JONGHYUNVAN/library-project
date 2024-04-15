@@ -1,7 +1,6 @@
 package com.demo.library.post.mapper;
 
 import com.demo.library.book.dto.BookDto;
-import com.demo.library.book.entity.BookEntity;
 import com.demo.library.book.service.BookService;
 import com.demo.library.mapper.Mapper;
 import com.demo.library.post.dto.PostDto;
@@ -36,13 +35,13 @@ public class PostMapper {
         response.setAuthorNickName(postEntity.getUser().getNickName());
         return response;
     }
-    public PostDto.List postToList(PostEntity postEntity) {
-        PostDto.List response = mapper.map(postEntity,PostDto.List.class);
+    public PostDto.Listed postToList(PostEntity postEntity) {
+        PostDto.Listed response = mapper.map(postEntity, PostDto.Listed.class);
         response.setAuthorNickName(postEntity.getUser().getNickName());
         response.setBookImage(mapper.map(bookService.getBook(postEntity.getBook().getId()), BookDto.Image.class));
         return response;
     }
-    public List<PostDto.List> postsToList(List<PostEntity> posts) {
+    public List<PostDto.Listed> postsToList(List<PostEntity> posts) {
         return posts.stream().map(this::postToList).collect(Collectors.toList());
     }
 }

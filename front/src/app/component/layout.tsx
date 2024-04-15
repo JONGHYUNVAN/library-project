@@ -38,27 +38,39 @@ export default function SharedLayout({
         <body>
         <div className="navbar" >
 
-            <div style={{ marginTop: '1vh' }}>
+            <div style={{marginTop: '1vh'}}>
                 <div className="navbar-button-holder">
                     <Link href="/" className="navbar-left-side-button">
                         home
                     </Link>
                 </div>
                 <div className="navbar-button-holder">
-                    <Link href={{ pathname: '/ranking' }}
+                    <Link href={{pathname: '/ranking'}}
                           className="navbar-left-side-button">
                         ranking
                     </Link><span></span>
                 </div>
                 <div className="navbar-button-holder">
-                    <Link href={{ pathname: '/search' }}
+                    <Link href={{pathname: '/search'}}
                           className="navbar-left-side-button">
                         search
                     </Link><span></span>
                 </div>
+                <div className="navbar-button-holder">
+                    <Link href={{pathname: '/discussion'}}
+                          className="navbar-left-side-button">
+                        discussion
+                    </Link><span></span>
+                </div>
             </div>
 
-            <div style={{ display: 'flex', justifyContent: 'flex-end', background:'transparent', maxHeight: '50px', marginTop: '0.5vh' }}>
+            <div style={{
+                display: 'flex',
+                justifyContent: 'flex-end',
+                background: 'transparent',
+                maxHeight: '50px',
+                marginTop: '0.5vh'
+            }}>
                 {loggedIn === "In" ? (
                     <>
                         <div className="navbar-button-holder">
