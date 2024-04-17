@@ -10,27 +10,31 @@ export default function List() {
     const height = 20;
     const [books, setBooks] = useState<Book[]>([]);
     const [loading, setLoading] = useState(true);
-
+    const [totalPages,setTotalPages] = useState<number|null>(1);
+    const [page, setPage] = useState<number | null>(0);
 
     useEffect(() => {
         setLoading(true);
-        fetch(`${process.env.NEXT_PUBLIC_API_URL}/books`)
+        fetch(`${process.env.NEXT_PUBLIC_API_URL}/books?page=${page}`)
             .then((response) => response.json())
             .then((data) => {
                 const dataArray = data.data;
+                const totalPagesData = data.totalPages;
+
                 const books = dataArray.map((item: { id: string; title: string; imageURL: string }) => ({
                     id: item.id,
                     title: item.title,
                     imageURL: item.imageURL,
                 }));
                 setBooks(books);
+                setTotalPages(totalPagesData);
                 setLoading(false);
             })
             .catch((error) => {
                 console.error(error);
                 setLoading(false);
             });
-    }, []);
+    }, [page]);
 
     useEffect(() => {
         const handleMouseMove = (e: MouseEvent) => {
@@ -138,20 +142,20 @@ export default function List() {
 
             <div className="book-container">
                 {loading ? (
-                    Array.from({ length: 5 }).map((_, index) => (
+                    Array.from({length: 5}).map((_, index) => (
                         <div className="book" key={index}>
                             <div className="book-image">
-                                <BounceLoader color="#8B4513" size={20 * width} />
+                                <BounceLoader color="#8B4513" size={20 * width}/>
                             </div>
                             <div className="book-title">
-                                <BarLoader color="#8B4513" width={20 * width} />
+                                <BarLoader color="#8B4513" width={20 * width}/>
                             </div>
                         </div>
                     ))
                 ) : (
                     books.slice(0, 5).map((book, index) => (
                         <div className="book" key={index}>
-                            <Link href={`/search?id=${book.id}`} style={{ textDecoration: 'none' }}>
+                            <Link href={`/search?id=${book.id}`} style={{textDecoration: 'none'}}>
                                 <>
                                     <img
                                         className="book-image"
@@ -169,25 +173,25 @@ export default function List() {
 
             <div className="book-container">
                 {loading ? (
-                    Array.from({ length: 5 }).map((_, index) => (
+                    Array.from({length: 5}).map((_, index) => (
                         <div className="book" key={index}>
                             <div className="book-image">
-                                <BounceLoader color="#8B4513" size={20 * width} />
+                                <BounceLoader color="#8B4513" size={20 * width}/>
                             </div>
                             <div className="book-title">
-                                <BarLoader color="#8B4513" width={20 * width} />
+                                <BarLoader color="#8B4513" width={20 * width}/>
                             </div>
                         </div>
                     ))
                 ) : (
                     books.slice(5, 10).map((book, index) => (
                         <div className="book" key={index}>
-                            <Link href={`/search?id=${book.id}`} style={{ textDecoration: 'none' }}>
+                            <Link href={`/search?id=${book.id}`} style={{textDecoration: 'none'}}>
                                 <>
                                     <img
                                         className="book-image"
                                         src={book.imageURL}
-                                        ref={el => (imagesRef.current[index+5] = el as HTMLImageElement)}
+                                        ref={el => (imagesRef.current[index + 5] = el as HTMLImageElement)}
                                     />
                                     <p className="book-title">{book.title}</p>
                                 </>
@@ -195,10 +199,26 @@ export default function List() {
                         </div>
                     ))
                 )}
+
+            </div>
+            <div className="bookPageInfos">
+                <p
+                    onClick={() => setPage(page == null ? 1 : page - 1)}
+                    className={page !== null && page !== undefined && page + 1 > 1 ? '' : 'invisible'}
+                >
+                    {"<"}
+                </p>
+                <h3>{page !== null && page !== undefined ? page + 1 : 1} / {totalPages}</h3>
+                <p
+                    onClick={() => setPage(page == null ? 1 : page + 1)}
+                    className={page !== null && page !== undefined && totalPages && page + 1 < totalPages ? '' : 'invisible'}
+                >
+                    {">"}
+                </p>
             </div>
 
             <video poster={"/rankingPoster.png"} className="background-video" autoPlay muted loop>
-                <source src="/backgroundList.mp4" type="video/mp4" />
+                <source src="/backgroundList.mp4" type="video/mp4"/>
             </video>
         </div>
     );

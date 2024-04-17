@@ -16,5 +16,6 @@ public interface BookJPARepository extends JpaRepository<BookEntity, Long> {
     Page<BookEntity> findAllByAuthor(String author, Pageable pageable);
     Page<BookEntity> findAllByPublisher(String publisher, Pageable pageable);
     Page<BookEntity> findTop10ByOrderBySearchCountDesc(Pageable pageable);
+    Page<BookEntity> findAllByOrderBySearchCountDesc(Pageable pageable);
 
 }
