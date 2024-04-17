@@ -164,7 +164,7 @@ body {
   margin-left: 45vw;
   margin-bottom:10vh;
   font-family: "French Script MT", cursive;
-  background: linear-gradient(to bottom right, palegoldenrod, gold);
+  background: linear-gradient(to bottom right, palegoldenrod, darkgoldenrod);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   font-size: clamp(30px, 10vw, 50px);
@@ -172,7 +172,7 @@ body {
 .bookPageInfos p {
   margin: 0 1vw;
   background-size: 80%;
-  background: gold;
+  background: linear-gradient(to bottom right, palegoldenrod, darkgoldenrod);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   font-weight: bold;
