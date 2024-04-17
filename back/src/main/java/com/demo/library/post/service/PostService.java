@@ -62,4 +62,11 @@ public class PostService {
                 .orElseThrow(() -> new BusinessLogicException(POST_NOT_FOUND));
     }
 
+    public boolean checkIsAuthor(PostEntity postEntity, User user) {
+        return postEntity.getUser().equals(user);
+    }
+
+    public Page<PostEntity> getPostsByBookId(Pageable pageable, Long id) {
+        return postRepository.findPostsByBookIdAndOrderByCreatedAtDesc(pageable,id);
+    }
 }

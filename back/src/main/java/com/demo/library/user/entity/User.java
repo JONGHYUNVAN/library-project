@@ -1,5 +1,6 @@
 package com.demo.library.user.entity;
 
+import com.demo.library.comment.entity.Comment;
 import com.demo.library.genre.entity.UserGenre;
 import com.demo.library.loanNban.entity.Ban;
 import com.demo.library.loanNban.entity.Loan;
@@ -52,6 +53,8 @@ public class User {
     private List<Ban> bans;
     @OneToMany(mappedBy = "user", cascade = CascadeType.PERSIST,  fetch = FetchType.LAZY)
     private List<PostEntity> posts;
+    @OneToMany(mappedBy = "user", cascade = CascadeType.PERSIST,  fetch = FetchType.LAZY)
+    private List<Comment> comments;
 
     @Column
     private String provider;

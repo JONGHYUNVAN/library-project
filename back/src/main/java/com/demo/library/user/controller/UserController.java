@@ -43,10 +43,20 @@ public class UserController {
         URI location = UriCreator.createUri(USER_DEFAULT_URL, user.getId());
         return ResponseCreator.created(location);
     }
+    @PatchMapping("/me")
+    public ResponseEntity<SingleResponseDto<UserDto.Response>>
+                                patchMe(@Valid @RequestBody UserDto.Patch patch) throws IllegalAccessException, InstantiationException {
+
+        User userRequest = mapper.patchToUser(patch);
+        User updatedUser = service.updateMe(userRequest, service.findByEmail(jwtAuthService.getEmail()).getId());
+
+        UserDto.Response responseDto = mapper.userToResponse(updatedUser);
+        return ResponseCreator.single(responseDto);
+    }
     @PatchMapping
     public ResponseEntity<SingleResponseDto<UserDto.Response>>
-                                patchUser(@Valid @RequestBody UserDto.Patch patch) throws IllegalAccessException, InstantiationException {
-       service.isValidRequest(patch.getId());
+                                 patchUser(@Valid @RequestBody UserDto.Patch patch) throws IllegalAccessException, InstantiationException {
+        service.isValidRequest(patch.getId());
 
         User userRequest = mapper.patchToUser(patch);
         User updatedUser = service.update(userRequest);

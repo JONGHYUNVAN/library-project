@@ -31,6 +31,9 @@ public class PostMapper {
 
         response.setCreatedAt(localDateTimeConverter.convert(postEntity.getCreatedAt()));
         response.setUpdatedAt(localDateTimeConverter.convert(postEntity.getUpdatedAt()));
+
+        response.setProfile(postEntity.getUser().getProfile());
+
         response.setBookImage(mapper.map(bookService.getBook(postEntity.getBook().getId()), BookDto.Image.class));
         response.setAuthorNickName(postEntity.getUser().getNickName());
         return response;

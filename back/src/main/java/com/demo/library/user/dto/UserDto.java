@@ -52,14 +52,12 @@ public class UserDto {
     @NoArgsConstructor
     @AllArgsConstructor
     public static class Patch {
-        @NotNull
         private Long id;
-        @SizeValidation(max=20, fieldName = "NickName")
         private String nickName;
         private String password;
-        @PhoneNumberValidation
         private String phoneNumber;
         private int profile;
+        private String gender;
 
     }
 
@@ -69,10 +67,8 @@ public class UserDto {
     @NoArgsConstructor
     @AllArgsConstructor
     public static class Response {
-
         private Long id;
         private String name;
-        private String password;
         private String email;
         private String nickName;
         private String phoneNumber;
