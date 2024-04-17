@@ -157,6 +157,34 @@ body {
   font-size: 2vw;
   text-align: center;
 }
+.bookPageInfos{
+  display: flex;
+  position: relative;
+  align-items: center;
+  margin-left: 45vw;
+  margin-bottom:10vh;
+  font-family: "French Script MT", cursive;
+  background: linear-gradient(to bottom right, palegoldenrod, darkgoldenrod);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: clamp(30px, 10vw, 50px);
+}
+.bookPageInfos p {
+  margin: 0 1vw;
+  background-size: 80%;
+  background: linear-gradient(to bottom right, palegoldenrod, darkgoldenrod);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: bold;
+  visibility: visible;
+}
+.bookPageInfos p:hover {
+  background-color: palegoldenrod;
+  filter: drop-shadow(1px 1px 10px white);
+}
+.bookPageInfos p.invisible {
+  visibility: hidden;
+}
 .navbar {
   border-radius: 8px;
   padding: 20px;

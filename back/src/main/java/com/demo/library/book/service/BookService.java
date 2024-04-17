@@ -59,12 +59,12 @@ public class BookService {
     }
     public Page<BookEntity> getBooksBySearchCount(Pageable pageable) {
         PageRequest of = PageRequest.of(pageable.getPageNumber() ,
-                pageable.getPageSize(),
+                10,
                 pageable.getSort()
                         .and(Sort.by("searchCount").descending())
         );
 
-        return bookRepository.findTop10ByOrderBySearchCountDesc(of);
+        return bookRepository.findAllByOrderBySearchCountDesc(of);
     }
 
     public Page<BookEntity> getBooksByKeyword(String keyword, Pageable pageable) {
