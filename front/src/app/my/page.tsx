@@ -3,10 +3,12 @@ import React, { useEffect ,useState} from 'react';
 import {MyResponsiveRadar} from '../nivo/radar'
 import axios from 'axios';
 import {SyncLoader, ClimbingBoxLoader } from 'react-spinners';
+import { useRouter } from 'next/navigation';
 
 
 export default function My() {
     const [user, setUser] = useState<UserData | null>(null);
+    const router = useRouter();
 
     interface UserData {
         name: string;
@@ -45,6 +47,7 @@ export default function My() {
                     gender:userData.gender,
                     profile:userData.profile
                 };
+                if(user.gender ==="OAUTH") router.push(`/edit-profile`);
 
                 const genres = userData.genres.map((genre: Genre) => ({
                     genre: genre.genre,

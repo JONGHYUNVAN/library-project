@@ -50,7 +50,6 @@ public class UserService {
 
         return user;
     }
-
     public User update(User user) {
         Long userId = user.getId();
         User verifiedUser = verifyById(userId);
@@ -65,6 +64,23 @@ public class UserService {
         entityUpdater.update(user, verifiedUser, User.class);
 
         save(verifiedUser);
+        return verifiedUser;
+    }
+
+    public User updateMe(User user, Long id) {
+        User verifiedUser = verifyById(id);
+        String password = user.getPassword();
+        if(password != null){
+            if(password.length()>20||password.length()<8){
+                throw new BusinessLogicException(INVALID_PASSWORD);
+            }
+            user.setPassword(passwordEncoder.encode(user.getPassword()));
+        }
+        entityUpdater.update(user, verifiedUser, User.class);
+
+        save(verifiedUser);
+        if(verifiedUser.getUserGenres().isEmpty()) userGenreService.generateUserGenres(verifiedUser);
+
         return verifiedUser;
     }
 
@@ -86,9 +102,10 @@ public class UserService {
     }
 
     //inner methods
-    public void isValidRequest(Long Id){
-        Optional.ofNullable(Id)
+    public void isValidRequest(Long userId){
+        Optional.ofNullable(userId)
                 .orElseThrow(() -> new BusinessLogicException(USER_NOT_FOUND));
+
     }
 
     public void save(User user) {

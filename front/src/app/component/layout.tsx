@@ -5,7 +5,6 @@ import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import '../globals.css'
 import React, {useEffect} from 'react';
 import Link from 'next/link';
-import Head from "next/head"
 import { logout } from './logout';
 
 
@@ -15,7 +14,6 @@ export default function SharedLayout({
     children: React.ReactNode;
 }) {
     const loggedIn = useAppSelector((state) => state.authReducer.value);
-    const count = useAppSelector((state) => state.counterReducer.value);
     const dispatch = useAppDispatch();
     useEffect(() => {
         if (localStorage.getItem('accessToken')) {

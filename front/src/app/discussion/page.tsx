@@ -5,6 +5,7 @@ import {Post} from '../interface/Post'
 import {BookImage} from  '../interface/Post'
 import { useSearchParams } from "next/navigation";
 import Link from "next/link";
+import { Tooltip } from 'react-tooltip'
 
 export default function Discussion() {
     const router = useRouter();
@@ -13,26 +14,38 @@ export default function Discussion() {
     const params = useSearchParams();
     const [totalPages,setTotalPages] = useState<number|null>(1);
     const [page, setPage] = useState<number | null>(0);
+    const [id, setId] = useState<string | null>(params.get('id'));
 
     useEffect(() => {
         const isMobile = window.innerWidth <= 800 || window.innerHeight <= 600;
-        fetch(`${process.env.NEXT_PUBLIC_API_URL}/posts?page=${page}&size=${isMobile ? 6 : 10}`)            .then((response) => response.json())
+        const url = id
+            ? `${process.env.NEXT_PUBLIC_API_URL}/posts/book-posts/${id}?page=${page}&size=${isMobile ? 6 : 10}`
+            : `${process.env.NEXT_PUBLIC_API_URL}/posts?page=${page}&size=${isMobile ? 6 : 10}`;
+
+        fetch(url).then((response) => response.json())
             .then((data) => {
                 const dataArray = data.data;
                 const totalPagesData = data.totalPages;
-                const datas = dataArray.map((item: {id:number, title: string, authorNickName: string, views:number, bookImage: BookImage }) => ({
+                const datas = dataArray.map((item: {
+                    id: number,
+                    title: string,
+                    authorNickName: string,
+                    views: number,
+                    bookImage: BookImage
+                }) => ({
                     id: item.id,
                     title: item.title,
                     authorNickName: item.authorNickName,
-                    views:item.views,
+                    views: item.views,
                     bookImage: item.bookImage
                 }));
                 setTotalPages(totalPagesData);
                 setPosts(datas);
             })
             .catch((error) => {
-                console.error(error);
+                alert(error);
             });
+
     }, [page]);
 
     return (
@@ -48,15 +61,22 @@ export default function Discussion() {
                                 <p >author</p>
                                 <p >views</p>
                             </div>
+                        </div>
                             {posts && posts.map((post, index) => (
                                 <div key={index} className="postListPosts">
-                                    <p>{post.id}</p>
-                                    <Link href={`/post/?id=${post.id}`}>{post.title}</Link>
+                                    <p >{post.id}</p>
+                                    <Link id={`post-${index}`} href={`/post/?id=${post.id}`}>{post.title}</Link>
+                                    <Tooltip
+                                        place={"top"}
+                                        anchorSelect={`#post-${index}`}
+                                        //@ts-ignore
+                                        content={<img src={post.bookImage.imageURL} alt={post.bookImage.title} style={{ width: '12vw', height: '15vw' }}/>}
+                                    />
                                     <p>{post.authorNickName}</p>
                                     <p>{post.views}</p>
                                 </div>
                             ))}
-                        </div>
+
 
                         <div className="pageInfos">
                             {(page !== null && page !== undefined && page+1>1) ? (<p onClick={() => setPage(page - 1)}>{"<"}</p>):(<></>)}

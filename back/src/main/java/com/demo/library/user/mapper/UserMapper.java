@@ -36,6 +36,7 @@ public class UserMapper {
 
     public UserDto.My userToMy(User user){
         UserDto.My my = mapper.map(user, UserDto.My.class);
+        if(my.getEmail().endsWith("@kakaoOAuth.com"))  my.setEmail("Kakao login");
         List<LoanDto.Response> loanResponses = loanMapper.loansToLoanResponses(user.getLoans());
         my.setLoans(loanResponses);
 

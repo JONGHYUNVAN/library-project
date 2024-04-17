@@ -39,7 +39,6 @@ export default function Search() {
                         headers: {
                             'Authorization': `Bearer ${token}`
                         },
-                     withCredentials: true 
                     }
                 }
                 const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/books/${id}`,config);
@@ -202,25 +201,32 @@ export default function Search() {
                         <div className="bookDetailContent">
                             <img src={selectedBook.imageURL} alt={selectedBook.title} className="book-image-big"/>
                             <div className="searchInfo">
-                                <h2 >{selectedBook.title }</h2>
+                                <h2>{selectedBook.title}</h2>
                                 <p>장르: {selectedBook.genreName}</p>
                                 <p>저자: {selectedBook.author}</p>
                                 <p>출판사: {selectedBook.publisher}</p>
                                 <p>상태: {selectedBook.status}</p>
                                 <p>소장 도서관: {selectedBook.libraryName}</p>
-                                <div className="discussionButton"
-                                    onClick={() => router.push(`/write/?id=${selectedBook.id}`)}
-                                >
-                                    discuss
+                                <div style={{ display: 'flex', flexDirection: 'row'}}>
+                                    <div className="discussionsButton"
+                                         onClick={() => router.push(`/discussion/?id=${selectedBook.id}`)}
+                                    >
+                                        discussions
+                                    </div>
+                                    <div className="discussionButton"
+                                         onClick={() => router.push(`/write/?id=${selectedBook.id}`)}
+                                    >
+                                        discuss
+                                    </div>  
                                 </div>
                             </div>
-                        </div>):(<div></div>)
-                                 )
+                        </div>) : (<div></div>)
+                                )
                 ) : (
                     <div></div>
                 )}
             </div>
-            <video  poster={"/posterSearch.png"} className="background-video" autoPlay muted loop>
+            <video poster={"/posterSearch.png"} className="background-video" autoPlay muted loop>
                 <source src="/backgroundSearch.mp4" type="video/mp4" />
             </video>
 

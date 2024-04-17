@@ -32,7 +32,7 @@ public enum ExceptionCode {
     INVALID_LIBRARY_ID(400, "Invalid library Id"),
 
     POST_NOT_FOUND(404, "Post not found"),
-    INVALID_POST_ID(400, "Invalid post Id"),
+    INVALID_POST_ID(400, "Is not author"),
     NOT_ALLOWED(400,"Not allowed user"),
 
 
