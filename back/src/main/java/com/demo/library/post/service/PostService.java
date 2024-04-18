@@ -48,7 +48,7 @@ public class PostService {
 
     public PostEntity checkValidRequest(PostDto.Patch patchDto, User user){
         PostEntity postEntity = verifyById(patchDto.getId());
-        if(!Objects.equals(postEntity.getId(), user.getId())) throw new BusinessLogicException(INVALID_POST_ID);
+        if(!postEntity.getUser().equals(user)) throw new BusinessLogicException(INVALID_POST_ID);
         else return postEntity;
     }
     public void deletePost(Long Id, User user){
