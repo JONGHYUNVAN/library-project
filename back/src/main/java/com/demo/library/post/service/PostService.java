@@ -45,7 +45,6 @@ public class PostService {
 
         return postRepository.findPostsByCreatedAtWithoutContent(of);
     }
-
     public PostEntity checkValidRequest(PostDto.Patch patchDto, User user){
         PostEntity postEntity = verifyById(patchDto.getId());
         if(!postEntity.getUser().equals(user)) throw new BusinessLogicException(INVALID_POST_ID);
@@ -56,7 +55,7 @@ public class PostService {
         if(postEntity.getUser().equals(user)) postRepository.delete(postEntity);
         else throw new BusinessLogicException(NOT_ALLOWED);
     }
-    // Inner Methods
+
     public PostEntity verifyById(Long Id) {
         return postRepository.findById(Id)
                 .orElseThrow(() -> new BusinessLogicException(POST_NOT_FOUND));

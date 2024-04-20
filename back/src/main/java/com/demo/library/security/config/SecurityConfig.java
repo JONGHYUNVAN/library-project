@@ -94,7 +94,7 @@ public class SecurityConfig  {
     }
     @Configuration
     @EnableWebMvc
-    public class WebConfig implements WebMvcConfigurer {
+    public static class WebConfig implements WebMvcConfigurer {
         @Override
         public void addCorsMappings(CorsRegistry registry) {
             registry.addMapping("/**")
