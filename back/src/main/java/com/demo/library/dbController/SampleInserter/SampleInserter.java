@@ -4,6 +4,7 @@ import com.demo.library.book.entity.BookEntity;
 import com.demo.library.book.repository.BookJPARepository;
 import com.demo.library.book.repository.BookRepository;
 import com.demo.library.book.service.BookService;
+import com.demo.library.dbController.refreshtokencleaner.ExpiredRefreshTokenCleaner;
 import com.demo.library.genre.entity.Genre;
 import com.demo.library.genre.entity.UserGenre;
 import com.demo.library.genre.repository.GenreRepository;
@@ -31,12 +32,12 @@ import static com.demo.library.user.entity.User.Status.ACTIVE;
 public class SampleInserter implements CommandLineRunner {
     private final BookRepository bookRepository;
     private final LibraryRepository libraryRepository;
-    private final UserService userService;
     private final UserRepository userRepository;
     private final GenreRepository genreRepository;
     private final UserGenreRepository userGenreRepository;
     private final PasswordEncoder passwordEncoder;
     private final AuthorityUtils authorityUtils;
+    private final ExpiredRefreshTokenCleaner expiredRefreshTokenCleaner;
     @Value("${mail.address.admin}")
     private String adminMailAddress;
     @Value("${password.address.admin}")
@@ -125,7 +126,7 @@ public class SampleInserter implements CommandLineRunner {
             );
             userGenreRepository.saveAll(userGenres);
         }
-
+        else expiredRefreshTokenCleaner.deleteExpiredTokens();
     }
 
     public BookEntity createBook(Long id, String title, String publisher, String author, Library library, BookEntity.Status status, Long searchCount, String imageURL,Genre genre){

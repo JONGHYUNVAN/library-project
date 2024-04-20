@@ -64,7 +64,7 @@ return 문의 가독성 향항을 위해 ResponseCreator 클래스를 만들어 
 
 DTO:  
 ![img_16.png](img_16.png)  
-custom validation 을 사용하여 각 상황에 적합한 벨리데이션 구현.  
+custom validator 를 사용하여 각 상황에 적합한 벨리데이션을 구현.  
 또한 각 상황별 필요한 DTO 를 따로 만들어 데이터 통신 효율을 높임.
 
 Entity:  
@@ -83,3 +83,33 @@ Service:
 ![img_21.png](img_21.png)  
 메소드 분리를 통해 코드의 재사용을 용이하게 하여 유지보수성을 높이고, 짧아진 코드의 가독성도 높임.
 대부분의 메소드를 public 메소드로 사용하여 필요하다면 다른 서비스에서도 자유롭게 필요한 메소드만 사용할 수 있음.
+
+Paging:
+![img_22.png](img_22.png)  
+Pageable 엔티티와 PageRequest(of) 의 구현체를 사용하여 페이징 PathVariable 을 사용하여 데이터 통신 낭비 없이 표율적인 데이터 운영을 가능하게 함.
+
+TimeConverter:
+![img_23.png](img_23.png)  
+LocalDateTime 타입은 사용자가 직접 읽기엔 과하게 많은 데이터를 사용하므로, 통신시에 사용자가 읽기 편한 형태로 미리 변환하여 사용함.
+
+Error:
+![img_24.png](img_24.png)  
+![img_25.png](img_25.png)  
+GlobalExceptionAdvice 로 전역 예외 처리 로직을 구현 하고, ErrorResponse (DTO)Class 로 상황별 세부 에러 구현체를 만들어 전달함.
+![img_26.png](img_26.png)  
+![img_27.png](img_27.png)  
+BusinessLogicException 은 따로 Exception Code 를 만들어 ErrorResponse 에 전달함.
+
+Security:  
+기본적으로 JWT 와 Spring Security 의 일반적인 패턴을 따르는 코드를 지향하여 구현하였고,  
+![img_28.png](img_28.png)  
+antMatchers 를 이용해 인가 기능을 구현하여 한눈에 각 요청별 어떤 조건의 인가가 필요한지 확인 할 수 있음.  
+![img_29.png](img_29.png)  
+RefreshToken 은 token 을 포함하며 userEmail, 만료시간정보를 포함한 채 DB에 저장되고,  
+![img_30.png](img_30.png)  
+서버 실행 후 매 24 시간마다 실행되는 cleaning 때 삭제됨.
+
+Oauth:  
+회원가입과 로그인이 따로 구분되지 않으며, 첫 로그인 시 business 자격을 얻지 못해 접근할 수 없는 정보는 임의로 생성, 저장한 뒤  
+마이페이지에서 수정 가능하도록 구현함.  
+계속 Oauth 제공측의 토큰을 사용하지 않고, 첫 가입(로그인)시 내부 JWT 토큰으로 교체하여 이후 통신에선 백엔드 서버의 JWT 토큰으로 인증을 진행하여 통신 효율을 높임.
