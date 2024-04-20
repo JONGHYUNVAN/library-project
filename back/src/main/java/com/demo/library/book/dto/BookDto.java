@@ -38,13 +38,10 @@ public class BookDto {
     @AllArgsConstructor
     public static class Patch {
         private Long id;
-        @NotEmptyValidation(fieldName = "Title")
         @SizeValidation(max = 20, fieldName = "Title")
         private String title;
-        @NotEmptyValidation(fieldName = "Publisher")
         @SizeValidation(max = 20, fieldName = "Publisher")
         private String publisher;
-        @NotEmptyValidation(fieldName = "Author")
         @SizeValidation(max = 20, fieldName = "Author")
         private String author;
 
