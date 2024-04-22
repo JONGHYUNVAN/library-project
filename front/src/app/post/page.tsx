@@ -25,7 +25,7 @@ export default function Post() {
         async function fetchData() {
             const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/posts/${id}`, {
                 headers: {
-                    'Authorization': `Bearer ${localStorage.getItem('accessToken')}`
+                    'Authorization': `${localStorage.getItem('accessToken')}`
                 }
             });
             const dataArray = response.data.data;
@@ -65,7 +65,7 @@ export default function Post() {
             try {
                 const response = await axios.delete(`${process.env.NEXT_PUBLIC_API_URL}/posts/${id}`, {
                     headers: {
-                        'Authorization': `Bearer ${localStorage.getItem('accessToken')}`
+                        'Authorization': `${localStorage.getItem('accessToken')}`
                     }
                 });
                 if (response.status === 204) {
@@ -82,7 +82,7 @@ export default function Post() {
             try {
                 const response = await axios.delete(`${process.env.NEXT_PUBLIC_API_URL}/comments/${commentId}`, {
                     headers: {
-                        'Authorization': `Bearer ${localStorage.getItem('accessToken')}`
+                        'Authorization': `${localStorage.getItem('accessToken')}`
                     }
                 });
                 if (response.status === 204) {
@@ -106,7 +106,7 @@ export default function Post() {
         try {
             const response = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/comments`, commentData,{
                 headers: {
-                    'Authorization': `Bearer ${localStorage.getItem('accessToken')}`
+                    'Authorization': `${localStorage.getItem('accessToken')}`
                 }
             });
             if (response.status === 201) {
