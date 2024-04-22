@@ -184,10 +184,10 @@ export default function Post() {
                 onChange={handleNewCommentInput}
                 className="newComment"
             />
-            <p onClick={!submitting && newComment != "" ? () => {} : handleNewCommentSubmit}>
+            <p onClick={!submitting && newComment != "" ? handleNewCommentSubmit : () => {}}>
                 {!submitting && newComment != "" ? 'submit' : ''}
             </p>
-        </div>):(<></>)}
+        </div>) : (<></>)}
 
         {comments ? (
             <>

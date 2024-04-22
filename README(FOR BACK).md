@@ -89,7 +89,7 @@ Paging:
 Pageable 엔티티와 PageRequest(of) 의 구현체를 사용하여 페이징 PathVariable 을 사용하여 데이터 통신 낭비 없이 표율적인 데이터 운영을 가능하게 함.
 
 TimeConverter:
-![img_23.png](img_23.png)  
+![img_23.png](./back/img_23.png)  
 LocalDateTime 타입은 사용자가 직접 읽기엔 과하게 많은 데이터를 사용하므로, 통신시에 사용자가 읽기 편한 형태로 미리 변환하여 사용함.
 
 Error:
