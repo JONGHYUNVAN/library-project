@@ -14,6 +14,6 @@ public class ExpiredRefreshTokenCleaner {
     private final RefreshTokenRepository refreshTokenRepository;
     @Scheduled(fixedDelay = 86400000)
     public void deleteExpiredTokens(){
-        refreshTokenRepository.deleteAllByExpiryDateTimeBefore(Calendar.getInstance().getTime());
+        refreshTokenRepository.deleteAllByExpiryDateTimeBefore(LocalDateTime.now());
     }
 }
