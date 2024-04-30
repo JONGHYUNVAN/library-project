@@ -15,6 +15,7 @@ export default function Discussion() {
     const [totalPages,setTotalPages] = useState<number|null>(1);
     const [page, setPage] = useState<number | null>(0);
     const [id, setId] = useState<string | null>(params.get('id'));
+    const [tooltip,setTooltip] = useState<boolean|null>(false);
 
     useEffect(() => {
         const isMobile = window.innerWidth <= 800 || window.innerHeight <= 600;
@@ -65,13 +66,17 @@ export default function Discussion() {
                             {posts && posts.map((post, index) => (
                                 <div key={index} className="postListPosts">
                                     <p >{post.id}</p>
-                                    <Link id={`post-${index}`} href={`/post/?id=${post.id}`}>{post.title}</Link>
-                                    <Tooltip
-                                        place={"top"}
-                                        anchorSelect={`#post-${index}`}
-                                        //@ts-ignore
-                                        content={<img src={post.bookImage.imageURL} alt={post.bookImage.title} style={{ width: '12vw', height: '15vw' }}/>}
-                                    />
+                                    <Link id={`post-${index}`} href={`/post/?id=${post.id}`} onMouseOver={() => setTooltip(true)}>{post.title}</Link>
+                                        {tooltip?(
+                                            <>
+                                            <Tooltip
+                                                place={"top"}
+                                                anchorSelect={`#post-${index}`}
+                                                //@ts-ignore
+                                                content={<img src={post.bookImage.imageURL} alt={post.bookImage.title} style={{ width: '12vw', height: '15vw' }}/>}
+                                            />
+                                            </>
+                                            ):(<></>)}
                                     <p>{post.authorNickName}</p>
                                     <p>{post.views}</p>
                                 </div>
