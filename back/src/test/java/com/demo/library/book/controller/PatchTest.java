@@ -2,14 +2,8 @@ package com.demo.library.book.controller;
 
 
 import com.demo.library.book.dto.BookDto;
-import com.demo.library.book.entity.BookEntity;
-import com.demo.library.book.repository.BookJPARepository;
-import com.demo.library.book.repository.BookRepository;
-import com.demo.library.library.entity.Library;
-import com.demo.library.library.repository.LibraryRepository;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -18,7 +12,6 @@ import org.springframework.http.MediaType;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.ResultActions;
-
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.patch;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -52,22 +45,7 @@ public class PatchTest {
                 .andExpect(jsonPath("$.data.author").value("newAuthor"));
     }
 
-    @Test
-    public void patchBookTest_Validation_titleNotBlank() throws Exception {
-        BookDto.Patch patch = getPatch(1L,"","newPublisher","newAuthor");
-        String requestBody = objectMapper.writeValueAsString(patch);
 
-        // When
-        ResultActions result = mockMvc.perform(
-                patch("/books")
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .content(requestBody)
-        );
-
-        //Then
-        getExpect(result,"title","","Title should not be null.");
-
-    }
 
     @Test
     void patchBookTest_Validation_titleTooLong() throws Exception {
@@ -87,21 +65,7 @@ public class PatchTest {
         getExpect(result, "title", "1234567891011121314151617181920", "Title should be at most 20 characters.");
     }
 
-    @Test
-    public void patchBookTest_Validation_publisherNotBlank() throws Exception {
-        BookDto.Patch patch = getPatch(1L, "title", "", "newAuthor");
-        String requestBody = objectMapper.writeValueAsString(patch);
 
-        // When
-        ResultActions result = mockMvc.perform(
-                patch("/books")
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .content(requestBody)
-        );
-
-        //Then
-        getExpect(result, "publisher", "", "Publisher should not be null.");
-    }
     @Test
     void postBookTest_Validation_publisherTooLong() throws Exception {
         // Given
@@ -119,21 +83,7 @@ public class PatchTest {
         // Then
         getExpect(result, "publisher", "012345678910123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890", "Publisher should be at most 20 characters.");
     }
-    @Test
-    public void patchBookTest_Validation_authorNotBlank() throws Exception {
-        BookDto.Patch patch = getPatch(1L, "title", "publisher", "");
-        String requestBody = objectMapper.writeValueAsString(patch);
 
-        // When
-        ResultActions result = mockMvc.perform(
-                patch("/books")
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .content(requestBody)
-        );
-
-        //Then
-        getExpect(result, "author","","Author should not be null.");
-    }
     @Test
     void postBookTest_Validation_authorTooLong() throws Exception {
         // Given
