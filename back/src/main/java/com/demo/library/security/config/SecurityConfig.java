@@ -52,10 +52,10 @@ public class SecurityConfig  {
                 .csrf().disable()// JWT 사용하므로 csrf 보호 비활성화
                 .formLogin().disable()// 폼 기반 로그인 비활성화
                 .httpBasic().disable()//  HTTP Basic 인증을 비활성화
-                // cors 설정 커스텀화
-               // .cors(cors -> cors.configurationSource(request -> new CorsConfiguration().applyPermitDefaultValues()))
-               // cors 디폴트 설정
-                .cors(withDefaults());
+              // cors 설정 커스텀화
+             // .cors(cors -> cors.configurationSource(request -> new CorsConfiguration().applyPermitDefaultValues()))
+              // cors 디폴트 설정
+              .cors(withDefaults());
         httpSecurity
                 // 세션 생성 정책을 Stateless 로 설정
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)

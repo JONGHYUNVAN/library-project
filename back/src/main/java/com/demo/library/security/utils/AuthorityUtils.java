@@ -26,10 +26,9 @@ public class AuthorityUtils {
     }
 
     public List<GrantedAuthority> createAuthorities(List<String> roles) {
-        List<GrantedAuthority> authorities = roles.stream()
+        return roles.stream()
                 .map(role -> new SimpleGrantedAuthority("ROLE_" + role))
                 .collect(Collectors.toList());
-        return authorities;
     }
 
     public List<String> createRoles(String email) {

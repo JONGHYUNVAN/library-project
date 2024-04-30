@@ -1,8 +1,5 @@
 package com.demo.library.post.controller;
 
-import com.demo.library.book.dto.BookDto;
-import com.demo.library.book.entity.BookEntity;
-import com.demo.library.book.mapper.BookMapper;
 import com.demo.library.book.service.BookService;
 import com.demo.library.exception.BusinessLogicException;
 import com.demo.library.post.dto.PostDto;

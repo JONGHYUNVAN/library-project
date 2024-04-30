@@ -45,8 +45,16 @@ public class SampleInserter implements CommandLineRunner {
 
     @Override
     public void run (String ... args){
-        Optional<User> optionalUser = userRepository.findById(1L);
-        if(optionalUser.isEmpty()){
+        User user = createUser(1L, password, adminMailAddress, "관리자", "admin", "010-1234-5678", User.Gender.MALE, User.Status.ACTIVE);
+        String encryptedPassword = passwordEncoder.encode(user.getPassword());
+        user.setPassword(encryptedPassword);
+        List<String> roles = authorityUtils.createRoles(user.getEmail());
+        user.setRoles(roles);
+        user.setStatus(ACTIVE);
+        userRepository.save(user);
+
+        Optional<BookEntity> optionalBook = bookRepository.findById(1L);
+        if(optionalBook.isEmpty()){
             Genre literatureArt = createGenre(1L,"Literature & Art");
             Genre scienceTechnology = createGenre(2L,"Science & Technology");
             Genre societyPolitics = createGenre(3L,"Society & Politics");
@@ -58,13 +66,7 @@ public class SampleInserter implements CommandLineRunner {
             );
             genreRepository.saveAll(genreList);
 
-            User user = createUser(1L, password, adminMailAddress, "관리자", "admin", "010-1234-5678", User.Gender.MALE, User.Status.ACTIVE);
-            String encryptedPassword = passwordEncoder.encode(user.getPassword());
-            user.setPassword(encryptedPassword);
-            List<String> roles = authorityUtils.createRoles(user.getEmail());
-            user.setRoles(roles);
-            user.setStatus(ACTIVE);
-            userRepository.save(user);
+
 
             Library library = createLibrary(1L, "중앙도서관", "서울시 구구구 동동동 로로로 77-7", "09:30", "17:30");
             libraryRepository.save(library);
