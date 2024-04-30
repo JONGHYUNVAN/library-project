@@ -3,7 +3,6 @@ import React, { useEffect, useRef ,useState} from "react";
 import Link from 'next/link';
 import {Book} from '../interface/Book'
 import {BarLoader, BounceLoader } from 'react-spinners';
-import Image from 'next/image'
 
 export default function List() {
     const imagesRef = useRef<HTMLImageElement[]>([]);
@@ -158,12 +157,10 @@ export default function List() {
                         <div className="book" key={index}>
                             <Link href={`/search?id=${book.id}`} style={{textDecoration: 'none'}}>
                                 <>
-                                    <Image
+                                    <img
                                         className="book-image"
                                         src={book.imageURL}
-                                        alt="now loading"
-                                        width={500}
-                                        height={750}
+                                        ref={el => (imagesRef.current[index] = el as HTMLImageElement)}
                                     />
                                     <p className="book-title">{book.title}</p>
                                 </>
@@ -191,12 +188,10 @@ export default function List() {
                         <div className="book" key={index}>
                             <Link href={`/search?id=${book.id}`} style={{textDecoration: 'none'}}>
                                 <>
-                                    <Image
+                                    <img
                                         className="book-image"
                                         src={book.imageURL}
-                                        alt="now loading"
-                                        width={500}
-                                        height={750}
+                                        ref={el => (imagesRef.current[index + 5] = el as HTMLImageElement)}
                                     />
                                     <p className="book-title">{book.title}</p>
                                 </>
