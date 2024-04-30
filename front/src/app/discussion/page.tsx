@@ -6,6 +6,8 @@ import {BookImage} from  '../interface/Post'
 import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { Tooltip } from 'react-tooltip'
+import Image from 'next/image'
+
 
 export default function Discussion() {
     const router = useRouter();
@@ -66,14 +68,19 @@ export default function Discussion() {
                             {posts && posts.map((post, index) => (
                                 <div key={index} className="postListPosts">
                                     <p >{post.id}</p>
-                                    <Link id={`post-${index}`} href={`/post/?id=${post.id}`} onMouseOver={() => setTooltip(true)}>{post.title}</Link>
+                                    <Link id={`post-${index}`} href={`/post/?id=${post.id}`} onMouseMove={() => setTooltip(true)}>{post.title}</Link>
                                         {tooltip?(
                                             <>
                                             <Tooltip
                                                 place={"top"}
                                                 anchorSelect={`#post-${index}`}
                                                 //@ts-ignore
-                                                content={<img src={post.bookImage.imageURL} alt={post.bookImage.title} style={{ width: '12vw', height: '15vw' }}/>}
+                                                content={<Image
+                                                    src={post.bookImage.imageURL}
+                                                    alt="now loading"
+                                                    width={300}
+                                                    height={500}
+                                                 style={{ width: '12vw', height: '15vw' }}/>}
                                             />
                                             </>
                                             ):(<></>)}
