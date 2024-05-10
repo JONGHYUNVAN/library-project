@@ -7,6 +7,7 @@ export default function Home() {
       <>
           <head>
               <title> Welcome! </title>
+              <meta name="google-site-verification" content="0JhXiQkUPWSHrMe_ZNDvxTZM1CNrIKsLyczs8e_EWuc"/>
           </head>
 
           <div className="main-page">
