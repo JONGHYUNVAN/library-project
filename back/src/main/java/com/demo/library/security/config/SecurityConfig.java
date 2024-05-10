@@ -102,7 +102,7 @@ public class SecurityConfig  {
         @Override
         public void addCorsMappings(CorsRegistry registry) {
             registry.addMapping("/**")
-                    .allowedOrigins("http://localhost:3000","https://library-project-blush.vercel.app")
+                    .allowedOrigins("http://localhost:3000","https://libraryproject-byjhvan.vercel.app")
                     .allowedMethods("GET", "POST","PATCH","DELETE","OPTIONS") // 허용할 HTTP method
                     .exposedHeaders("*") //header 노출
                     .allowedHeaders("*") // 요청 헤더 중 서버에서 허용하는 헤더
